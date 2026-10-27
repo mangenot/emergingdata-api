@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>EmergingData API</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{font-family:Arial,Helvetica,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;color:#222;line-height:1.5}code{background:#f3f3f3;padding:2px 5px}h1{font-weight:600}table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid #ddd;padding:6px 8px;text-align:left;vertical-align:top}</style></head>
+<body>
+<h1>EmergingData API</h1>
+<p>Read access to the EmergingData observation table. All routes return JSON, or CSV with <code>format=csv</code>. Add your key as the <code>x-api-key</code> header or the <code>api_key</code> parameter.</p>
+<table>
+<tr><th>Route</th><th>Parameters</th><th>Returns</th></tr>
+<tr><td><code>/api/series</code></td><td><code>country</code>, <code>indicator</code> (comma lists allowed), <code>from</code>, <code>to</code> (YYYY-MM)</td><td>the latest vintage of each observation, with unit and note</td></tr>
+<tr><td><code>/api/status</code></td><td><code>country</code> (optional)</td><td>one line per series: first and last observation, rows, frequency, stale flag</td></tr>
+<tr><td><code>/api/catalog</code></td><td><code>type</code> = indicators, countries or events; <code>country</code> for events</td><td>the registry as held in the database</td></tr>
+</table>
+<p>Example: <code>/api/series?country=BGD&amp;indicator=INF_CPI,FX_USD&amp;from=2024-01&amp;format=csv</code></p>
+</body></html>

@@ -1,0 +1,8 @@
+{
+  "name": "emergingdata-api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EmergingData API: serves the observation table of the EmergingData Supabase database",
+  "type": "module",
+  "engines": { "node": ">=18" }
+}
