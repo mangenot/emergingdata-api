@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   const dry = String(req.query.dry || '') === '1';
   const only = String(req.query.country || '').toUpperCase().split(',').map(s => s.trim()).filter(Boolean);
   try {
-    let countries = await sb('country?select=iso3,name,currency,fx_regime,peer_group&proposal=eq.Pilot&order=iso3');
+    let countries = (await sb('country?select=iso3,name,currency,fx_regime,peer_group&proposal=eq.Pilot&order=iso3')).filter(c => c.iso3 !== 'WLD');
     if (only.length) countries = countries.filter(c => only.includes(c.iso3));
     if (!countries.length) return fail(res, 400, 'no pilot country matches');
     const isoList = `in.(${countries.map(c => c.iso3).join(',')})`;
@@ -38,8 +38,11 @@ export default async function handler(req, res) {
     const obsBy = {}, evBy = {};
     for (const o of obs) (obsBy[o.iso3] = obsBy[o.iso3] || []).push(o);
     for (const e of events) (evBy[e.iso3] = evBy[e.iso3] || []).push(e);
+    // a country is scored only once it has the exchange rate or the inflation series loaded
+    countries = countries.filter(c => (obsBy[c.iso3] || []).some(o => o.indicator_code === 'FX_USD' || o.indicator_code === 'INF_CPI'));
+    if (!countries.length) return fail(res, 400, 'no pilot country has data yet');
     // ranks across the covered countries for the quintile rules: always over every pilot, whatever the filter
-    const allPilots = only.length ? await sb('country?select=iso3,name,currency,fx_regime&proposal=eq.Pilot') : countries;
+    const allPilots = only.length ? (await sb('country?select=iso3,name,currency,fx_regime&proposal=eq.Pilot')).filter(c => c.iso3 !== 'WLD') : countries;
     let obsAll = obsBy;
     if (only.length) {
       const rest = allPilots.filter(c => !obsBy[c.iso3]);

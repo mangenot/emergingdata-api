@@ -1,4 +1,4 @@
-// EmergingData scoring engine, version 1.0 (2 November 2026).
+// EmergingData scoring engine, version 1.1 (2 November 2026): targeted sanctions give 3 not 4; a graduation date is a review, not a loss.
 // Pure functions: the registry rulebook (scoring_rule table) applied to the observations and events of one country,
 // giving the nine section scores (cost and risk, 1 to 5, with a trend arrow each) and the two apparel composites.
 // Every score carries the inputs it used and the rules it could not apply, so the result explains itself.
@@ -158,7 +158,12 @@ function scorePOL(S, D, E, asOf, ctx) {
     if (el) { inputs.next_election = el.event_date; if (monthsTo(el, asOf) <= 12) { risk = Math.max(risk, 3); why.push(`election within 12 months (${el.event_date})`); } }
     else notes.push('no scheduled election in the calendar');
     const sanc = S.POL_SANCTIONS && S.POL_SANCTIONS.latest(asOf);
-    if (sanc) { inputs.POL_SANCTIONS = sanc.text; if (/broad/i.test(sanc.text || '')) { risk = 5; why.push('broad sanctions'); } else if (/targeted/i.test(sanc.text || '') && !/no trade sanctions|none/i.test(sanc.text || '')) { risk = Math.max(risk, 4); why.push('targeted sanctions'); } }
+    if (sanc) {
+      inputs.POL_SANCTIONS = sanc.text; const t = sanc.text || '';
+      if (/broad/i.test(t)) { risk = 5; why.push('broad sanctions'); }
+      else if (/sector|trade sanction|export control|embargo on/i.test(t) && !/no trade sanction/i.test(t)) { risk = Math.max(risk, 4); why.push('sanctions touching trade or a sector'); }
+      else if (/targeted/i.test(t)) { risk = Math.max(risk, 3); why.push('targeted designations of individuals or entities'); }
+    }
     const sec = recentEvent(E, 'SECURITY', asOf, 18);
     if (sec) { inputs.security_event = sec.event_date; risk = Math.max(risk, 3); why.push(`security event in the last 18 months (${sec.event_date})`); }
     notes.push('risk by rule from the calendar and the sanctions flag (no unrest count, no own score): ' + (why.length ? why.join('; ') : 'base 2'));
@@ -196,7 +201,11 @@ function scoreTRD(S, D, E, asOf, ctx) {
   let risk = null;
   const pref = nextEvent(E, 'PREF_REVIEW', asOf);
   const m = monthsTo(pref, asOf);
-  if (pref) { inputs.next_pref_review = pref.event_date; risk = m > 36 ? 1 : m > 18 ? 2 : 3; if (m <= 12 && /laps|loss|expir|withdraw|graduat/i.test(pref.description || '')) risk = 4; }
+  if (pref) {
+    inputs.next_pref_review = pref.event_date; risk = m > 36 ? 1 : m > 18 ? 2 : 3;
+    if (m <= 12 && /\b(loss|lapse|lapsed|lapses|expir\w*|withdraw\w*|suspen\w*)\b/i.test(pref.description || '')) { risk = 4; notes.push('preference loss, lapse, expiry or withdrawal within 12 months'); }
+    else if (m <= 12) notes.push('preference review within 12 months (a graduation date is a review, not a loss: EBA and GSP run on for years after it)');
+  }
   else { risk = 1; notes.push('no preference review in the calendar: preferences read as secure'); }
   const prefText = S.TRD_PREF && S.TRD_PREF.latest(asOf);
   if (prefText) { inputs.TRD_PREF = prefText.text; if (/no preference|lapsed|suspended/i.test(prefText.text || '') && /US|EU/.test(prefText.text || '') && risk < 3) { /* informational */ } }
