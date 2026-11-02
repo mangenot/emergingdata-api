@@ -15,6 +15,33 @@ export async function sb(path) {
   return JSON.parse(text);
 }
 
+// Reads every row of a PostgREST path, page by page (Supabase caps a response at 1,000 rows by default).
+export async function sbAll(path, pageSize = 1000) {
+  const out = [];
+  for (let from = 0; ; from += pageSize) {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+      headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, Accept: 'application/json', Range: `${from}-${from + pageSize - 1}` },
+    });
+    const text = await r.text();
+    if (!r.ok && r.status !== 206) throw new Error(`Supabase ${r.status}: ${text.slice(0, 300)}`);
+    const page = JSON.parse(text);
+    out.push(...page);
+    if (page.length < pageSize) return out;
+  }
+}
+
+// Upserts rows into a table (merge on the unique constraint named by onConflict), with the server-side key.
+export async function sbUpsert(table, rows, onConflict) {
+  if (!rows.length) return 0;
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}?on_conflict=${onConflict}`, {
+    method: 'POST',
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates,return=minimal' },
+    body: JSON.stringify(rows),
+  });
+  if (!r.ok) throw new Error(`Supabase ${r.status} on ${table}: ${(await r.text()).slice(0, 300)}`);
+  return rows.length;
+}
+
 // Key check: when ED_API_KEYS is set, the request must carry one of its keys as x-api-key header or api_key
 // query parameter. When it is not set (development), every request is accepted.
 export function authorized(req) {

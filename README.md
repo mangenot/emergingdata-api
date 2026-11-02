@@ -26,6 +26,30 @@ With a terminal: `npm i -g vercel`, then in this folder `vercel` (creates the pr
     SUPABASE_URL           https://<project-ref>.supabase.co
     SUPABASE_SERVICE_KEY   the secret key (Supabase > Project Settings > API Keys > Secret keys)
     ED_API_KEYS            optional: comma-separated list of accepted client keys; unset = open access
+    SBP_API_KEY            State Bank of Pakistan EasyData key, used only by /api/sbp (the relay for the Pakistan sheet)
+    ED_RELAY_SECRET        shared secret the Pakistan sheet sends as x-relay-key to /api/sbp, and the key of /api/score-run
+    CRON_SECRET            optional: lets the Vercel cron call /api/score-run (Vercel sends it as a Bearer token)
+
+## Routes
+
+    /api/series   observations (latest vintage) for countries and indicators, JSON or CSV
+    /api/status   one line per series with last date and staleness flag (series_status view)
+    /api/catalog  indicators, countries, events
+    /api/sbp      relay to the SBP EasyData API for the Pakistan sheet (EasyData's firewall blocks Google's servers);
+                  needs SBP_API_KEY and ED_RELAY_SECRET; cached one hour
+    /api/scores   the scores of the latest month (or ?date=): two composites and nine section scores per country,
+                  ?detail=1 for the inputs and notes behind each score, ?format=csv
+    /api/score-run?key=<ED_RELAY_SECRET>[&date=2026-11-01][&country=KEN][&dry=1]
+                  runs the scoring engine (api/_scoring.js, the registry rulebook) and writes the score and composite
+                  tables; dry=1 computes without writing. Also run by the Vercel cron on the 5th of each month at
+                  06:00 UTC (vercel.json); set CRON_SECRET in the environment so that only the cron can call it that way
+
+## Scoring
+
+Once, in Supabase: run `sql/migration-2026-11-02-scoring.sql` (composite.note column, two seeded inputs). Then
+`/api/score-run?key=...&dry=1` to see the scores without writing, `/api/score-run?key=...` to write them, and
+`/api/scores?detail=1` to read them back. The rules are in api/_scoring.js, one function per section, following the
+scoring_rule table of the registry; where an input is missing the score is left empty and the note says so.
 
 ## Checks after deployment
 
