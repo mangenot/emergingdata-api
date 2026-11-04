@@ -91,3 +91,35 @@ export function isoDate(v, fallback) {
   if (/^\d{4}$/.test(s)) return s + '-01-01';
   return fallback;
 }
+
+// Minimal CSV parser (quoted fields, embedded commas and newlines); returns rows of strings.
+export function parseCsv(text) {
+  const rows = []; let row = [], field = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) { if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else q = false; } else field += c; }
+    else if (c === '"') q = true;
+    else if (c === ',') { row.push(field); field = ''; }
+    else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; row.push(field); rows.push(row); row = []; field = ''; }
+    else field += c;
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows.filter(r => r.length > 1 || (r.length === 1 && r[0] !== ''));
+}
+
+// Writes observations with the vintage rule: a value equal to the latest vintage is skipped, a new or changed value
+// gets a row dated today. rows: [{indicator_code, iso3, obs_date, value, note}]. Returns {written, unchanged, rows}.
+export async function writeObservations(rows, today, dry) {
+  const codes = [...new Set(rows.map(r => r.indicator_code))], isos = [...new Set(rows.map(r => r.iso3))];
+  const existing = codes.length ? await sbAll(`observation_latest?select=indicator_code,iso3,obs_date,value&indicator_code=in.(${codes.join(',')})&iso3=in.(${isos.join(',')})`) : [];
+  const have = new Map(existing.map(o => [`${o.indicator_code}|${o.iso3}|${o.obs_date}`, o.value === null ? null : Number(o.value)]));
+  const out = [], unchanged = {};
+  for (const r of rows) {
+    const k = `${r.indicator_code}|${r.iso3}|${r.obs_date}`;
+    if (have.has(k) && have.get(k) !== null && Math.abs(have.get(k) - r.value) < 1e-9) { unchanged[r.indicator_code] = (unchanged[r.indicator_code] || 0) + 1; continue; }
+    out.push({ ...r, vintage_date: today });
+  }
+  let written = 0;
+  if (!dry && out.length) written = await sbUpsert('observation', out, 'indicator_code,iso3,obs_date,vintage_date');
+  return { written, unchanged, rows: out };
+}

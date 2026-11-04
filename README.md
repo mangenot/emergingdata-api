@@ -28,7 +28,9 @@ With a terminal: `npm i -g vercel`, then in this folder `vercel` (creates the pr
     ED_API_KEYS            optional: comma-separated list of accepted client keys; unset = open access
     SBP_API_KEY            State Bank of Pakistan EasyData key, used only by /api/sbp (the relay for the Pakistan sheet)
     ED_RELAY_SECRET        shared secret the Pakistan sheet sends as x-relay-key to /api/sbp, and the key of /api/score-run and /api/macro-run
-    CRON_SECRET            optional: lets the Vercel cron call /api/score-run and /api/macro-run (Vercel sends it as a Bearer token)
+    CRON_SECRET            optional: lets the Vercel cron call /api/score-run, /api/macro-run and /api/global-run (Vercel sends it as a Bearer token)
+    ET_API_KEY             an EmergingTextiles Sheets API key (api.emergingtextiles.com), used only by /api/global-run
+    ET_API_BASE            optional: the ET Sheets API base, default https://api.emergingtextiles.com
 
 ## Routes
 
@@ -49,6 +51,11 @@ With a terminal: `npm i -g vercel`, then in this folder `vercel` (creates the pr
                   interest payments; logistics performance, customs score, liner connectivity, container traffic,
                   power losses) into the observation table; a changed value adds a new vintage. Also run by the
                   Vercel cron on the 3rd of each month at 05:00 UTC
+    /api/global-run?key=<ED_RELAY_SECRET>[&dry=1]
+                  loads the global drivers (country WLD) from EmergingTextiles' own workbooks through the ET Sheets API:
+                  Brent monthly average (EmergingTextiles_Monthly), US apparel imports (US-Apparel-Imports-Monthly) and
+                  EU-27 clothing imports (EU-Clothing-Imports-MONTHLY), with the year-on-year changes. The three
+                  workbooks must be in the ET API registry. Cron on the 3rd at 05:30 UTC
 
 ## Scoring
 
@@ -64,6 +71,11 @@ Once, in Supabase: run `sql/migration-2026-11-04-macro.sql` (four new indicator 
 `/api/macro-run?key=...&dry=1` to see what would be written, `/api/macro-run?key=...` to write it. Years from the
 current year on are IMF projections (flagged in the note); Bangladesh, Kenya and Pakistan report fiscal years ending
 in June under the calendar year in which they end.
+
+## Global drivers
+
+Once, in Supabase: run `sql/migration-2026-11-04-global.sql`; in Vercel set ET_API_KEY. Then `/api/global-run?key=...&dry=1`
+and without dry=1. The current month of Brent is the month to date and is revised by the next run (new vintage).
 
 ## Checks after deployment
 
