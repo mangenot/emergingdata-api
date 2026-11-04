@@ -96,8 +96,8 @@ nothing is written; the regular expressions are in api/freight-run.js (parseWci)
 
 Once, in Supabase: run `sql/migration-2026-11-04-unrest.sql`. Then backfill a year three months at a time, waiting a
 minute between calls: `/api/unrest-run?key=...&from=2025-11&to=2026-01`, then `&from=2026-02&to=2026-04`,
-`&from=2026-05&to=2026-07`, and finally the default call (the last three months). The politics rule uses the series
-once nine months are present (scoring engine 1.2).
+`&from=2026-05&to=2026-07`, `&from=2026-08&to=2026-10`, and finally the default call (the last three months, which
+adds the current month to date). The politics rule uses the series once nine months are present (scoring engine 1.2).
 
 ## Checks after deployment
 
