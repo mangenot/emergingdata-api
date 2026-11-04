@@ -31,6 +31,7 @@ With a terminal: `npm i -g vercel`, then in this folder `vercel` (creates the pr
     CRON_SECRET            optional: lets the Vercel cron call /api/score-run, /api/macro-run and /api/global-run (Vercel sends it as a Bearer token)
     ET_API_KEY             an EmergingTextiles Sheets API key (api.emergingtextiles.com), used only by /api/global-run
     ET_API_BASE            optional: the ET Sheets API base, default https://api.emergingtextiles.com
+    GCP_SA_KEY             the JSON key file of a Google service account with the BigQuery Job User role, pasted whole; used only by /api/unrest-run
 
 ## Routes
 
@@ -60,11 +61,12 @@ With a terminal: `npm i -g vercel`, then in this folder `vercel` (creates the pr
                   reads the weekly Drewry World Container Index (composite and the four Shanghai lanes) from Drewry's
                   public assessment page and writes it for country WLD, dated the Thursday of the assessment. Cron on
                   Fridays at 07:00 UTC; the history builds up from the first run
-    /api/unrest-run?key=<ED_RELAY_SECRET>[&from=2026-08&to=2026-10][&country=KEN][&force=1][&dry=1]
-                  loads the unrest proxy from the GDELT DOC 2.0 API (free, no key): protest-themed articles from each
-                  pilot country's own media, per month and per 100,000 monitored articles (POL_UNREST, POL_UNREST_SHARE).
-                  GDELT allows one request every five seconds and refuses long windows, so one run covers three months
-                  (default: the last three) with a pause between countries, about 30 seconds in all. Cron on the 2nd
+    /api/unrest-run?key=<ED_RELAY_SECRET>[&from=2025-08&to=2026-11][&country=KEN][&dry=1]
+                  loads the unrest proxy from the GDELT 2.0 event database on Google BigQuery: protest events (CAMEO
+                  root code 14) located in each pilot country, per month and per 1,000 events (POL_UNREST,
+                  POL_UNREST_SHARE). Default window: the last three months (the month before last becomes final,
+                  the last month is refreshed, the current month is the month to date). Needs GCP_SA_KEY. Cron on
+                  the 2nd at 04:00 UTC
 
 ## Scoring
 
@@ -94,13 +96,15 @@ nothing is written; the regular expressions are in api/freight-run.js (parseWci)
 
 ## Unrest proxy
 
-Once, in Supabase: run `sql/migration-2026-11-04-unrest.sql`. Then backfill a year three months at a time, waiting a
-minute between calls: `/api/unrest-run?key=...&from=2025-11&to=2026-01`, then `&from=2026-02&to=2026-04`,
-`&from=2026-05&to=2026-07`, `&from=2026-08&to=2026-10`, and finally the default call (the last three months, which
-adds the current month to date). GDELT can be slow: a call that cannot finish every country in time answers with
-`remaining` and `next`; calling the same address again continues with those countries (the ones already loaded for
-the window are skipped; `force=1` reloads them). The politics rule uses the series once nine months are present
-(scoring engine 1.2).
+The source is the GDELT 2.0 event database as published on Google BigQuery (public dataset, refreshed every
+15 minutes); GDELT's own web API is too unreliable for a cron. One query covers any window and scans about 0.2 GB
+per month of window, inside BigQuery's free tier (1 TB a month), so no billing is needed.
+
+Once, in Google Cloud (project et-sheets-352007, the one of the Sheets API): enable the BigQuery API, give the
+service account the role BigQuery Job User, create a JSON key for it and paste the whole key file into the Vercel
+environment variable `GCP_SA_KEY` (then redeploy). Once, in Supabase: run `sql/migration-2026-11-04-unrest.sql`.
+Then one backfill call: `/api/unrest-run?key=...&from=2025-08&to=2026-11`. The politics rule uses the series once
+nine months are present (scoring engine 1.2).
 
 ## Checks after deployment
 
