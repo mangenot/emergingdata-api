@@ -3,6 +3,9 @@
   "functions": {
     "api/*.js": {
       "maxDuration": 15
+    },
+    "api/unrest-run.js": {
+      "maxDuration": 60
     }
   },
   "headers": [
@@ -21,6 +24,10 @@
     }
   ],
   "crons": [
+    {
+      "path": "/api/unrest-run",
+      "schedule": "0 4 2 * *"
+    },
     {
       "path": "/api/macro-run",
       "schedule": "0 5 3 * *"

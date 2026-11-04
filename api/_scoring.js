@@ -1,4 +1,4 @@
-// EmergingData scoring engine, version 1.1 (2 November 2026): targeted sanctions give 3 not 4; a graduation date is a review, not a loss.
+// EmergingData scoring engine, version 1.2 (4 November 2026): unrest proxy from GDELT in the politics risk; 1.1: targeted sanctions give 3 not 4, a graduation date is a review.
 // Pure functions: the registry rulebook (scoring_rule table) applied to the observations and events of one country,
 // giving the nine section scores (cost and risk, 1 to 5, with a trend arrow each) and the two apparel composites.
 // Every score carries the inputs it used and the rules it could not apply, so the result explains itself.
@@ -166,7 +166,20 @@ function scorePOL(S, D, E, asOf, ctx) {
     }
     const sec = recentEvent(E, 'SECURITY', asOf, 18);
     if (sec) { inputs.security_event = sec.event_date; risk = Math.max(risk, 3); why.push(`security event in the last 18 months (${sec.event_date})`); }
-    notes.push('risk by rule from the calendar and the sanctions flag (no unrest count, no own score): ' + (why.length ? why.join('; ') : 'base 2'));
+    // unrest proxy: protest-themed coverage in domestic media (GDELT), the last three complete months against the
+    // twelve months before them; a surge of 1.5 times reads as sustained protests (3), 2.5 times as violent unrest (4)
+    const un = S.POL_UNREST;
+    if (un && un.length >= 9) {
+      const last = addMonths(asOf, -1), recent = un.meanWindow(last, 3), base = un.meanWindow(addMonths(last, -3), 12);
+      if (recent !== null && base !== null && base > 0) {
+        const ratio = Math.round(recent / base * 100) / 100;
+        inputs.POL_UNREST_3m = Math.round(recent); inputs.POL_UNREST_ratio = ratio;
+        if (ratio >= 2.5 && recent >= 300) { risk = Math.max(risk, 4); why.push(`protest coverage at ${ratio} times its yearly average (GDELT)`); }
+        else if (ratio >= 1.5 && recent >= 100) { risk = Math.max(risk, 3); why.push(`protest coverage at ${ratio} times its yearly average (GDELT)`); }
+        else why.push(`protest coverage at ${ratio} times its yearly average (GDELT), no surge`);
+      }
+    }
+    notes.push('risk by rule from the calendar, the sanctions flag and the unrest proxy (no own score): ' + (why.length ? why.join('; ') : 'base 2'));
   }
   let cost = null;
   const cpi = S.POL_CPI_TI && S.POL_CPI_TI.latest(asOf);
