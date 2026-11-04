@@ -2,9 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/*.js": {
-      "maxDuration": 15
-    },
-    "api/unrest-run.js": {
       "maxDuration": 60
     }
   },
