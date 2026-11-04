@@ -168,15 +168,16 @@ function scorePOL(S, D, E, asOf, ctx) {
     if (sec) { inputs.security_event = sec.event_date; risk = Math.max(risk, 3); why.push(`security event in the last 18 months (${sec.event_date})`); }
     // unrest proxy: protest events located in the country (GDELT 2.0 event database), the last three complete months
     // against the twelve months before them; a surge of 1.5 times reads as sustained protests (3), 2.5 times as
-    // violent unrest (4); the absolute floors (100 and 300 events a month) keep small-coverage swings out
+    // violent unrest (4); the absolute floors (30 and 100 events a month) keep swings on tiny counts out while
+    // leaving the rule reachable for the small-coverage countries (Cambodia and Honduras run at 20 to 80 a month)
     const un = S.POL_UNREST;
     if (un && un.length >= 9) {
       const last = addMonths(asOf, -1), recent = un.meanWindow(last, 3), base = un.meanWindow(addMonths(last, -3), 12);
       if (recent !== null && base !== null && base > 0) {
         const ratio = Math.round(recent / base * 100) / 100;
         inputs.POL_UNREST_3m = Math.round(recent); inputs.POL_UNREST_ratio = ratio;
-        if (ratio >= 2.5 && recent >= 300) { risk = Math.max(risk, 4); why.push(`protest events at ${ratio} times their yearly average (GDELT)`); }
-        else if (ratio >= 1.5 && recent >= 100) { risk = Math.max(risk, 3); why.push(`protest events at ${ratio} times their yearly average (GDELT)`); }
+        if (ratio >= 2.5 && recent >= 100) { risk = Math.max(risk, 4); why.push(`protest events at ${ratio} times their yearly average (GDELT)`); }
+        else if (ratio >= 1.5 && recent >= 30) { risk = Math.max(risk, 3); why.push(`protest events at ${ratio} times their yearly average (GDELT)`); }
         else why.push(`protest events at ${ratio} times their yearly average (GDELT), no surge`);
       }
     }
