@@ -56,6 +56,10 @@ With a terminal: `npm i -g vercel`, then in this folder `vercel` (creates the pr
                   Brent monthly average (EmergingTextiles_Monthly), US apparel imports (US-Apparel-Imports-Monthly) and
                   EU-27 clothing imports (EU-Clothing-Imports-MONTHLY), with the year-on-year changes. The three
                   workbooks must be in the ET API registry. Cron on the 3rd at 05:30 UTC
+    /api/freight-run?key=<ED_RELAY_SECRET>[&dry=1]
+                  reads the weekly Drewry World Container Index (composite and the four Shanghai lanes) from Drewry's
+                  public assessment page and writes it for country WLD, dated the Thursday of the assessment. Cron on
+                  Fridays at 07:00 UTC; the history builds up from the first run
 
 ## Scoring
 
@@ -76,6 +80,12 @@ in June under the calendar year in which they end.
 
 Once, in Supabase: run `sql/migration-2026-11-04-global.sql`; in Vercel set ET_API_KEY. Then `/api/global-run?key=...&dry=1`
 and without dry=1. The current month of Brent is the month to date and is revised by the next run (new vintage).
+
+## Freight index
+
+Once, in Supabase: run `sql/migration-2026-11-04-freight.sql`. Then `/api/freight-run?key=...&dry=1` to check the parse
+(date, composite, four lanes), then without dry=1. If Drewry rewords its page, the parse fails with an error and
+nothing is written; the regular expressions are in api/freight-run.js (parseWci).
 
 ## Checks after deployment
 

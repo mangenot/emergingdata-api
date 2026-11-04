@@ -30,6 +30,10 @@
       "schedule": "30 5 3 * *"
     },
     {
+      "path": "/api/freight-run",
+      "schedule": "0 7 * * 5"
+    },
+    {
       "path": "/api/score-run",
       "schedule": "0 6 5 * *"
     }
