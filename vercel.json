@@ -22,6 +22,10 @@
   ],
   "crons": [
     {
+      "path": "/api/macro-run",
+      "schedule": "0 5 3 * *"
+    },
+    {
       "path": "/api/score-run",
       "schedule": "0 6 5 * *"
     }
