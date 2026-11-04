@@ -60,7 +60,7 @@ With a terminal: `npm i -g vercel`, then in this folder `vercel` (creates the pr
                   reads the weekly Drewry World Container Index (composite and the four Shanghai lanes) from Drewry's
                   public assessment page and writes it for country WLD, dated the Thursday of the assessment. Cron on
                   Fridays at 07:00 UTC; the history builds up from the first run
-    /api/unrest-run?key=<ED_RELAY_SECRET>[&from=2026-08&to=2026-10][&country=KEN][&dry=1]
+    /api/unrest-run?key=<ED_RELAY_SECRET>[&from=2026-08&to=2026-10][&country=KEN][&force=1][&dry=1]
                   loads the unrest proxy from the GDELT DOC 2.0 API (free, no key): protest-themed articles from each
                   pilot country's own media, per month and per 100,000 monitored articles (POL_UNREST, POL_UNREST_SHARE).
                   GDELT allows one request every five seconds and refuses long windows, so one run covers three months
@@ -97,7 +97,10 @@ nothing is written; the regular expressions are in api/freight-run.js (parseWci)
 Once, in Supabase: run `sql/migration-2026-11-04-unrest.sql`. Then backfill a year three months at a time, waiting a
 minute between calls: `/api/unrest-run?key=...&from=2025-11&to=2026-01`, then `&from=2026-02&to=2026-04`,
 `&from=2026-05&to=2026-07`, `&from=2026-08&to=2026-10`, and finally the default call (the last three months, which
-adds the current month to date). The politics rule uses the series once nine months are present (scoring engine 1.2).
+adds the current month to date). GDELT can be slow: a call that cannot finish every country in time answers with
+`remaining` and `next`; calling the same address again continues with those countries (the ones already loaded for
+the window are skipped; `force=1` reloads them). The politics rule uses the series once nine months are present
+(scoring engine 1.2).
 
 ## Checks after deployment
 

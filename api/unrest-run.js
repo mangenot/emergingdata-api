@@ -1,16 +1,22 @@
-// GET /api/unrest-run?key=<ED_RELAY_SECRET>[&from=2026-08][&to=2026-10][&country=KEN][&dry=1]
+// GET /api/unrest-run?key=<ED_RELAY_SECRET>[&from=2026-08][&to=2026-10][&country=KEN][&force=1][&dry=1]
 // A news-based proxy for unrest, from the GDELT DOC 2.0 API (free, no key): the number of articles with GDELT's
 // PROTEST theme published by the country's own media each month, and the same per 100,000 articles monitored by
 // GDELT that month (the normaliser). Written for each pilot country as
 //   POL_UNREST        protest-themed articles in domestic media, per month
 //   POL_UNREST_SHARE  the same per 100,000 monitored articles
-// GDELT allows one request every five seconds and refuses long windows, so the route asks for one three-month window
-// per country (default: the last three months) with a pause between countries; older months are loaded by calling
-// the route with from and to (three months at a time). The current month is the month to date. Cron on the 2nd.
-import { sb, fail, writeObservations } from './_lib.js';
+// GDELT allows one request every five seconds, refuses long windows and can be slow, so the route asks for one
+// three-month window per country (default: the last three months) with a pause between countries, gives each
+// request a time limit, and stops cleanly before the function's own limit: the response then lists the countries
+// still to do, and calling the same address again continues with them, because a country whose months are already
+// loaded for the window is skipped (a month written while it was the current month counts as loaded only on the day
+// it was written; force=1 reloads everything). Older months are loaded by calling the route with from and to.
+// The current month is the month to date. Cron on the 2nd.
+import { sb, sbAll, fail, writeObservations } from './_lib.js';
 
 const FIPS = { BGD: 'BG', PAK: 'PK', KEN: 'KE', KHM: 'CB', HND: 'HO' };   // GDELT uses FIPS country codes
-const PAUSE_MS = 6000;
+const PAUSE_MS = 6000;            // between two GDELT requests
+const FETCH_TIMEOUT_MS = 45000;   // one GDELT request
+const BUDGET_MS = 240000;         // stop starting new countries after this (vercel.json allows 300 s)
 
 function allowed(req) {
   const secret = process.env.ED_RELAY_SECRET || '', cron = process.env.CRON_SECRET || '';
@@ -21,11 +27,15 @@ function allowed(req) {
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 function addMonths(ym, n) { const y = +ym.slice(0, 4), m = +ym.slice(5, 7) - 1 + n; return `${y + Math.floor(m / 12)}-${String((m % 12 + 12) % 12 + 1).padStart(2, '0')}`; }
 function lastDay(ym) { const y = +ym.slice(0, 4), m = +ym.slice(5, 7); return new Date(Date.UTC(y, m, 0)).getUTCDate(); }
+function monthsBetween(from, to) { const out = []; for (let m = from; m <= to; m = addMonths(m, 1)) out.push(m); return out; }
 
 async function fetchCountry(fips, from, to) {
   const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=${encodeURIComponent(`theme:PROTEST sourcecountry:${fips}`)}&mode=timelinevolraw` +
               `&startdatetime=${from.replace('-', '')}01000000&enddatetime=${to.replace('-', '')}${lastDay(to)}235959&format=json`;
-  const r = await fetch(url, { headers: { 'User-Agent': 'EmergingData/1.0', Accept: 'application/json' } });
+  let r;
+  try {
+    r = await fetch(url, { headers: { 'User-Agent': 'EmergingData/1.0', Accept: 'application/json' }, signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
+  } catch (e) { throw new Error(`GDELT did not answer within ${FETCH_TIMEOUT_MS / 1000} s (${e.name})`); }
   const text = await r.text();
   if (!r.ok) throw new Error(`GDELT ${r.status}: ${text.slice(0, 100)}`);
   let j; try { j = JSON.parse(text); } catch { throw new Error('GDELT: not JSON: ' + text.slice(0, 100)); }
@@ -39,11 +49,22 @@ async function fetchCountry(fips, from, to) {
   return byMonth;
 }
 
+// Countries whose window is already loaded: every month of the window has a POL_UNREST row, and a row written as
+// "month to date" counts only when it was written today.
+async function alreadyLoaded(countries, from, to, today) {
+  const rows = await sbAll(`observation_latest?select=iso3,obs_date,note,vintage_date&indicator_code=eq.POL_UNREST` +
+                           `&iso3=in.(${countries.join(',')})&obs_date=gte.${from}-01&obs_date=lte.${to}-01`);
+  const ok = new Set(rows.filter(r => !/month to date/.test(r.note || '') || r.vintage_date === today).map(r => `${r.iso3}|${r.obs_date.slice(0, 7)}`));
+  const months = monthsBetween(from, to);
+  return countries.filter(iso => months.every(m => ok.has(`${iso}|${m}`)));
+}
+
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (!allowed(req)) return fail(res, 401, 'needs key=ED_RELAY_SECRET or the cron secret');
+  const started = Date.now();
   const today = new Date().toISOString().slice(0, 10), thisMonth = today.slice(0, 7);
-  const dry = String(req.query.dry || '') === '1';
+  const dry = String(req.query.dry || '') === '1', force = String(req.query.force || '') === '1';
   const to = /^\d{4}-\d{2}$/.test(String(req.query.to || '')) ? String(req.query.to) : thisMonth;
   const from = /^\d{4}-\d{2}$/.test(String(req.query.from || '')) ? String(req.query.from) : addMonths(to, -2);
   const only = String(req.query.country || '').toUpperCase().split(',').map(s => s.trim()).filter(Boolean);
@@ -51,10 +72,14 @@ export default async function handler(req, res) {
     let countries = (await sb('country?select=iso3&proposal=eq.Pilot&order=iso3')).map(c => c.iso3).filter(c => FIPS[c]);
     if (only.length) countries = countries.filter(c => only.includes(c));
     if (!countries.length) return fail(res, 400, 'no pilot country matches');
-    const rows = [], errors = [], summary = {};
-    for (let i = 0; i < countries.length; i++) {
-      const iso = countries[i];
-      if (i) await sleep(PAUSE_MS);
+    const skipped = force ? [] : await alreadyLoaded(countries, from, to, today);
+    const todo = countries.filter(c => !skipped.includes(c));
+    const rows = [], errors = [], summary = {}, remaining = [];
+    let requests = 0;
+    for (const iso of todo) {
+      if (Date.now() - started + (requests ? PAUSE_MS : 0) + FETCH_TIMEOUT_MS > BUDGET_MS) { remaining.push(iso); continue; }
+      if (requests) await sleep(PAUSE_MS);
+      requests++;
       try {
         const byMonth = await fetchCountry(FIPS[iso], from, to);
         summary[iso] = {};
@@ -69,9 +94,16 @@ export default async function handler(req, res) {
       } catch (e) { errors.push(`${iso}: ${e.message}`); }
     }
     const result = rows.length ? await writeObservations(rows, today, dry) : { written: 0, unchanged: {}, rows: [] };
+    const failed = errors.map(e => e.slice(0, 3));
+    const again = [...remaining, ...failed];
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.setHeader('Cache-Control', 'no-store');
-    return res.status(errors.length && !rows.length ? 502 : 200).json({ run_date: today, dry, window: { from, to }, countries: summary, unchanged: result.unchanged, written: dry ? 0 : result.written, rows: dry ? result.rows.length : undefined, errors });
+    return res.status(errors.length && !rows.length && !skipped.length ? 502 : 200).json({
+      run_date: today, dry, window: { from, to }, seconds: Math.round((Date.now() - started) / 1000),
+      countries: summary, already_loaded: skipped, unchanged: result.unchanged,
+      written: dry ? 0 : result.written, rows: dry ? result.rows.length : undefined, errors,
+      remaining: again, next: again.length ? 'call the same address again for the remaining countries' : 'done',
+    });
   } catch (e) {
     return fail(res, 502, e.message);
   }
