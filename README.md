@@ -46,7 +46,8 @@ With a terminal: `npm i -g vercel`, then in this folder `vercel` (creates the pr
     /api/macro-run?key=<ED_RELAY_SECRET>[&country=KEN][&dry=1]
                   loads the annual public-finance and external-debt indicators of the pilot countries from the IMF WEO
                   (gross debt, fiscal balance, current account, GDP) and the World Bank (external debt, debt service,
-                  interest payments) into the observation table; a changed value adds a new vintage. Also run by the
+                  interest payments; logistics performance, customs score, liner connectivity, container traffic,
+                  power losses) into the observation table; a changed value adds a new vintage. Also run by the
                   Vercel cron on the 3rd of each month at 05:00 UTC
 
 ## Scoring
@@ -58,7 +59,8 @@ scoring_rule table of the registry; where an input is missing the score is left 
 
 ## Macro indicators (annual)
 
-Once, in Supabase: run `sql/migration-2026-11-04-macro.sql` (four new indicator codes, their source rows). Then
+Once, in Supabase: run `sql/migration-2026-11-04-macro.sql` (four new indicator codes, their source rows) and
+`sql/migration-2026-11-04-logistics.sql` (the logistics and energy codes). Then
 `/api/macro-run?key=...&dry=1` to see what would be written, `/api/macro-run?key=...` to write it. Years from the
 current year on are IMF projections (flagged in the note); Bangladesh, Kenya and Pakistan report fiscal years ending
 in June under the calendar year in which they end.

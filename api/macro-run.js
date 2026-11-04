@@ -6,7 +6,9 @@
 //     % of GDP, current account in % of GDP, GDP in USD. Years from the current year on are IMF projections and are
 //     flagged as such in the note. Fiscal-year countries (Bangladesh, Kenya, Pakistan) report the year ending in June.
 //   World Bank API v2 (International Debt Statistics and WDI): external debt stocks in % of GNI, total debt service
-//     in % of exports, central government interest payments in % of revenue.
+//     in % of exports, central government interest payments in % of revenue; and for the logistics and energy
+//     chapters the Logistics Performance Index (overall and customs), the liner shipping connectivity index,
+//     container port traffic and power transmission losses.
 // Also run by the Vercel cron on the 3rd of each month (vercel.json), which sends Authorization: Bearer CRON_SECRET.
 import { sb, sbAll, sbUpsert, fail } from './_lib.js';
 
@@ -16,6 +18,11 @@ const WB = {
   'DT.DOD.DECT.GN.ZS': { code: 'EXT_DEBT', note: 'World Bank International Debt Statistics, external debt stocks in % of GNI' },
   'DT.TDS.DECT.EX.ZS': { code: 'EXT_DS', note: 'World Bank International Debt Statistics, total debt service in % of exports of goods, services and primary income' },
   'GC.XPN.INTP.RV.ZS': { code: 'EXT_INT', note: 'World Bank WDI (IMF GFS), central government interest payments in % of revenue' },
+  'LP.LPI.OVRL.XQ':    { code: 'ENV_LPI', note: 'World Bank Logistics Performance Index, overall score 1 to 5 (the 2023 edition is dated 2022; countries not surveyed keep their last edition)' },
+  'LP.LPI.CUST.XQ':    { code: 'ENV_LPI_CUST', note: 'World Bank Logistics Performance Index, efficiency of customs clearance, score 1 to 5' },
+  'IS.SHP.GCNW.XQ':    { code: 'ENV_LSCI', note: 'UNCTAD liner shipping connectivity index via World Bank WDI (maximum value in 2004 = 100)' },
+  'IS.SHP.GOOD.TU':    { code: 'ENV_TEU', note: 'World Bank WDI, container port traffic, thousand TEU', scale: 1e-3 },
+  'EG.ELC.LOSS.ZS':    { code: 'ENV_ELOSS', note: 'World Bank WDI, electric power transmission and distribution losses, % of output' },
 };
 
 function allowed(req) {
@@ -71,7 +78,7 @@ async function fetchWorldBank(isos, thisYear) {
     const j = await r.json();
     for (const row of (Array.isArray(j) && Array.isArray(j[1]) ? j[1] : [])) {
       if (row.value == null || !isos.includes(row.countryiso3code)) continue;
-      out.push({ indicator_code: spec.code, iso3: row.countryiso3code, obs_date: `${row.date}-01-01`, value: Math.round(row.value * 1000) / 1000, note: spec.note });
+      out.push({ indicator_code: spec.code, iso3: row.countryiso3code, obs_date: `${row.date}-01-01`, value: Math.round(row.value * (spec.scale || 1) * 1000) / 1000, note: spec.note });
     }
   }
   return out;
