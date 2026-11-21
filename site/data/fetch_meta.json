@@ -1,0 +1,36 @@
+{
+ "fetched": "2026-11-21",
+ "base": "https://emergingdata-api.vercel.app",
+ "countries": {
+  "BGD": {
+   "series": 39,
+   "last": "2026-11-01",
+   "stale": 11,
+   "score_date": "2026-11-01"
+  },
+  "HND": {
+   "series": 30,
+   "last": "2026-11-01",
+   "stale": 10,
+   "score_date": "2026-11-01"
+  },
+  "KEN": {
+   "series": 31,
+   "last": "2026-11-01",
+   "stale": 11,
+   "score_date": "2026-11-01"
+  },
+  "KHM": {
+   "series": 27,
+   "last": "2026-11-01",
+   "stale": 9,
+   "score_date": "2026-11-01"
+  },
+  "PAK": {
+   "series": 30,
+   "last": "2026-11-01",
+   "stale": 10,
+   "score_date": "2026-11-01"
+  }
+ }
+}

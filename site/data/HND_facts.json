@@ -1,0 +1,47 @@
+{
+ "ENV_GAS": {
+  "name": "Industrial gas tariff",
+  "values": [
+   {
+    "date": "2026-01-01",
+    "text": "not applicable"
+   }
+  ]
+ },
+ "EXT_RATING": {
+  "name": "Sovereign credit rating, long-term foreign currency",
+  "values": [
+   {
+    "date": "2026-03-27",
+    "text": "S&P BB- stable; Moody's B1 stable; Fitch not rated"
+   }
+  ]
+ },
+ "EXT_RESTR": {
+  "name": "Import or letter of credit restrictions in force",
+  "values": [
+   {
+    "date": "2024-01-01",
+    "text": "none"
+   }
+  ]
+ },
+ "POL_SANCTIONS": {
+  "name": "Sanctions or export-control measures in force",
+  "values": [
+   {
+    "date": "2025-12-01",
+    "text": "none"
+   }
+  ]
+ },
+ "TRD_PREF": {
+  "name": "Preference regime status and next review or expiry date",
+  "values": [
+   {
+    "date": "2026-07-24",
+    "text": "CAFTA-DR (no expiry), apparel exempt from the US Section 301 duty; EU Association Agreement"
+   }
+  ]
+ }
+}

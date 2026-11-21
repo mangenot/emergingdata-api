@@ -1,0 +1,6 @@
+# generated outputs and scratch
+*-profile.html
+dist/
+published/
+__pycache__/
+*.png

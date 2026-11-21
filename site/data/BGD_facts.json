@@ -1,0 +1,63 @@
+{
+ "EXT_IMF": {
+  "name": "IMF programme status and next review",
+  "values": [
+   {
+    "date": "2025-06-23",
+    "text": "ECF/EFF/RSF USD 5.5 billion, 3rd and 4th reviews completed"
+   },
+   {
+    "date": "2026-06-03",
+    "text": "Old programme stalled; new 3-year programme requested"
+   },
+   {
+    "date": "2026-10-19",
+    "text": "New programme under negotiation: USD 4.5 billion requested, agreement targeted December 2026"
+   }
+  ]
+ },
+ "EXT_RATING": {
+  "name": "Sovereign credit rating, long-term foreign currency",
+  "values": [
+   {
+    "date": "2026-07-27",
+    "text": "Fitch B+ negative; S&P B+ negative; Moody's B2 negative"
+   },
+   {
+    "date": "2026-09-15",
+    "text": "Fitch B+ negative; S&P B+ negative; Moody's B2 stable"
+   }
+  ]
+ },
+ "EXT_RESTR": {
+  "name": "Import or letter of credit restrictions in force",
+  "values": [
+   {
+    "date": "2022-07-05",
+    "text": "broad"
+   },
+   {
+    "date": "2024-09-05",
+    "text": "partial"
+   }
+  ]
+ },
+ "POL_SANCTIONS": {
+  "name": "Sanctions or export-control measures in force",
+  "values": [
+   {
+    "date": "2021-12-10",
+    "text": "targeted"
+   }
+  ]
+ },
+ "TRD_PREF": {
+  "name": "Preference regime status and next review or expiry date",
+  "values": [
+   {
+    "date": "2026-10-19",
+    "text": "EU EBA; LDC graduation 2026-11-24, deferral pending"
+   }
+  ]
+ }
+}

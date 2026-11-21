@@ -1,0 +1,656 @@
+"""EmergingData country report spec: Kenya, November 2026 edition. Recovered from the published page on 21 November 2026."""
+SPEC = {'iso': 'KEN',
+ 'name': 'Kenya',
+ 'title': 'Kenya Apparel Profile',
+ 'sub': 'Apparel sourcing: costs and risks',
+ 'meta': 'Edition of 17 November 2026. Series to {series}, weekly figures of the central bank to 13 November, scores of 1 November in the '
+         'appendix.',
+ 'overview': {'date': '17 November 2026',
+              'standfirst': 'Kenya ends 2026 with the strongest external position in a decade and the weakest budget. Reserves of USD 14.6 billion and a '
+                            'shilling flat at 130 to the dollar for two years stand against a deficit heading for 7% of GDP, domestic interest absorbing a '
+                            'third of revenue and no IMF programme before the election of 10 August 2027. Inflation reached 7.3% in October, a forty-month '
+                            'high, on fuel a third dearer than a year ago, which sets up the Labour Day wage round of May. Apparel enters the United States '
+                            'duty-free again and AGOA runs to the end of 2028; the United States takes nine tenths of the garments, and shipments there were '
+                            '3% higher over twelve months.',
+              'paras': [(None,
+                         ['On 14 November the energy regulator left pump prices unchanged for a second month, petrol at KES 226.96 a litre and diesel at '
+                          '227.76 in Nairobi, by drawing KES 4.6 billion from the fuel levy fund; without it diesel would have risen another KES 10.54. The '
+                          'two decisions of the month are elsewhere: the Monetary Policy Committee of 8 December, with inflation at 7.3% in October against a '
+                          'ceiling of 7.5%, and the IMF mission expected in early December, the first Article IV since the programme lapsed in April 2025 and, '
+                          'as the governor said on 15 October, not the start of a new one.',
+                          'The opposition held rallies in Kitengela on 8 November and in Kisii on 15 November to repeat that it will field one candidate '
+                          "against William Ruto on 10 August 2027, with Fred Matiang'i and Kalonzo Musyoka the names put forward and the former president "
+                          'Uhuru Kenyatta pressing for unity; the flag-bearer is not chosen. Nine months out, the election is the political date of the year '
+                          'ahead and the budget of June 2027 the last fiscal one before it.',
+                          'The reserves stood at USD 14.6 billion on 12 November, 5.9 months of imports, the shilling at 129.96 to the dollar, where it has '
+                          'been since mid-2024, and the overnight rate at 8.75%. Remittances were USD 430 million in October, 2% below a year earlier, and USD '
+                          '5.0 billion over twelve months.']),
+                        ('The latest data',
+                         ['Inflation rose from 4.3% in February to 7.3% in October, the highest in forty months, with transport at 17.1% and food at 10.2%: '
+                          'the fuel prices of the war in the Gulf, passed through in October and held in November, and food after a poor long-rains season. '
+                          'Core inflation is 4.3%. The central bank held its rate at 8.75% on 7 October, the level since February, and expects inflation to '
+                          'stay inside the 2.5 to 7.5% band; the December meeting decides whether the cycle that brought the rate down from 13% is over.',
+                          'Growth is the strong part: 5.0% expected for 2026 after 4.6%, and 5.3% in 2027 (central bank); S&P puts 2026 at 4.9%. Private '
+                          'credit grows 10.6% a year, lending rates average 14.4%, and non-performing loans have come down from 17.6% in August 2025 to 13.9% '
+                          'in September, still the highest ratio of the five countries covered. Goods exports rose 11.8% in the year to August on tea, '
+                          'horticulture and transport equipment, imports 15.8%, the current account deficit widened to 3.1% of GDP, and tourism receipts rose '
+                          '8.7%.',
+                          "The budget is the weak part. Public debt was KES 13.0 trillion at the end of June, 68.5% of GDP on the Treasury's measure and 71% "
+                          "on the IMF's, 44% of it external; domestic interest alone cost KES 863 billion in 2025/26, about a third of ordinary revenue. S&P, "
+                          "which affirmed B with a stable outlook in August, and Moody's both expect a deficit of 7.1% of GDP in 2026/27 against the "
+                          "Treasury's 5.5%, on revenue shortfalls and pre-election spending."]),
+                        ('The fuel bill',
+                         ['Kenya imports all of its refined fuel and buys its electricity in dollars. Diesel at KES 227.76 is 33% dearer than a year ago and '
+                          'petrol 23%; VAT on fuel has been cut to 8% and the levy fund pays the rest, KES 4.6 billion for the November cycle. On electricity '
+                          'the fuel and foreign exchange charges on bills move every month (KES 3.14 and 0.72 per kWh in June) because the power purchase '
+                          'agreements are paid in dollars; the industrial tariff itself has not changed since the 2023 order, Kenya Power having withdrawn its '
+                          'application for a 2026 to 2029 review in June.',
+                          'For a factory the hit is on transport and on the cost of living of its workers more than on the grid, which is about nine tenths '
+                          'geothermal, hydro, wind and solar. The second-round effect is the wage: the minimum wage rose 12% on 1 May 2026 after 6% in 2024 '
+                          'and 12% in 2022, following inflation with a lag, and 7% inflation in an election year makes a rise in May 2027 likely.']),
+                        ('The election',
+                         ['The vote of 10 August 2027 is the first since the protests of June 2024, when the Finance Bill was withdrawn after parliament was '
+                          'stormed, and those of June and July 2025, which left more than fifty dead. The anniversary of 25 June 2026 passed under a police '
+                          'lockdown with hundreds of arrests and no deaths; GDELT counted 406 protest events that month, twice the average, and 183 in '
+                          'October, in line with it. Raila Odinga died in October 2025; his party sits in the government since the 2024 crisis and part of its '
+                          "leadership in the opposition that is forming, with Gachagua, Kalonzo Musyoka, Matiang'i, Karua and Nyoro, which has agreed on one "
+                          'candidate and not on the name.',
+                          'What an election does to the economy is known from 2017 and 2022: spending rises in the June budget, the shilling and the bond '
+                          "market wait, and investment decisions are deferred for two quarters. Kenya's elections have gone to court twice, annulled in 2017 "
+                          'and upheld in 2022, and to violence once in this generation, in 2007. The rating agencies have written the election into their '
+                          'outlooks and the IMF into the timing of any programme.']),
+                        ('The IMF question',
+                         ['The 2021 programme of USD 3.6 billion ended in April 2025 without its ninth review; a successor was requested in March 2025, and '
+                          'four missions, in September and October 2025 and February and March 2026, did not produce an agreement. The governor said on 15 '
+                          'October that the next programme has no start date because the two sides have not agreed on its shape; the December mission is an '
+                          'Article IV. Meanwhile the Treasury finances itself in the market: a USD 2.25 billion Eurobond in February 2026, at 7.875% to 2034 '
+                          'and 8.7% to 2039, of which USD 500 million bought back 2028 and 2032 notes, a further issue under study, a World Bank development '
+                          'policy loan of about KES 94 billion and an African Development Bank loan of KES 34 billion, both tied to reforms. The Eurobond of '
+                          'May 2027, largely retired in February 2025, is no longer the cliff it was.',
+                          'The cost is in the coupon and in the domestic market: 364-day bills at 9.0% with inflation at 7.3%, lending rates at 14.4%, '
+                          "domestic debt 56% of the total. The reserves were built from Eurobonds, remittances and the IMF's last disbursements, which is why "
+                          'they can fall as fast as they rose; the reference is 2023, when the shilling went from 123 to 160 before the buyback of early 2024 '
+                          'turned it round.']),
+                        ('Market access',
+                         ['Kenyan apparel enters the United States duty-free again since 24 July 2026, when the 10% Section 122 surcharge expired; Kenya is '
+                          'not covered by the Section 301 duties of July, and the AGOA extension signed on 4 September runs to 31 December 2028 with the '
+                          'third-country fabric rule intact and refunds of the duties paid during the lapse of October 2025 to February 2026. US imports of '
+                          'apparel from Kenya were USD 625 million over the twelve months to August, 3% more than a year earlier, and USD 68 million in August '
+                          'alone, 22% above August 2025, the catch-up after the tariff year. The EU and the United Kingdom are duty-free under the economic '
+                          "partnership agreements, and China's zero tariff on 98% of lines applies since May.",
+                          'Two things qualify the access. The annual AGOA eligibility review, which looks at governance and human rights, was reported in July '
+                          'to be scrutinising Kenya, and the United States opened talks on a reciprocal trade framework in February; AGOA is a unilateral '
+                          'preference that a proclamation can withdraw, and the 2028 expiry needs a new act in an American election year.']),
+                        ('Twenty-five years of AGOA',
+                         ['The export zones were built on AGOA from 2001: 43 apparel firms, more than 66,000 direct jobs, about USD 600 million of exports to '
+                          'the United States, which takes nine tenths of the garments, and 70% of all Kenyan exports to that market. The model is '
+                          'cut-make-trim on imported fabric, which the third-country fabric provision allows and which keeps value added low. The wage is the '
+                          'second lowest of the five countries covered, USD 139 a month (KES 18,047 for a general labourer in the cities, plus a 15% housing '
+                          'allowance), the electricity among the dearest, the port one of the better connected on the East African coast. Job creation in the '
+                          'zones fell 44% in the year to June 2026, to 6,732, on the AGOA uncertainty and delayed projects.',
+                          'The cost base moves with Nairobi, not with the dollar: a flat shilling and 7% inflation raise dollar costs by 3 to 4% a year, and '
+                          'the wage order follows inflation on Labour Day. The social charges have risen faster than the wage: the housing levy of 1.5% since '
+                          '2024, the health insurance contribution of 2.75% since October 2024, and the pension tiers that rise each February until 2027.']),
+                        ('What it means for buyers',
+                         ['The risk calendar for 2027 is fiscal and political: the Labour Day wage announcement, the June budget and Finance Bill (the 2024 '
+                          'one brought the country to a halt) and the vote of 10 August with its two quarters of deferred decisions. Costs are stable in '
+                          'shillings and rising in dollars; power is reliable by regional standards and dear; the Mombasa corridor and the long rains of March '
+                          "to May are the physical risk, and a severe El Nino is on the central bank's list for 2027.",
+                          'Three checks at supplier level: AGOA eligibility and the origin paperwork behind the duty refunds; the pass-through charges on '
+                          'power bills, which move every month; and the terminal dues disputes that follow factory closures in the zones, which the EPZ '
+                          'authority has had to mediate this year.'])],
+              'byline': 'Draft for the editor, 17 November 2026. Sources: Central Bank of Kenya (MPC of 7 October, weekly bulletin of 13 November), KNBS, '
+                        "National Treasury (debt bulletin, June 2026), EPRA, Kenya Ports Authority, OTEXA, USTR, S&P, Fitch, Moody's, Drewry, press reports "
+                        '(The Star, Kenyans.co.ke, Capital FM, Business Daily, Reuters, Bloomberg).'},
+ 'order': ['FIN', 'EXT', 'POL', 'LOG', 'ENE'],
+ 'currency': {'code': 'KES',
+              'wage': {'now': (18047.4, '2026-09'), 'year_ago': (16113.75, '2025-09'), 'label': 'general minimum wage, cities'},
+              'text': ['The shilling is at 129.96 to the dollar, where it has been since the Eurobond buyback of early 2024 ended the slide from 123 to 160, '
+                       'and the central bank has bought dollars into reserves at that level for two years.',
+                       'The nominal rate is therefore unchanged over twelve months, and the real rate has moved by the inflation differential: with inflation '
+                       'at 7.3% against 3% in the United States, local costs are about 3.5% dearer in dollars than a year ago, and the 12% wage rise of May '
+                       'took the minimum wage from USD 125 to USD 139 without any help from the currency.',
+                       'For the supplier the arithmetic is simple as long as the peg holds: imported inputs cost the same in shillings, wages and power cost '
+                       'more in dollars every month.',
+                       'The risk runs the other way, a return of the 2023 slide if the budget or the election shakes confidence, which would cut dollar costs '
+                       'and raise the shilling price of every import at once.'],
+              'then': 'Public finances and the banks',
+              'rate': {'value': '129.96', 'note': 'KES per USD, 12 Nov 2026 (CBK)'}},
+ 'sections': {'FIN': {'lead': 'The strongest external position in a decade and the weakest budget: reserves of USD 14.6 billion, 5.9 months of imports, a '
+                              'shilling at 130 for two years and a policy rate of 8.75%, against public debt at 68.5% of GDP, a deficit heading for 7%, '
+                              'domestic interest absorbing a third of revenue and no IMF programme before the election. Inflation at 7.3% in October is the '
+                              'new variable.',
+                      'text': ["Kenya's dollars come from remittances (USD 5.0 billion a year), tea, horticulture, tourism and Eurobonds; reserves reached USD "
+                               '15.4 billion in July and stood at 14.6 billion on 12 November, 28% above a year earlier, with the shilling at 129.96 where the '
+                               '2024 buyback left it.',
+                               'The budget is where the constraint lies: debt of KES 13.0 trillion at the end of June, 68.5% of GDP, 56% of it domestic at 9% '
+                               'bills and 14.4% lending rates, domestic interest taking about a third of ordinary revenue, and a deficit the agencies put at '
+                               "7.1% of GDP for 2026/27 against the Treasury's 5.5%.",
+                               'The IMF programme lapsed in April 2025 and its successor has no start date; the Treasury raised USD 2.25 billion in Eurobonds '
+                               'in February and leans on the World Bank and the African Development Bank.',
+                               'Inflation rose from 4.3% in February to 7.3% in October, 0.2 points under the ceiling, on fuel and food; the central bank held '
+                               'at 8.75% in October and meets again on 8 December.',
+                               'The banks are sound, with non-performing loans down to 13.9% and credit growing 10.6%.',
+                               'Ratings B, B- and B3, all stable.'],
+                      'updates': [('up',
+                                   'Inflation 7.3% in October, the highest in forty months, from 6.8% in September and 4.3% in February; transport 17.1%, food '
+                                   '10.2%, core 4.3%; ceiling 7.5%.'),
+                                  ('up',
+                                   'Reserves USD 14.6 billion on 12 November, 5.9 months of imports, 28% above a year earlier; peak of USD 15.4 billion in '
+                                   'July.'),
+                                  ('up',
+                                   'Private sector credit +10.6% in September; lending rates 14.4%; 364-day bills 9.0%; growth 5.0% expected in 2026, 5.3% in '
+                                   '2027 (CBK).'),
+                                  ('up',
+                                   "Deficit of 2026/27 seen at 7.1% of GDP by S&P and Moody's against the Treasury's 5.5%; public debt KES 13.0 trillion at "
+                                   'end-June, 68.5% of GDP (Treasury), 71% (IMF).'),
+                                  ('flat', 'Central Bank Rate 8.75% since February, held on 7 October; next meeting 8 December.'),
+                                  ('flat', 'Shilling 129.96 per dollar on 12 November, unchanged for two years; no parallel market.'),
+                                  ('flat', "Ratings: S&P B stable (22 August), Fitch B- stable (July), Moody's B3 stable (January)."),
+                                  ('down', 'Non-performing loans 13.9% in September, from 14.8% in June and 17.6% in August 2025.'),
+                                  ('down', 'Remittances USD 430 million in October, −1.9% on a year earlier; USD 5.02 billion over twelve months, −1.1%.'),
+                                  ('down',
+                                   'No IMF programme: the governor said on 15 October that the next one has no start date; an Article IV mission in early '
+                                   'December.')],
+                      'figs': [{'label': 'Reserves', 'value': 'USD 14.6 bn', 'note': '12 Nov 2026; 5.9 months of imports (CBK)', 'code': 'EXT_RES'},
+                               {'label': 'Inflation', 'value': '7.3%', 'note': 'October 2026; 4.3% in Feb; ceiling 7.5%', 'code': 'INF_CPI'},
+                               {'label': 'Central Bank Rate', 'value': '8.75%', 'note': 'since Feb 2026; 13% in early 2024', 'code': 'FIN_POLICY'},
+                               {'label': 'NPL ratio',
+                                'value': '13.9%',
+                                'note': 'September 2026; 17.6% in Aug 2025',
+                                'trend': {'dir': 'down', 'change': '−0.9 pts on June', 'short': 'down', 'long': 'down'}},
+                               {'label': 'Credit growth',
+                                'value': '10.6%',
+                                'unit': 'a year',
+                                'note': 'private sector, September 2026',
+                                'trend': {'dir': 'up', 'change': '+0.3 pts on August', 'short': 'up', 'long': 'up'}},
+                               {'label': 'Lending rate',
+                                'value': '14.4%',
+                                'note': 'average, September 2026; 17.2% in Nov 2024',
+                                'trend': {'dir': 'up', 'change': '+0.1 pt on August', 'short': 'flat', 'long': 'down'}},
+                               {'label': 'Public debt',
+                                'value': '68.5%',
+                                'unit': 'of GDP',
+                                'note': 'end-June 2026, Treasury; 71% on the IMF measure',
+                                'trend': {'dir': 'down', 'change': '−1.5 pts on June 2025', 'short': 'down', 'long': 'up'}},
+                               {'label': 'Fiscal balance',
+                                'value': '−7.1%',
+                                'unit': 'of GDP',
+                                'note': "2026/27 forecast (S&P, Moody's); Treasury −5.5%",
+                                'trend': {'dir': 'down', 'change': 'from −4.8% in 2024/25', 'short': 'down', 'long': 'down'}},
+                               {'label': 'Remittances',
+                                'value': 'USD 430 m',
+                                'note': 'October 2026; USD 5.0 bn in 12 months',
+                                'trend': {'dir': 'down', 'change': '−1.9% on a year earlier', 'short': 'flat', 'long': 'flat'}},
+                               {'label': 'Rating',
+                                'value': 'B / B- / B3',
+                                'note': "S&P, Fitch, Moody's, all stable",
+                                'trend': {'dir': 'flat', 'change': 'affirmed in Aug, Jul and Jan 2026', 'short': 'flat', 'long': 'up'}},
+                               {'label': 'IMF', 'value': 'None', 'note': 'Article IV mission Dec 2026; programme without a date'}],
+                      'charts': ['EXT_RES', 'FX_USD', 'INF_CPI', 'FIN_POLICY', 'EXT_REMIT', 'TRD'],
+                      'risks': [{'level': 'high',
+                                 'title': 'The budget before the election',
+                                 'horizon': 'to June 2027',
+                                 'text': 'A deficit of 7.1% against a target of 5.5%, revenue short, domestic interest a third of revenue, rollover at 9%; the '
+                                         'June 2027 Finance Bill is the last before the vote, and the 2024 one caused an uprising.',
+                                 'watch': 'the supplementary budget, Treasury bill yields, the December IMF statement, the Finance Bill 2027.'},
+                                {'level': 'medium',
+                                 'title': 'Inflation at the ceiling',
+                                 'horizon': 'to May 2027',
+                                 'text': 'Fuel passed through in October and held in November by the levy fund; food at 10%; the Labour Day wage round '
+                                         'follows.',
+                                 'watch': 'the monthly CPI, the EPRA reviews on the 14th, the MPC of 8 December.'},
+                                {'level': 'low',
+                                 'title': 'External liquidity',
+                                 'horizon': '2027',
+                                 'text': 'Reserves at 5.9 months and a current account deficit of 3%; built on market debt, so the Eurobond window matters '
+                                         'more than the trade balance.',
+                                 'watch': 'the next Eurobond issue, the World Bank operation, the weekly CBK reserve figure.'}],
+                      'gap': 'interest payments as a share of revenue as a series, the Eurobond schedule after the 2025 and 2026 operations, the monthly '
+                             'fiscal outturn, the commercial lending rate as a series.'},
+              'EXT': {'lead': 'Duty-free into the United States again since 24 July and AGOA secured to the end of 2028; the United States takes nine tenths '
+                              'of the garments, and apparel is 70% of all exports there. Shipments to the US were USD 625 million over twelve months, up 3%, '
+                              'with a 22% jump in August; the EU and the UK are duty-free under the EPAs. The risk is concentration and the annual eligibility '
+                              'review, not duty.',
+                      'text': ['The tariff year has unwound.',
+                               'AGOA lapsed on 1 October 2025 and Kenyan apparel paid MFN duties plus the 10% reciprocal tariff; the preference was restored '
+                               'retroactively in February 2026, a 10% Section 122 surcharge applied from 24 February to 24 July, and since then the rate is '
+                               'zero.',
+                               'Kenya is not among the economies covered by the Section 301 duties of July 2026, and the extension signed on 4 September runs '
+                               'to 31 December 2028 with the third-country fabric rule intact and refunds of the duties paid during the lapse.',
+                               'US imports of apparel from Kenya were USD 625 million over the twelve months to August, 3% above a year earlier, USD 416 '
+                               'million in January to August, up 7%, and USD 68 million in August alone, 22% above August 2025.',
+                               'Goods exports as a whole rose 11.8% in the year to August on tea and horticulture, imports 15.8% on fuel, food and capital '
+                               'goods.',
+                               'The United States takes about nine tenths of apparel exports and the EU, duty-free under the EPA since July 2024, about 4%.',
+                               'Two qualifications: the annual eligibility review, which examines governance and human rights, and the reciprocal trade '
+                               'framework the United States opened in February, whose outcome could replace the preference with an agreement.',
+                               "China's zero tariff on 98% of lines applies since May."],
+                      'updates': [('up',
+                                   'US imports of apparel from Kenya USD 68 million in August, +22% on a year earlier; USD 416 million in January to August, '
+                                   '+7%; USD 625 million over twelve months, +3% (OTEXA).'),
+                                  ('up',
+                                   'Goods exports +11.8% in the year to August (tea, horticulture, transport equipment); imports +15.8%; current account '
+                                   'deficit 3.1% of GDP.'),
+                                  ('flat',
+                                   'US duty 0% since 24 July 2026; AGOA to 31 December 2028 (signed 4 September); third-country fabric rule kept; refunds of '
+                                   'duties paid from October 2025 to February 2026 through CBP.'),
+                                  ('flat', 'EU and UK duty 0% under the EPAs; China zero tariff on 98% of lines since 1 May 2026.'),
+                                  ('flat', 'Kenya-US reciprocal trade framework: first round of talks in February 2026, no text yet.'),
+                                  ('down',
+                                   'AGOA eligibility review: governance and human rights under scrutiny (July); the preference is unilateral and confirmed by '
+                                   'proclamation each year.'),
+                                  ('down',
+                                   'EPZ job creation 6,732 in the year to June 2026, −44% on the year before, on AGOA uncertainty and delayed projects.')],
+                      'figs': [{'label': 'Apparel exports to the US',
+                                'value': 'USD 68 m',
+                                'note': 'August 2026 (OTEXA); 12 months USD 625 m, +3%',
+                                'code': 'TRD_APP_EXP'},
+                               {'label': 'US tariff on apparel',
+                                'value': '0%',
+                                'note': 'since 24 Jul 2026; 10% from Feb to Jul',
+                                'trend': {'dir': 'flat', 'change': 'unchanged since July', 'short': 'flat', 'long': 'down'}},
+                               {'label': 'AGOA expiry', 'value': '31 Dec 2028', 'note': 'extension signed 4 Sep 2026'},
+                               {'label': 'EU and UK tariff',
+                                'value': '0%',
+                                'note': 'EPAs; 12% without',
+                                'trend': {'dir': 'flat', 'change': 'unchanged', 'short': 'flat', 'long': 'flat'}},
+                               {'label': 'Share of the US', 'value': '88%', 'note': 'of apparel exports; EU 4% (approximation)'},
+                               {'label': 'Exports, all goods', 'value': 'USD 1.27 bn', 'note': 'August 2026 (CBK)', 'code': 'TRD_EXP'},
+                               {'label': 'Imports', 'value': 'USD 2.56 bn', 'note': 'August 2026 (CBK)', 'code': 'TRD_IMP'},
+                               {'label': 'EPZ jobs created',
+                                'value': '6,732',
+                                'note': 'year to June 2026',
+                                'trend': {'dir': 'down', 'change': '−44% on the year before', 'short': 'down', 'long': 'down'}}],
+                      'charts': ['TRD_APP_EXP', 'TRD'],
+                      'risks': [{'level': 'medium',
+                                 'title': 'AGOA eligibility and the reciprocal framework',
+                                 'horizon': 'Dec 2026 to 2028',
+                                 'text': 'The eligibility proclamation comes in December; the talks with Washington could end in a reciprocal deal with '
+                                         'conditions; the 2028 renewal needs a new act.',
+                                 'watch': 'the December proclamation, USTR announcements, the text of the Kenya-US framework.'},
+                                {'level': 'low',
+                                 'title': 'Concentration',
+                                 'horizon': 'structural',
+                                 'text': 'Nine tenths of garments to one market; the EU at 4% despite zero duty.',
+                                 'watch': 'OTEXA monthly data, EU imports from Kenya (Eurostat), new buyers in the zones.'}],
+                      'gap': 'destination shares from ITC data, EPZ export values (EPZA annual report), the refund amounts claimed, the UK rate line to '
+                             'verify.'},
+              'POL': {'lead': 'A general election in nine months, a uniting opposition without a candidate, and a protest cycle that has peaked in June for '
+                              'three years; labour is cheap and getting dearer, USD 139 a month since the 12% rise of May, with inflation at 7.3% feeding the '
+                              'Labour Day review of May 2027.',
+                      'text': ["William Ruto seeks a second term on 10 August 2027 against an opposition, Gachagua, Kalonzo Musyoka, Matiang'i, Karua and "
+                               "Nyoro, that pledged in Kitengela and Kisii in November to field one candidate and has not named him; Raila Odinga's party has "
+                               'sat in the government since the 2024 crisis and part of its leadership in the opposition since his death in October 2025.',
+                               "Kenya's elections have gone to court twice, annulled in 2017 and upheld in 2022, and to violence once in this generation, in "
+                               '2007; the protests of June 2024 withdrew a Finance Bill, those of June and July 2025 left more than fifty dead, and the 2026 '
+                               'anniversary passed under a police lockdown with hundreds of arrests and no deaths, 406 protest events in the month on GDELT, '
+                               'twice the average, and 183 in October, in line with it.',
+                               'There are no sanctions; the corruption index is 32 of 100, the middle of the five countries covered.',
+                               'The wage is KES 18,047.40 a month for a general labourer in the cities since 1 May 2026, USD 139, plus a 15% housing '
+                               'allowance, the second lowest of the five; Labour Day announcements have followed inflation with a lag, 12% in 2022, 6% in 2024 '
+                               'and 12% in 2026, and inflation at 7.3% in an election year makes a rise in May 2027 likely.',
+                               'The social charges have risen faster: a housing levy of 1.5%, a health contribution of 2.75% and pension tiers rising each '
+                               'February until 2027.'],
+                      'updates': [('up',
+                                   "Opposition rallies in Kitengela (8 November) and Kisii (15 November): one candidate pledged against Ruto; Matiang'i and "
+                                   'Kalonzo Musyoka named as possibilities; Uhuru Kenyatta pressing for unity.'),
+                                  ('up',
+                                   'Minimum wage KES 18,047.40 since 1 May 2026 (+12%), USD 139; inflation at 7.3% in October points to a further rise on 1 '
+                                   'May 2027.'),
+                                  ('flat', 'Election 10 August 2027: presidential, parliamentary and county; the June 2027 budget is the last before it.'),
+                                  ('flat', 'Protest events 183 in October (GDELT), 1.0 times the yearly average; 406 in June, the anniversary month.'),
+                                  ('flat', 'No sanctions; corruption index 32 of 100 (2024); the AGOA eligibility review examines governance.'),
+                                  ('down',
+                                   'EPZ job creation −44% in the year to June 2026 (6,732 jobs); terminal dues disputes after closures mediated by the EPZ '
+                                   'authority.')],
+                      'figs': [{'label': 'Minimum wage',
+                                'value': 'KES 18,047',
+                                'note': 'USD 139 a month since 1 May 2026, plus 15% housing',
+                                'trend': {'dir': 'up', 'change': '+12% in May 2026', 'short': 'flat', 'long': 'up'}},
+                               {'label': 'Next wage review', 'value': '1 May 2027', 'note': 'Labour Day announcement'},
+                               {'label': 'Protest events',
+                                'value': '183',
+                                'unit': 'Oct 2026',
+                                'note': '1.0 times the yearly average (GDELT)',
+                                'code': 'POL_UNREST'},
+                               {'label': 'Next election', 'value': '10 Aug 2027', 'note': 'presidential, parliamentary, county'},
+                               {'label': 'Sanctions', 'value': 'None', 'note': 'OFAC, EU, UK'},
+                               {'label': 'Corruption index',
+                                'value': '32',
+                                'unit': 'of 100',
+                                'note': 'Transparency International, 2024',
+                                'trend': {'dir': 'flat', 'change': '+1 pt on 2023', 'short': 'flat', 'long': 'flat'}},
+                               {'label': 'Levies on pay',
+                                'value': '1.5% + 2.75%',
+                                'note': 'housing levy and health contribution, since 2024',
+                                'trend': {'dir': 'up', 'change': 'pension tiers rise each February', 'short': 'up', 'long': 'up'}}],
+                      'charts': ['POL_UNREST'],
+                      'risks': [{'level': 'high',
+                                 'title': 'Election year',
+                                 'horizon': 'to August 2027',
+                                 'text': 'Pre-election spending, a Finance Bill in June, a disputed result possible; two quarters of deferred decisions.',
+                                 'watch': 'the IEBC calendar, the polls (TIFA, Infotrak), the Finance Bill 2027, court petitions after the vote.'},
+                                {'level': 'medium',
+                                 'title': 'Wage and levies',
+                                 'horizon': 'May 2027',
+                                 'text': 'A rise of 6 to 12% likely on Labour Day; pension tier increase in February; disputes over terminal dues in the '
+                                         'zones.',
+                                 'watch': 'the Labour Day speech, the gazette notice, COTU demands, EPZ union notices.'},
+                                {'level': 'low',
+                                 'title': 'Protest cycle',
+                                 'horizon': 'June 2027',
+                                 'text': 'The anniversaries of 25 June and 7 July bring lockdowns of Nairobi and Mombasa; the zones are outside the centres.',
+                                 'watch': 'June mobilisation, police conduct, the GDELT monthly count.'}],
+                      'gap': 'an own count of strikes in the zones (ACLED as the verified upgrade), WGI political stability percentile, garment employment by '
+                             'month (EPZA), the opinion polls as a series.'},
+              'LOG': {'lead': 'Mombasa handled 2.1 million TEU in 2025, up from 2.0 million, with a middling logistics score and vessel delays reported early '
+                              "in the year; the Nairobi corridor by road and rail is the chain and the long rains of March to May its known risk. Drewry's "
+                              'index USD 4,305 per 40ft on 12 November, down 2%, Shanghai to Rotterdam 3,504; no public rate from Mombasa.',
+                      'text': ["Kenya's apparel leaves through Mombasa from the zones at Athi River and in Mombasa itself, by road and by the standard gauge "
+                               'railway to the Nairobi inland depot.',
+                               'The port handled 2.1 million TEU in 2025 after 2.0 million in 2024, a year of 24% growth, with transit cargo for Uganda, '
+                               'Rwanda, South Sudan and eastern Congo; shipping lines and agents complained of vessel delays in February 2026.',
+                               "The World Bank's Logistics Performance Index scored Kenya 2.8 of 5 and 2.65 on customs in 2018, the last survey that covered "
+                               'it; the liner connectivity index was 16.5 in 2021, below Pakistan and above Bangladesh and Cambodia.',
+                               'Ships to Europe go through Suez or round the Cape depending on the Red Sea, and the war in the Gulf has added war-risk '
+                               'surcharges on the Indian Ocean.',
+                               'The Drewry World Container Index was USD 4,305 per 40ft on 12 November, down 2% on the week, with Shanghai to Rotterdam at '
+                               '3,504, Shanghai to Los Angeles at 7,416 and Shanghai to New York at 9,020; Drewry expects transpacific rates to fall further '
+                               'and Asia to Europe to firm on blank sailings and surcharges.',
+                               "The April 2024 floods closed the corridor for days; the rains return in March, and a severe El Nino is on the central bank's "
+                               'risk list for 2027.'],
+                      'updates': [('up', 'Mombasa 2.1 million TEU in 2025, after 2.0 million in 2024 (+24%); transit cargo rising.'),
+                                  ('flat', 'Logistics Performance Index 2.8 of 5 (2018), customs 2.65; liner connectivity 16.5 (2021).'),
+                                  ('flat',
+                                   'Shanghai to Genoa USD 4,168, unchanged on the week; Asia to Europe expected to firm on blank sailings and surcharges.'),
+                                  ('down',
+                                   'Drewry World Container Index USD 4,305 per 40ft on 12 November, −2% on the week; Shanghai to Rotterdam 3,504 (−3%), '
+                                   'Shanghai to New York 9,020 (−3%), Shanghai to Los Angeles 7,416 (−2%).'),
+                                  ('down',
+                                   'Vessel delays at Mombasa reported by lines and agents in February 2026; short rains October to December; a severe El Nino '
+                                   'among the risks for 2027.')],
+                      'figs': [{'label': 'World Container Index',
+                                'value': 'USD 4,305',
+                                'unit': '/40ft',
+                                'note': '12 Nov 2026 (Drewry)',
+                                'trend': {'dir': 'down', 'change': '−2% on the week', 'short': 'up', 'long': 'up'}},
+                               {'label': 'Shanghai to Rotterdam',
+                                'value': 'USD 3,504',
+                                'unit': '/40ft',
+                                'note': '12 Nov 2026 (Drewry)',
+                                'trend': {'dir': 'down', 'change': '−3% on the week', 'short': 'up', 'long': 'up'}},
+                               {'label': 'Shanghai to Los Angeles',
+                                'value': 'USD 7,416',
+                                'unit': '/40ft',
+                                'note': '12 Nov 2026 (Drewry)',
+                                'trend': {'dir': 'down', 'change': '−2% on the week', 'short': 'up', 'long': 'up'}},
+                               {'label': 'Shanghai to New York',
+                                'value': 'USD 9,020',
+                                'unit': '/40ft',
+                                'note': '12 Nov 2026 (Drewry)',
+                                'trend': {'dir': 'down', 'change': '−3% on the week', 'short': 'up', 'long': 'up'}},
+                               {'label': 'Container traffic',
+                                'value': '2.1 m',
+                                'unit': 'TEU',
+                                'note': '2025 (Kenya Ports Authority)',
+                                'trend': {'dir': 'up', 'change': '+5% on 2024', 'short': 'up', 'long': 'up'}},
+                               {'label': 'Logistics score',
+                                'value': '2.8',
+                                'unit': 'of 5',
+                                'note': 'LPI 2018; customs 2.65',
+                                'trend': {'dir': 'flat', 'change': 'not surveyed since', 'short': 'flat', 'long': 'flat'}},
+                               {'label': 'Liner connectivity', 'value': '16.5', 'note': 'LSCI 2021 (UNCTAD)'},
+                               {'label': 'Seasonal risk', 'value': 'Mar to May', 'note': 'long rains on the corridor'}],
+                      'charts': [],
+                      'risks': [{'level': 'medium',
+                                 'title': 'Freight rates and routing',
+                                 'horizon': 'first quarter 2027',
+                                 'text': "Rates at twice last year's level; Suez or Cape routing; war-risk surcharges in the Gulf and the Red Sea; rises "
+                                         'expected in December before the Lunar New Year.',
+                                 'watch': 'the weekly WCI, carrier surcharge notices, Red Sea and Hormuz routing.'},
+                                {'level': 'medium',
+                                 'title': 'Corridor and rains',
+                                 'horizon': 'Mar to May 2027',
+                                 'text': 'The long rains flood the Nairobi to Mombasa road and rail; port congestion in peak weeks; disruption around the vote '
+                                         'in August.',
+                                 'watch': 'KPA notices, SGR schedules, meteorological outlooks, carrier advisories.'}],
+                      'gap': 'customs clearance time, Mombasa port performance (CPPI), transit times and surcharges from Mombasa, the WCI history as it builds '
+                             'up week by week, air freight fallback.'},
+              'ENE': {'lead': 'About 13.5 US cents per kWh for medium industry, pending verification, among the dearer of the five countries covered, on a '
+                              'grid that is nine tenths renewable and loses a quarter of its output; no industrial gas. Diesel is a third dearer than a year '
+                              'ago and held only by the levy fund; the tariff review has been withdrawn, so the grid price stays until a new order.',
+                      'text': ['The medium-industry tariff (CI2, 11 kV) combines the energy charge of the 2023 tariff order with monthly pass-through charges '
+                               'for fuel and foreign exchange and 16% VAT, about KES 17.5 per kWh before the demand charge, or 13.5 US cents, a figure '
+                               'awaiting verification; Kenya Power filed for a 2026 to 2029 review on 31 March and withdrew it in June, so the 2023 order '
+                               'stays in force until a new one is approved.',
+                               'The pass-through charges move every month, KES 3.14 for fuel and 0.72 for foreign exchange per kWh in June, because the power '
+                               'purchase agreements are paid in dollars.',
+                               'The grid is geothermal, hydro, wind and solar for about nine tenths, which limits the fuel pass-through, but transmission and '
+                               'distribution losses of 26% of output are the highest of the five after Honduras.',
+                               'There is no gas network; factories use grid power, heavy fuel oil, LPG and biomass.',
+                               'Fuel is where the war in the Gulf arrived: diesel at KES 227.76 a litre in Nairobi from 15 November, 33% above a year earlier, '
+                               'and petrol at 226.96, 23% above, both held for two months by KES 4.6 billion from the levy fund and VAT at 8%; the fund is '
+                               'finite and the next review falls on 14 December.'],
+                      'updates': [('up',
+                                   'Diesel KES 227.76 and petrol 226.96 a litre in Nairobi from 15 November, +33% and +23% on a year earlier; unchanged for '
+                                   'two months with KES 4.6 billion from the levy fund.'),
+                                  ('up',
+                                   'Fuel and foreign exchange pass-through charges KES 3.14 and 0.72 per kWh in June; higher charges announced for October '
+                                   '(EPRA).'),
+                                  ('flat',
+                                   'Industrial tariff unchanged: Kenya Power withdrew its 2026 to 2029 review in June; the 2023 order stays; about 13.5 US '
+                                   'cents per kWh (to verify).'),
+                                  ('flat', 'Grid losses 26% of output (2024); renewables about nine tenths of generation; no gas network.')],
+                      'figs': [{'label': 'Electricity, industry',
+                                'value': '13.5',
+                                'unit': 'US c/kWh',
+                                'note': 'CI2, 2026, to verify',
+                                'trend': {'dir': 'flat', 'change': '2023 order in force', 'short': 'flat', 'long': 'flat'}},
+                               {'label': 'Diesel',
+                                'value': 'KES 227.76',
+                                'unit': 'per litre',
+                                'note': 'Nairobi, 15 Nov to 14 Dec 2026',
+                                'trend': {'dir': 'flat', 'change': 'unchanged on the month; +33% on a year earlier', 'short': 'up', 'long': 'up'}},
+                               {'label': 'Petrol',
+                                'value': 'KES 226.96',
+                                'unit': 'per litre',
+                                'note': 'Nairobi, 15 Nov to 14 Dec 2026',
+                                'trend': {'dir': 'flat', 'change': 'unchanged on the month; +23% on a year earlier', 'short': 'up', 'long': 'up'}},
+                               {'label': 'Fuel charge on bills',
+                                'value': 'KES 3.14',
+                                'unit': 'per kWh',
+                                'note': 'June 2026 pass-through; forex 0.72',
+                                'trend': {'dir': 'up', 'change': 'higher in October', 'short': 'up', 'long': 'up'}},
+                               {'label': 'Grid losses',
+                                'value': '26%',
+                                'unit': 'of output',
+                                'note': '2024 (World Bank)',
+                                'trend': {'dir': 'flat', 'change': 'highest after Honduras', 'short': 'flat', 'long': 'flat'}},
+                               {'label': 'Industrial gas', 'value': 'None', 'note': 'no network'},
+                               {'label': 'Tariff review', 'value': 'Withdrawn', 'note': 'June 2026; no new filing announced'},
+                               {'label': 'Outages', 'value': None, 'note': 'not loaded'}],
+                      'charts': [],
+                      'risks': [{'level': 'medium',
+                                 'title': 'Fuel price pass-through',
+                                 'horizon': 'to Feb 2027',
+                                 'text': 'The levy fund kept KES 10.54 off diesel in November while landed costs rose 6.7% in October; a release adds to '
+                                         'inflation and transport costs.',
+                                 'watch': 'the EPRA reviews on the 14th, the Petroleum Development Levy balance, the crude price.'},
+                                {'level': 'low',
+                                 'title': 'Dry-season generation',
+                                 'horizon': 'Jan to Mar 2027',
+                                 'text': 'Hydro falls in the dry months; thermal plants and imports fill the gap and raise the fuel charge.',
+                                 'watch': 'the monthly fuel cost charge, KenGen output, Ethiopian import volumes.'}],
+                      'gap': 'the verified CI2 energy charge, the monthly pass-through series, outage frequency in the zones, EPRA pump prices as a series.'}},
+ 'facts': [('Trade preferences',
+            'AGOA to 31 December 2028 (extension signed 4 September 2026, after a lapse from 1 October 2025 and a retroactive restoration in February 2026); '
+            'third-country fabric rule kept; eligibility confirmed by proclamation each year. EU EPA in force since 1 July 2024, duty-free and quota-free. UK '
+            'EPA since 2021. China zero tariff on 98% of lines since 1 May 2026 (early harvest).'),
+           ('Tariff, US',
+            '0% on apparel since 24 July 2026, when the 10% Section 122 surcharge expired. Kenya is not covered by the Section 301 duties of July 2026. About '
+            '26% during the AGOA lapse, October 2025 to February 2026, refundable through CBP.'),
+           ('Tariff, EU', '0% under the EPA; the standard rate on apparel would be 12%.'),
+           ('Destination shares',
+            'US 88%, EU 4% of apparel exports. Approximation, to be replaced by ITC trade data. Apparel is about 70% of all Kenyan exports to the United '
+            'States.'),
+           ('Sovereign rating', "S&P B stable (affirmed 22 August 2026). Fitch B- stable (affirmed July 2026). Moody's B3 stable (upgraded 27 January 2026)."),
+           ('IMF',
+            'No programme: the 2021 ECF/EFF of USD 3.6 billion lapsed in April 2025 without its ninth review; a successor requested in March 2025 has no start '
+            'date (governor, 15 October 2026). Article IV mission expected in early December 2026.'),
+           ('Public debt',
+            'KES 13.0 trillion at end-June 2026, 68.5% of GDP (Treasury), 56% domestic; 71% of GDP on the IMF measure. Eurobonds of February 2026: USD 2.25 '
+            'billion at 7.875% (2034) and 8.7% (2039).'),
+           ('Import restrictions', 'None. No letter of credit restrictions; the foreign exchange market unified in early 2024.'),
+           ('Parallel market', 'None. The interbank rate is the market rate.'),
+           ('Sanctions', 'None.'),
+           ('Minimum wage',
+            'KES 18,047.40 a month for a general labourer in the cities since 1 May 2026, up 12% (Legal Notice 108 of 2026), USD 139. No sector order for '
+            'garments: EPZ workers fall under the general order, plus a 15% housing allowance when not housed. Levies on pay: housing 1.5%, health insurance '
+            '2.75%, pension tiers rising each February until 2027.'),
+           ('Electricity',
+            'About 13.5 US cents per kWh for medium industry (CI2 energy charge of the 2023 order, pass-through charges and VAT, before the demand charge). '
+            'Kenya Power withdrew its 2026 to 2029 review in June 2026. <span class="verify">verify</span>'),
+           ('Fuel',
+            'Nairobi pump prices set by EPRA on the 14th of each month: petrol KES 226.96, diesel KES 227.76 a litre from 15 November to 14 December 2026; VAT '
+            '8%; stabilisation from the Petroleum Development Levy fund.'),
+           ('Industrial gas', 'No network. Factories use grid power, heavy fuel oil, LPG and biomass.'),
+           ('Election',
+            'General election on 10 August 2027 (presidential, parliamentary, county). Results contested in court in 2017 (annulled) and 2022 (upheld).')],
+ 'scores': {'cost': 2.38,
+            'costT': 'down',
+            'risk': 2.33,
+            'riskT': 'stable',
+            'sections': [['POL', 'Politics and geopolitics', 3, 'stable', 3, 'stable', 'election within 12 months; corruption index 32'],
+                         ['TRD', 'Trade and tariffs', 1, 'down', 3, 'stable', 'US tariff 0% (10% six months earlier); one market above 50% of exports'],
+                         ['EXT', 'External position and sovereign risk', 3, 'stable', 1, 'stable', '6.5 months of imports; rating B'],
+                         ['FX', 'Currency', 4, 'stable', 1, 'stable', 'real appreciation 3.6%; depreciation 0.2%, volatility 0.5%'],
+                         ['INF', 'Inflation and prices', 3, 'stable', 2, 'stable', '6.76% in September; rank 3 of 5'],
+                         ['FIN', 'Credit and financing costs', 3, 'stable', 4, 'down', 'policy rate 8.75% plus 4; NPL 13.9% from 14.8%'],
+                         ['LAB', 'Labour costs and social climate', 2, 'stable', 3, 'stable', 'wage USD 139, rank 2 of 5; wage review within 6 months'],
+                         ['INV', 'Investment and capital markets', None, 'stable', None, 'stable', 'no series loaded'],
+                         ['ENV',
+                          'Energy, logistics and climate',
+                          None,
+                          'stable',
+                          None,
+                          'stable',
+                          'electricity tariff awaiting verification; no outage series']],
+            'cov': 'Composite coverage: cost 80% of the weight (missing Energy, Logistics and freight), risk 75% (missing Logistics and energy reliability, '
+                   'Climate); the covered components are renormalised.'},
+ 'charts': {'POL_UNREST': {'title': 'Protest events',
+                           'unit': 'Protest events located in the country, per month (GDELT 2.0 event database, CAMEO root code 14, machine-coded from world '
+                                   'news)',
+                           'decimals': 0,
+                           'zero': True,
+                           'series': [{'name': 'Protest events', 'code': 'POL_UNREST'}]},
+            'FX_USD': {'title': 'Exchange rate',
+                       'unit': 'KES per USD, monthly average',
+                       'decimals': 1,
+                       'tickDecimals': 0,
+                       'series': [{'name': 'KES per USD', 'code': 'FX_USD'}]},
+            'INF_CPI': {'title': 'Inflation',
+                        'unit': 'Consumer prices, % change on a year earlier',
+                        'decimals': 1,
+                        'tickDecimals': 0,
+                        'series': [{'name': 'CPI', 'code': 'INF_CPI'}]},
+            'FIN_POLICY': {'title': 'Central Bank Rate',
+                           'unit': '%, rate in force each month',
+                           'decimals': 2,
+                           'tickDecimals': 0,
+                           'step': True,
+                           'series': [{'name': 'CBR', 'code': 'FIN_POLICY'}]},
+            'EXT_RES': {'title': 'Reserves',
+                        'unit': 'Official reserves, USD billion, end of month',
+                        'decimals': 1,
+                        'tickDecimals': 0,
+                        'series': [{'name': 'Reserves', 'code': 'EXT_RES', 'scale': 0.001}]},
+            'TRD': {'title': 'Goods trade',
+                    'unit': 'Exports fob and imports cif, USD billion a month',
+                    'decimals': 2,
+                    'tickDecimals': 1,
+                    'zero': True,
+                    'series': [{'name': 'Exports', 'code': 'TRD_EXP', 'scale': 0.001}, {'name': 'Imports', 'code': 'TRD_IMP', 'scale': 0.001}]},
+            'TRD_APP_EXP': {'title': 'Apparel exports to the US',
+                            'unit': 'US imports of apparel from Kenya, USD million a month (OTEXA)',
+                            'decimals': 1,
+                            'tickDecimals': 0,
+                            'zero': True,
+                            'series': [{'name': 'Apparel', 'code': 'TRD_APP_EXP'}]},
+            'EXT_REMIT': {'title': 'Remittances',
+                          'unit': 'Diaspora remittances, USD million a month',
+                          'decimals': 0,
+                          'zero': True,
+                          'series': [{'name': 'Remittances', 'code': 'EXT_REMIT'}]}},
+ 'events': [['2028-12-31', 'AGOA expiry under the extension signed on 4 September 2026; a longer renewal needs a new act', 2, 'TRD, INV, LAB', False],
+            ['2027-08-10', 'General election: presidential, parliamentary and county', 1, 'POL, FX, INV', False],
+            ['2027-06-10', 'FY2027/28 budget statement and Finance Bill, the last before the election', 1, 'FIN, INF, POL', True],
+            ['2027-05-22', 'Eurobond of May 2027 (2019 issue of USD 900 million, largely bought back in February 2025): residual maturity', 4, 'EXT, FX', True],
+            ['2027-05-01',
+             'Labour Day: minimum wage announcements are usually made on 1 May and gazetted later (12% in 2026, 6% in 2024, 12% in 2022)',
+             3,
+             'LAB, INF',
+             False],
+            ['2027-03-15', 'Long rains, March to May: flooding and transport disruption risk on the Nairobi-Mombasa corridor', 5, 'ENV, TRD', False],
+            ['2027-02-01', 'NSSF contribution tiers rise (annual step under the 2013 Act, last in 2027)', 3, 'LAB', True],
+            ['2026-12-14', 'EPRA monthly fuel price review; stabilisation drew KES 4.6 billion in November', 6, 'ENV, INF', False],
+            ['2026-12-08', 'Monetary Policy Committee meeting; the CBK meets every two months', 4, 'FIN, FX', True],
+            ['2026-12-01', 'IMF Article IV mission expected in early December; the successor programme has no start date', 4, 'EXT, FX, FIN', True],
+            ['2026-11-14',
+             'EPRA holds pump prices for a second month (petrol KES 226.96, diesel 227.76) with KES 4.6 billion from the levy fund',
+             6,
+             'ENV, INF',
+             False],
+            ['2026-11-08', 'Opposition rallies in Kitengela (8 November) and Kisii (15 November): pledge of a single candidate for 2027', 1, 'POL', False],
+            ['2026-10-30', 'Inflation 7.3% in October, a forty-month high; transport 17.1%, food 10.2%', 3, 'INF, LAB', False],
+            ['2026-10-15', 'CBK governor: the next IMF programme has no start date (Bloomberg)', 4, 'EXT, FIN', False],
+            ['2026-10-07',
+             'MPC held the Central Bank Rate at 8.75%; inflation 6.8%, NPL ratio 13.9%, reserves USD 14.7 billion, credit +10.6%',
+             4,
+             'FIN',
+             False],
+            ['2026-09-04', 'AGOA Extension Act signed: preferences run to 31 December 2028', 2, 'TRD, INV', False],
+            ['2026-08-22', 'S&P affirmed B with a stable outlook; deficit of 2026/27 seen at 7.1% of GDP', 4, 'EXT, FIN', False],
+            ['2026-07-24',
+             'Section 122 surcharge expired; Kenya not covered by the Section 301 duties, so AGOA apparel enters the US duty-free again',
+             2,
+             'TRD, INV',
+             False],
+            ['2026-06-25',
+             'Anniversary of the 2024 protests: police lockdown of Nairobi, hundreds of arrests; 406 protest events in June (GDELT)',
+             1,
+             'POL',
+             False],
+            ['2026-06-11', 'FY2026/27 budget statement and Finance Bill 2026', 1, 'FIN, INF, POL', False],
+            ['2026-06-05', 'Kenya Power withdraws its 2026 to 2029 tariff review; the 2023 order remains in force', 6, 'ENV', False],
+            ['2026-05-01', 'Minimum wage raised 12% (Legal Notice 108): KES 18,047.40 in the cities', 3, 'LAB, INF', False],
+            ['2026-02-26', 'Eurobond of USD 2.25 billion (7.875% 2034, 8.7% 2039); USD 500 million buyback of 2028 and 2032 notes', 4, 'EXT, FIN', False],
+            ['2026-02-24',
+             'AGOA restored retroactively; IEEPA tariffs ended after the Supreme Court ruling of 20 February; 10% Section 122 surcharge from 24 February',
+             2,
+             'TRD, INV',
+             False],
+            ['2026-02-10', 'MPC cut the Central Bank Rate to 8.75%, the last cut of the cycle', 4, 'FIN', False],
+            ['2026-01-27', "Moody's upgraded Kenya to B3 from Caa1, outlook stable", 4, 'EXT, FIN', False],
+            ['2026-01-23', 'Fitch affirmed B- with a stable outlook (again in July 2026)', 4, 'EXT, FIN', False],
+            ['2025-10-15', 'Death of Raila Odinga; ODM stays in the government, part of its leadership moves to the opposition', 1, 'POL', False],
+            ['2025-10-01',
+             'AGOA lapsed on 30 September 2025: MFN duties plus the 10% reciprocal tariff on Kenyan apparel until the retroactive restoration',
+             2,
+             'TRD, INV',
+             False],
+            ['2025-08-22', 'S&P upgraded Kenya to B from B-, outlook stable', 4, 'EXT, FIN', False],
+            ['2025-07-07', 'Saba Saba protests and the anniversary of 25 June 2025: more than fifty dead over the two days', 1, 'POL', False],
+            ['2024-06-25', 'Finance Bill 2024 protests: nationwide demonstrations, parliament stormed, the bill withdrawn the next day', 1, 'POL, FIN', False]],
+ 'sources': ['GDELT Project, event database on Google BigQuery: protest events (CAMEO root code 14) located in the country, counted by month; a machine-coded '
+             'measure of protest news, not a verified event count.',
+             'Central Bank of Kenya: exchange rate, reserves, goods trade, remittances, Central Bank Rate, NPL ratio and private credit (MPC release of 7 '
+             'October 2026, weekly bulletin of 13 November 2026); inflation as published by KNBS.',
+             'National Treasury: monthly debt bulletin (June 2026). IMF World Economic Outlook: public debt, fiscal balance. World Bank International Debt '
+             'Statistics and WDI: external debt, debt service, interest payments, logistics performance, liner connectivity, power losses. Kenya Ports '
+             'Authority: container traffic.',
+             'OTEXA, US Department of Commerce: US imports of apparel from Kenya. USTR, AGOA.info, US Congress: tariffs and preferences. European Commission: '
+             'EPA.',
+             'Ministry of Labour, Kenya Gazette: wage orders. EPRA: electricity tariffs and pump prices. IEBC: election date. Drewry: World Container Index.',
+             "Fitch, S&P, Moody's: ratings. IMF: programme status. Transparency International: Corruption Perceptions Index. State Department for Investment "
+             'Promotion: EPZ job creation.']}

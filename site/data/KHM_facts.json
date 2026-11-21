@@ -1,0 +1,38 @@
+{
+ "ENV_GAS": {
+  "name": "Industrial gas tariff",
+  "values": [
+   {
+    "date": "2026-01-01",
+    "text": "not applicable"
+   }
+  ]
+ },
+ "EXT_IMF": {
+  "name": "IMF programme status and next review",
+  "values": [
+   {
+    "date": "2025-11-25",
+    "text": "No programme; 2025 Article IV concluded 25 November 2025"
+   }
+  ]
+ },
+ "EXT_RESTR": {
+  "name": "Import or letter of credit restrictions in force",
+  "values": [
+   {
+    "date": "2024-01-01",
+    "text": "none"
+   }
+  ]
+ },
+ "TRD_PREF": {
+  "name": "Preference regime status and next review or expiry date",
+  "values": [
+   {
+    "date": "2026-07-24",
+    "text": "EU EBA (partial withdrawal since 2020), graduation from LDC on 19 December 2029; US no preference, 10% Section 301 duty"
+   }
+  ]
+ }
+}

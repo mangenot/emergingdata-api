@@ -1,0 +1,245 @@
+{
+ "sector": "APP",
+ "count": 1,
+ "countries": [
+  {
+   "country": "HND",
+   "sector": "APP",
+   "score_date": "2026-11-01",
+   "cost_pressure": 3.25,
+   "cost_trend": "stable",
+   "disruption_risk": 2.07,
+   "risk_trend": "up",
+   "sections": [
+    {
+     "section": "POL",
+     "name": "Politics and geopolitics",
+     "cost": 4,
+     "cost_trend": "stable",
+     "risk": 2,
+     "risk_trend": "stable",
+     "inputs": {
+      "next_election": "2029-11-25",
+      "POL_SANCTIONS": "none",
+      "POL_UNREST_3m": 13,
+      "POL_UNREST_ratio": 0.35,
+      "POL_CPI_TI": 22
+     },
+     "notes": [
+      "risk by rule from the calendar, the sanctions flag and the unrest proxy (no own score): protest events at 0.35 times their yearly average (GDELT), no surge"
+     ]
+    },
+    {
+     "section": "TRD",
+     "name": "Trade and tariffs",
+     "cost": 1,
+     "cost_trend": "down",
+     "risk": 3,
+     "risk_trend": "stable",
+     "inputs": {
+      "TRD_DEST_US": 80,
+      "TRD_DEST_EU": 1,
+      "TRD_TARIFF_US": 0,
+      "main_market": "US",
+      "TRD_TARIFF_US_6m_ago": 10,
+      "TRD_PREF": "CAFTA-DR (no expiry), apparel exempt from the US Section 301 duty; EU Association Agreement"
+     },
+     "notes": [
+      "no preference review in the calendar: preferences read as secure",
+      "one market above 50% of apparel exports"
+     ]
+    },
+    {
+     "section": "EXT",
+     "name": "External position and sovereign risk",
+     "cost": 2,
+     "cost_trend": "stable",
+     "risk": 1,
+     "risk_trend": "stable",
+     "inputs": {
+      "EXT_RES_MOI": 7.7,
+      "EXT_RES_MOI_how": "reserves 11709 USD m at 2026-08 over average monthly imports 1515 (12 months to 2026-07)",
+      "EXT_RES_MOI_3m_ago": 7.7,
+      "EXT_RESTR": "none",
+      "EXT_RATING": "S&P BB- stable; Moody's B1 stable; Fitch not rated",
+      "rating_grade": 12
+     },
+     "notes": [
+      "cost from the rating as a proxy for the sovereign spread (BB- or better 2, B+ and B 3, B- 4, CCC 5)"
+     ]
+    },
+    {
+     "section": "FX",
+     "name": "Currency",
+     "cost": 3,
+     "cost_trend": "stable",
+     "risk": 1,
+     "risk_trend": "stable",
+     "inputs": {
+      "depreciation_12m": 3,
+      "FX_VOL": 0.3,
+      "depreciation_3m_annualised": 2.8,
+      "real_depreciation_12m": -0.5
+     },
+     "notes": [
+      "cost from nominal depreciation less the inflation differential with the US (3% assumed), no REER series"
+     ]
+    },
+    {
+     "section": "INF",
+     "name": "Inflation and prices",
+     "cost": 2,
+     "cost_trend": "up",
+     "risk": 2,
+     "risk_trend": "up",
+     "inputs": {
+      "INF_CPI": 6.53,
+      "INF_CPI_date": "2026-06",
+      "INF_CPI_3m_avg": 5.4,
+      "INF_CPI_prev3m_avg": 4.7,
+      "rank_among_covered": 2
+     },
+     "notes": [
+      "cost = rank of the inflation rate among the covered countries (1 = lowest)"
+     ]
+    },
+    {
+     "section": "FIN",
+     "name": "Credit and financing costs",
+     "cost": 3,
+     "cost_trend": "stable",
+     "risk": null,
+     "risk_trend": "stable",
+     "inputs": {
+      "FIN_REAL": -0.5,
+      "FIN_POLICY": 6
+     },
+     "notes": [
+      "no NPL ratio: risk score empty",
+      "cost from the policy rate plus 4 points as a proxy for the lending rate"
+     ]
+    },
+    {
+     "section": "LAB",
+     "name": "Labour costs and social climate",
+     "cost": 5,
+     "cost_trend": "up",
+     "risk": 3,
+     "risk_trend": "stable",
+     "inputs": {
+      "next_wage_review": "2026-12-15",
+      "wage_usd": 481.02,
+      "wage_how": "HNL 12930.07 in force since 2026-01-01 at 26.88 per USD (2026-09)",
+      "wage_code": "LAB_SECW_USD",
+      "rank_among_covered": 5,
+      "wage_usd_change_12m": 4.8
+     },
+     "notes": [
+      "no strike count: base risk 2 (occasional)",
+      "one notch added: wage review due within 6 months (2026-12-15)",
+      "cost = rank of the USD wage among the covered countries (1 = cheapest)"
+     ]
+    },
+    {
+     "section": "INV",
+     "name": "Investment and capital markets",
+     "cost": null,
+     "cost_trend": "stable",
+     "risk": null,
+     "risk_trend": "stable",
+     "inputs": {},
+     "notes": [
+      "no FDI, portfolio flow or business climate series loaded: scores empty"
+     ]
+    },
+    {
+     "section": "ENV",
+     "name": "Energy, logistics and climate",
+     "cost": null,
+     "cost_trend": "stable",
+     "risk": null,
+     "risk_trend": "stable",
+     "inputs": {},
+     "notes": [
+      "no outage series: risk score empty",
+      "no electricity tariff: cost score empty"
+     ]
+    },
+    {
+     "section": "GLB",
+     "name": "Global drivers",
+     "cost": null,
+     "cost_trend": null,
+     "risk": null,
+     "risk_trend": null,
+     "inputs": null,
+     "notes": null
+    }
+   ],
+   "composite_detail": {
+    "cost": {
+     "value": 3.25,
+     "covered": 80,
+     "used": [
+      "Labour cost 5 x 30",
+      "Currency 3 x 20",
+      "Financing 3 x 10",
+      "Trade and tariffs 1 x 20"
+     ],
+     "missing": [
+      "Energy",
+      "Logistics and freight"
+     ]
+    },
+    "risk": {
+     "value": 2.07,
+     "covered": 75,
+     "used": [
+      "Politics and geopolitics 2 x 20",
+      "External position 1 x 20",
+      "Trade dependence and preferences 3 x 15",
+      "Social climate and labour 2.5 x 20"
+     ],
+     "missing": [
+      "Logistics and energy reliability",
+      "Climate"
+     ]
+    },
+    "derived": {
+     "EXT_RES_MOI": {
+      "value": 7.7,
+      "date": "2026-08-01",
+      "how": "reserves 11709 USD m at 2026-08 over average monthly imports 1515 (12 months to 2026-07)"
+     },
+     "FX_12M": {
+      "value": -3,
+      "date": "2026-09-01",
+      "how": "HNL per USD 26.88 at 2026-09 vs 26.08 a year earlier"
+     },
+     "FX_VOL": {
+      "value": 0.3,
+      "date": "2026-09-01",
+      "how": "annualised standard deviation of monthly changes over 12 months"
+     },
+     "FIN_REAL": {
+      "value": -0.5,
+      "date": "2026-11-01",
+      "how": "policy rate 6% (2026-11) minus inflation 6.53% (2026-06)"
+     },
+     "LAB_SECW_USD": {
+      "value": 481.02,
+      "date": "2026-01-01",
+      "how": "HNL 12930.07 in force since 2026-01-01 at 26.88 per USD (2026-09)",
+      "change12": 4.8
+     },
+     "LAB_MINW_USD": {
+      "value": 554.95,
+      "date": "2026-01-01",
+      "how": "HNL 14917.2 in force since 2026-01-01 at 26.88 per USD (2026-09)",
+      "change12": null
+     }
+    }
+   }
+  }
+ ]
+}

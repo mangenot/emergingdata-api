@@ -1,0 +1,42 @@
+{
+ "EXT_IMF": {
+  "name": "IMF programme status and next review",
+  "values": [
+   {
+    "date": "2024-09-25",
+    "text": "EFF USD 7 billion approved, 37 months"
+   },
+   {
+    "date": "2026-10-08",
+    "text": "Staff-level agreement on the 4th EFF and 3rd RSF reviews; USD 1.2 billion pending board approval"
+   }
+  ]
+ },
+ "EXT_RATING": {
+  "name": "Sovereign credit rating, long-term foreign currency",
+  "values": [
+   {
+    "date": "2026-08-24",
+    "text": "Fitch B- stable; S&P B stable; Moody's B3 stable"
+   }
+  ]
+ },
+ "POL_SANCTIONS": {
+  "name": "Sanctions or export-control measures in force",
+  "values": [
+   {
+    "date": "2024-12-18",
+    "text": "targeted"
+   }
+  ]
+ },
+ "TRD_PREF": {
+  "name": "Preference regime status and next review or expiry date",
+  "values": [
+   {
+    "date": "2026-09-08",
+    "text": "EU GSP+; new GSP regulation applies 2027-01-01, reapplication due by end 2028"
+   }
+  ]
+ }
+}

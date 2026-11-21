@@ -1,0 +1,47 @@
+{
+ "ENV_GAS": {
+  "name": "Industrial gas tariff",
+  "values": [
+   {
+    "date": "2026-01-01",
+    "text": "not applicable"
+   }
+  ]
+ },
+ "EXT_RATING": {
+  "name": "Sovereign credit rating, long-term foreign currency",
+  "values": [
+   {
+    "date": "2026-01-27",
+    "text": "Fitch B- stable; S&P B stable; Moody's B3 stable"
+   }
+  ]
+ },
+ "EXT_RESTR": {
+  "name": "Import or letter of credit restrictions in force",
+  "values": [
+   {
+    "date": "2024-01-01",
+    "text": "none"
+   }
+  ]
+ },
+ "POL_SANCTIONS": {
+  "name": "Sanctions or export-control measures in force",
+  "values": [
+   {
+    "date": "2024-01-01",
+    "text": "none"
+   }
+  ]
+ },
+ "TRD_PREF": {
+  "name": "Preference regime status and next review or expiry date",
+  "values": [
+   {
+    "date": "2026-09-05",
+    "text": "AGOA to 2028-12-31; EU EPA in force; UK EPA"
+   }
+  ]
+ }
+}
