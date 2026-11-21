@@ -14,12 +14,13 @@ const ym = d => String(d).slice(0, 7);
 const addMonths = (s, n) => { const t = Number(s.slice(0, 4)) * 12 + Number(s.slice(5, 7)) - 1 + n; return `${String(Math.floor(t / 12)).padStart(4, '0')}-${String(t % 12 + 1).padStart(2, '0')}`; };
 const monthsBetween = (a, b) => (Number(b.slice(0, 4)) - Number(a.slice(0, 4))) * 12 + Number(b.slice(5, 7)) - Number(a.slice(5, 7));
 const round = (v, d = 2) => v === null || v === undefined ? null : Math.round(v * 10 ** d) / 10 ** d;
+const num = v => { if (v === null || v === undefined) return null; const r = round(v, 2); return r === 0 && v !== 0 ? round(v, 4) : r; };   // two decimals, four when that gives 0
 
 // A monthly series {start, every, values} (blanks as null) or dated points {points: [[ym, value], ...]}.
 // Weekly and daily observations are reduced to the last of each month; a monthly slot holding quarterly data
 // (more than 30% gaps) is kept as points.
 function buildSeries(obs, frequency) {
-  let nums = obs.filter(o => o.value !== null).map(o => [o.date, o.value]);
+  let nums = obs.filter(o => o.value !== null).map(o => [o.date, num(o.value)]);
   if (!nums.length) return null;
   if (frequency === 'weekly' || frequency === 'daily') {
     const m = {};
@@ -83,21 +84,25 @@ function currencyFigures(S, meta, currency, dollarised) {
   const dep12 = ago ? (now / ago - 1) * 100 : null, dep1 = m1 ? (now / m1 - 1) * 100 : null;
   const [pi] = at(S.INF_CPI, when);
   const realDep = (ago && pi !== null) ? ((now / ago) * (1 + US_INFLATION / 100) / (1 + pi / 100) - 1) * 100 : null;
-  // the wage: the sector wage where one exists, else the general minimum wage; converted at the exchange rate of its month
+  // the wage: the sector wage where one exists, else the general minimum wage; the latest level converted at the
+  // latest exchange rate, the level of a year earlier at the rate of twelve months earlier (the scores' convention)
   let wage = null;
   for (const code of ['LAB_SECW', 'LAB_MINW']) {
     const w = S[code];
     if (!w) continue;
     const [wNow, mNow] = last(w);
     if (wNow === null) continue;
-    const [wAgo, mAgo] = w.points ? ((w.points.filter(p => p[0] <= addMonths(mNow, -12)).slice(-1)[0] || [null, null]).reverse()) : at(w, addMonths(mNow, -12));
+    const agoMonth = addMonths(when, -12);
+    let wAgo = null, mAgo = null;
+    if (w.points) { const p = w.points.filter(q => q[0] <= agoMonth); if (p.length) { mAgo = p[p.length - 1][0]; wAgo = p[p.length - 1][1]; } }
+    else [wAgo, mAgo] = at(w, agoMonth);
     const usd = dollarised || currency === 'USD';     // the wage is set in dollars (Cambodia)
-    const fNow = usd ? 1 : at(fx, mNow)[0], fAgo = usd ? 1 : (mAgo ? at(fx, mAgo)[0] : null);
+    const fNow = usd ? 1 : now, fAgo = usd ? 1 : ago;
     const uNow = fNow ? wNow / fNow : null, uAgo = (wAgo !== null && fAgo) ? wAgo / fAgo : null;
-    wage = { code, label: (meta[code] || {}).name || code, local: wNow, month: mNow, now: round(uNow, 2), ago: round(uAgo, 2), chg: (uNow && uAgo) ? round((uNow / uAgo - 1) * 100, 2) : null, currency: usd ? 'USD' : currency };
+    wage = { code, label: (meta[code] || {}).name || code, local: wNow, month: mNow, local_ago: wAgo, month_ago: mAgo, now: round(uNow, 2), ago: round(uAgo, 2), chg: (uNow && uAgo) ? round((uNow / uAgo - 1) * 100, 2) : null, currency: usd ? 'USD' : currency };
     break;
   }
-  return { now, when, dep12: round(dep12), dep1: round(dep1), cpi: pi, real_dep: round(realDep), real_move: realDep === null ? null : round(-realDep), wage, code: currency };
+  return { now: num(now), when, dep12: round(dep12), dep1: round(dep1), cpi: pi, real_dep: round(realDep), real_move: realDep === null ? null : round(-realDep), wage, code: currency };
 }
 
 export default async function handler(req, res) {
@@ -111,7 +116,7 @@ export default async function handler(req, res) {
   try {
     const [countries, indicators, obs, comps, scores, sections, benchObs] = await Promise.all([
       sb('country?select=iso3,name,currency,fx_regime'),
-      sb('indicator?select=code,name,unit,frequency,section_code,type'),
+      sb('indicator?select=code,name,unit,frequency,section_code'),
       sbAll(`observation_latest?select=indicator_code,obs_date,value,text_value&iso3=eq.${iso}&obs_date=gte.${from}&order=indicator_code,obs_date`),
       sb(`composite?select=iso3,score_date,cost_pressure,disruption_risk,cost_trend,risk_trend,note&sector_code=eq.${sector}&order=iso3,score_date.desc`),
       sb(`score?select=iso3,section_code,score_date,cost_score,risk_score,cost_trend,risk_trend,note&sector_code=eq.${sector}&order=iso3,score_date.desc,section_code&limit=5000`),
