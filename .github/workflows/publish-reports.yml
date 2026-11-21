@@ -1,0 +1,31 @@
+# Pushes the converted country reports (site/wp/*.txt) to the WordPress site as drafts, or publishes them.
+# Run by hand from the Actions tab. Secrets to set in the repository (Settings > Secrets and variables > Actions):
+#   WP_URL (https://emergingdata.net), WP_USER (the WordPress user), WP_APP_PASSWORD (an application password of that user).
+name: Publish reports to WordPress
+on:
+  workflow_dispatch:
+    inputs:
+      countries:
+        description: 'Country codes, space separated (empty: all five)'
+        required: false
+        default: ''
+      publish:
+        description: 'Publish (true) or leave as drafts (false)'
+        required: true
+        default: 'false'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Convert the specs to post content
+        run: cd site && python3 to_wp.py ${{ github.event.inputs.countries }}
+      - name: Push to WordPress
+        env:
+          WP_URL: ${{ secrets.WP_URL }}
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+        run: cd site && python3 publish_wp.py ${{ github.event.inputs.publish == 'true' && '--publish' || '' }} ${{ github.event.inputs.countries }}

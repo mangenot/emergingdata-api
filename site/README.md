@@ -46,3 +46,22 @@ the tiles whose series moved. The text of a page changes only when an edition is
 
 Bangladesh RXryA7NFv8Med9mzbeZR7h, Kenya AFL3XQPs7J4f2unC6eztES, Pakistan VuWvm6D4zJdDW17u61LWF3,
 Cambodia 3i9pKA642Ey6tHrDKQrPyv, Honduras 92k4JxmUbqumzvWPfv1gK5 (https://claude.ai/artifact/<id>).
+
+## The site (WordPress, emergingdata.net)
+
+The reports move to the site through the ED Reports plugin (`wp/ed-reports`, zip `wp/ed-reports-<version>.zip`):
+
+- `to_wp.py` converts the specs into post content with the plugin's shortcodes (`wp/<iso>.txt`) and the report
+  fields (`wp/<iso>.json`): the text parts only; the plugin fills the tiles' trends, the currency block, the trade
+  tiles, the charts, the benchmark and the scores from `/api/page-data` when the page is displayed.
+- `publish_wp.py` pushes them to the site through the REST API (`WP_URL`, `WP_USER`, `WP_APP_PASSWORD` in the
+  environment; drafts unless `--publish`; an existing report with the same slug is updated in place). The GitHub
+  Action "Publish reports to WordPress" (`.github/workflows/publish-reports.yml`, run by hand) does the same with
+  the repository secrets.
+- `/api/page-data?country=HND`: everything a page needs in one call (series since 2019, facts, scores with inputs,
+  benchmark rows, currency figures, real exchange rate), cached 30 minutes at the edge and for the minutes set in
+  the plugin on the site.
+
+The plugin was tested on a local WordPress 7.2 with the five converted reports (charts, tiles, benchmark, scores,
+contents line, print to A4). The texts stay hand-written: after a data refresh, update the sentences next to the
+tiles that moved (the daily refresh lists them), convert and push.

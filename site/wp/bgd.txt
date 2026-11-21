@@ -1,0 +1,254 @@
+[ed_overview date="12 November 2026"]
+[ed_standfirst]Bangladesh reaches the end of 2026 with its labour cost, its political order and its energy bill in question at the same time. The external accounts are sounder than two years ago, with reserves near USD 30 billion and remittances at record levels, but the war in the Gulf has doubled the cost of fuel imports, the garment minimum wage is under revision with a demand of Tk 30,000 against the current 12,500, and a series of attacks precedes the announced return of the former prime minister.[/ed_standfirst]
+<p>Between 8 and 10 November more than a hundred crude bombs exploded in Dhaka, Manikganj and other districts; buses were set on fire and a driver was killed. The police attribute the attacks to paid recruits of a banned organisation; the government attributes them to supporters of Sheikh Hasina, who was sentenced to death in absentia in 2025 and has announced her return from India in December.</p>
+<p>In the same two weeks the garment industry was affected by strikes. Protests that began on 31 October in Mirpur, Savar, Ashulia and Gazipur led to the temporary closure of about 500 factories, and on 12 November about 1,500 workers from six to eight factories blocked the Dhaka-Tangail highway at Kaliakair before being dispersed. The demand is a minimum wage of Tk 30,000 a month; the current scale, set in December 2023, is Tk 12,500, about USD 100.</p>
+<p>The government formed the Minimum Wage Board on 1 November. The workers' representatives have proposed Tk 32,000, the employers have four working days to reply, and the government intends to apply the new scale from December with payment in January. The manufacturers' association has answered with eleven proposals, beginning with a "no work, no pay" rule.</p>
+<h3>The latest data</h3>
+<p>The data published in early November describe an economy that is growing but under pressure from costs. Exports rose 4.4% in October to USD 3.99 billion and garment exports 4.9% to USD 3.17 billion, the third consecutive month of growth after a flat year; garment exports for July to October reached USD 13.75 billion, 5.8% more than a year earlier. The knitwear association considers the result negative in real terms, since raw material costs rose 15 to 20% and wages 9%.</p>
+<p>Remittances amounted to USD 2.87 billion in October, 12% more than a year earlier but below USD 3 billion for the fifth consecutive month; the central bank links the slowdown to the higher cost of living of migrant workers in the Gulf. Inflation eased to 8.27% from 8.34%, with food inflation falling to 6.4% and non-food inflation rising to 9.9%.</p>
+<p>Reserves stood at USD 29.98 billion on the BPM6 definition (USD 34.85 billion gross) on 6 November, after a payment of USD 1.64 billion to the Asian Clearing Union, equivalent to about four months of imports. The taka traded at 124.3 to the dollar, after a year between 122 and 123.</p>
+<h3>The energy bill</h3>
+<p>The war in the Gulf explains the rise in non-food inflation and in the import bill. Bangladesh imports almost half of its energy from the Middle East. Payments for petroleum imports doubled to USD 2.49 billion in July and August; spot LNG prices have almost tripled since the beginning of the conflict; LNG deliveries fell by 83% between July and August after the disruption of traffic through the Strait of Hormuz and a fire at one of the country's two floating regasification terminals.</p>
+<p>The electricity deficit exceeds 3,000 MW, factories depend on diesel generators at a fuel price 70% higher than before the war, and one of the largest groups estimates its daily energy expenditure at USD 300,000 against USD 200,000 previously. More than 400 small factories closed in the three years to June 2026. The wage claim therefore reaches an industry whose margins have already been reduced by energy costs.</p>
+<h3>The financial position</h3>
+<p>The financial position is stronger than in 2024 but has weaknesses that the reserves figure does not show. Reserves had fallen below USD 19 billion at the end of 2024 and were rebuilt by remittances, which reached a record USD 35.5 billion in fiscal year 2026, and by exports; the import restrictions introduced in 2022 have been relaxed but remain in place. Public debt is moderate, at 42% of GDP. The banking system is the main weakness: non-performing loans represented 31% of the portfolio at the end of 2025 after a peak of 36%, the policy rate is 9.5% and private credit grows by 4.6% a year.</p>
+<p>The government set aside the USD 5.5 billion IMF programme negotiated by the interim administration and is negotiating a new USD 4.5 billion facility over three years; a mission is expected in November and an agreement is possible in December. The conditions under discussion include a market-determined exchange rate, a reduction of tax exemptions, lower subsidies, including on energy, and a bankruptcy law. In the short term each of these measures raises costs for the industry; their purpose is to lower the country's financial risk over the medium term.</p>
+<h3>The political settlement</h3>
+<p>The political framework is recent. The uprising of July and August 2024 ended fifteen years of Awami League government; the interim government banned the party's activities in May 2025; the election of 12 February 2026 gave the BNP a majority and brought Tarique Rahman to the premiership, without the participation of the party that had dominated the previous decade.</p>
+<p>This is the context of the November attacks: a large political organisation without legal representation and a leader who intends to return. The government has requested her extradition and reinforced security. The count of protest events compiled from GDELT, 200 to 350 a month since March compared with 600 to 1,000 before the election, indicates a calm period that November is interrupting.</p>
+<h3>Forty years of one model</h3>
+<p>Over four decades Bangladesh built the second largest garment export industry in the world on the basis of low production costs. Garments brought USD 38.7 billion in the last fiscal year, more than 80% of export earnings, and employ about four million people. The model delivered growth and foreign exchange, and the exit from least developed country status, which the United Nations postponed on 29 October, at Bangladesh's request, from 24 November 2026 to 24 November 2029; duty-free access to the European Union under Everything But Arms therefore continues until at least 2032.</p>
+<p>The model also kept wages among the lowest in the world, about USD 100 a month against USD 139 in Kenya and USD 144 in Pakistan, and produced a distribution of income that has been contested in 2023, in 2024 and again now. The wage revision of 2026 is therefore more than a periodic adjustment. It tests whether the new government can raise the price of labour without losing the orders on which the external balance depends.</p>
+<h3>What it means for buyers</h3>
+<p>The outlook is a rising cost base from January and a risk of interruptions rather than of a breakdown. The wage award will lie between the employers' counter-proposal and the Tk 30,000 demanded; the 26% duty in the United States has applied since July; energy surcharges and a weaker taka add to it.</p>
+<p>The interruptions to anticipate are factory closures during strikes, road blockades on the Dhaka-Tangail and Dhaka-Chattogram routes, power rationing during the dry season, and a month of December in which the former prime minister's return, the wage gazette and the IMF agreement coincide. Access to the EU market remains duty-free, reserves cover four months of imports, and the condition of the banks remains the point to verify for each supplier.</p>
+[ed_byline]Draft for the editor, 12 November 2026. Sources: Bangladesh Bank, EPB, BBS, the Minimum Wage Board, BGMEA and BKMEA, the UN General Assembly resolution of 29 October 2026, press reports (Prothom Alo, The Daily Star, The Business Standard, bdnews24, Al Jazeera, Arab News, Time).[/ed_byline]
+[/ed_overview]
+
+[ed_global]
+
+[ed_section key="FIN"]
+[ed_lead]The external accounts were rebuilt on remittances and garment exports, and the energy bill of the Gulf war is now drawing on them: reserves of about USD 30 billion cover four months of imports, the taka has moved to 124, inflation is 8.3% with non-food prices accelerating, and the banks carry 31% of non-performing loans. The USD 4.5 billion IMF programme expected in December would tie the exchange rate, subsidies and taxes together.[/ed_lead]
+[ed_currency then="Public finances and the banks" rate="124.3" rate_note="BDT per USD, mid-November 2026 (Bangladesh Bank)"]
+The taka is at about 124 to the dollar, 1% weaker than a year ago and 45% weaker than before the 2022 crisis, on a market rate that Bangladesh Bank has let find its level since May 2025 while it buys dollars to rebuild reserves.
+With inflation at 8.3% against 3% in the United States, the real rate has moved the other way: local costs are 3.9% dearer in dollars than a year ago, and the wage award of December will add to that in one step.
+For the supplier the taka decides two things at once: the cost of cotton, yarn, fuel and spare parts, all imported and paid in dollars, which a weaker taka raises in the currency of the payroll; and the dollar value of wages, power and local overheads, which a stable taka with 8% inflation raises by 4 to 5% a year.
+The stability of 2026 has favoured the second effect; a further slide, which the import bill of the war in the Gulf makes possible, would reverse it.
+[/ed_currency]
+[ed_chart code="FX_USD" title="Exchange rate" unit="BDT per USD, monthly average" decimals="1" tick="0" series="FX_USD:BDT per USD"]
+[ed_text]
+Remittances (a record USD 35.5 billion in fiscal 2026, up 13% so far this year) and garment exports (USD 13.75 billion in July to October, up 5.8%) rebuilt reserves from below USD 19 billion at the end of 2024 to USD 31.6 billion in July.
+Since then the outflow has grown faster: petroleum import payments doubled to USD 2.49 billion in July and August, reserves came back to USD 29.98 billion (BPM6) in early November and the taka, held at 122 to 123 for a year, has moved to 124.3.
+The same energy bill keeps inflation at 8.3%, with non-food prices rising 9.9%, and leaves the central bank no room below the 9.5% policy rate.
+Public finances are moderate in size (debt 42% of GDP, deficit 3.1%) but weak in structure: low revenue, interest at a fifth of it, energy subsidies rising with LNG, hence the IMF conditions on the exchange rate, tax exemptions and subsidies.
+The banks are the weak point: non-performing loans at 31% after a peak of 36%, private credit growing 4.6%, which makes working capital scarce for suppliers outside the large groups.
+For a buyer the risk over the coming year is the cost of the adjustment, not a balance of payments crisis.
+[/ed_text]
+[ed_updates]
+  [ed_update dir="up"]Remittances USD 2.87 billion in October, 12% more than a year earlier but below USD 3 billion for a fifth month; USD 12.34 billion from July to 7 November, up 13.6%.[/ed_update]
+  [ed_update dir="up"]Import payments up 12% in July and August; payments for petroleum products doubled to USD 2.49 billion; letters of credit opened in September USD 8.1 billion.[/ed_update]
+  [ed_update dir="flat"]Inflation 8.27% in October against 8.34% in September; food 6.4% and falling, non-food 9.9% and rising.[/ed_update]
+  [ed_update dir="flat"]Policy rate 9.5% since August, after two years at 10%.[/ed_update]
+  [ed_update dir="flat"]IMF: a USD 4.5 billion facility over three years under negotiation, mission expected in November, signature possible in December; the USD 5.5 billion programme of the interim period was set aside.[/ed_update]
+  [ed_update dir="down"]Reserves USD 29.98 billion (BPM6) on 6 November after the USD 1.64 billion Asian Clearing Union payment, against USD 31.6 billion in July; gross reserves USD 34.85 billion; about four months of imports.[/ed_update]
+  [ed_update dir="down"]Taka at 124.3 per dollar on 1 November, after a year between 122 and 123 under the crawling peg.[/ed_update]
+  [ed_update dir="down"]Non-performing loans 30.6% of the book in December 2025, from 35.7% in September 2025; private credit growth 4.6%.[/ed_update]
+[/ed_updates]
+[ed_figs]
+  [ed_fig label="Reserves" value="USD 30.0 bn" code="EXT_RES"]BPM6, 6 Nov 2026; about 4 months of imports[/ed_fig]
+  [ed_fig label="Inflation" value="8.27%" code="INF_CPI"]October 2026; 11.7% in Jul 2024[/ed_fig]
+  [ed_fig label="Policy rate" value="9.5%" code="FIN_POLICY"]cut from 10% in Aug 2026[/ed_fig]
+  [ed_fig label="Remittances" value="USD 2.87 bn" code="EXT_REMIT"]October 2026, +12% on a year earlier[/ed_fig]
+  [ed_fig label="NPL ratio" value="30.6%" trend="down|−5.1 pts on the year|down|up|2025"]Dec 2025; 35.7% in Sep 2025[/ed_fig]
+  [ed_fig label="Public debt" value="42%" unit="of GDP" trend="up|+1 pt on fiscal 2024|up|up"]fiscal 2025 (IMF WEO)[/ed_fig]
+  [ed_fig label="Fiscal balance" value="−3.1%" unit="of GDP" trend="flat|unchanged on fiscal 2024|flat|flat"]fiscal 2025 (IMF WEO)[/ed_fig]
+  [ed_fig label="External debt" value="22%" unit="of GNI" trend="flat|unchanged on 2023|flat|up"]2024; debt service 16% of exports (World Bank)[/ed_fig]
+  [ed_fig label="Rating" value="B+ / B+ / B2" trend="flat|no change in 2026|flat|down"]S&P and Fitch negative, Moody's stable[/ed_fig]
+  [ed_fig label="IMF" value="In talks"]USD 4.5 bn, mission Nov, signature Dec 2026[/ed_fig]
+[/ed_figs]
+[ed_charts]
+  [ed_chart code="FX_USD" title="Exchange rate" unit="BDT per USD, monthly average" decimals="1" tick="0" series="FX_USD:BDT per USD"]
+  [ed_chart code="EXT_RES" title="Reserves" unit="Official reserves including gold, USD billion, end of month (IMF)" decimals="1" tick="0" series="EXT_RES:Reserves:0.001"]
+  [ed_chart code="EXT_REMIT" title="Remittances" unit="Remittance inflows, USD million a month (Bangladesh Bank, from July 2023)" decimals="0" zero="1" series="EXT_REMIT:Remittances"]
+  [ed_chart code="TRD" title="Goods trade" unit="Exports and imports, USD billion a month (from July 2023)" decimals="2" tick="1" zero="1" series="TRD_EXP:Exports:0.001;TRD_IMP:Imports:0.001"]
+  [ed_chart code="FIN_POLICY" title="Policy rate" unit="Bangladesh Bank repo rate, %, end of month (from June 2023)" decimals="2" tick="0" step="1" series="FIN_POLICY:Repo rate"]
+  [ed_chart code="INF_CPI" title="Inflation" unit="Consumer prices, % change on a year earlier (loaded from July 2023)" decimals="1" tick="0" series="INF_CPI:CPI"]
+[/ed_charts]
+[ed_risks]
+  [ed_risk level="high" title="Exchange rate under the IMF programme" horizon="Dec 2026 to Mar 2027"]A market-determined taka is a condition under discussion; the rate has already moved from 123 to 124.3 with fuel payments doubled.[ed_watch]the signature in December, the interbank rate, reserves after each Asian Clearing Union settlement.[/ed_watch][/ed_risk]
+  [ed_risk level="medium" title="Bank solvency and supplier working capital" horizon="continuing"]Non-performing loans at 31%, private credit growing 4.6%, bank mergers and a bankruptcy law in the programme.[ed_watch]the December NPL figure, letter of credit margins, the cases under the Bank Resolution Act.[/ed_watch][/ed_risk]
+  [ed_risk level="medium" title="Energy subsidies and the budget" horizon="fiscal 2027"]LNG at three times its pre-war price is paid by the budget until tariffs follow.[ed_watch]tariff orders, the deficit, the IMF revenue conditions.[/ed_watch][/ed_risk]
+[/ed_risks]
+[ed_gap]commercial lending rate, the current status of the letter of credit margins, interest burden after 2021 (IMF staff report).[/ed_gap]
+[/ed_section]
+
+[ed_section key="EXT"]
+[ed_lead]Garment exports grow again in dollars but not in margin, the European Union takes half of them duty-free until at least 2032 after the deferral of LDC graduation, the United States applies 26% since July, and the import bill is rising with the price of energy.[/ed_lead]
+[ed_text]
+Exports rose 4.4% in October to USD 3.99 billion and garments 4.9% to USD 3.17 billion, a third month of growth after apparel exports fell 2% to USD 38.7 billion in the twelve months to June; knitwear grows faster than woven, and the knitwear association reads the figures as a loss in real terms with raw material costs up 15 to 20% and wages up 9%.
+The EU takes 48% of apparel exports duty-free under Everything But Arms, which runs three years beyond the LDC graduation now deferred to November 2029, so to late 2032 at least.
+The US takes 17% at 26%: the 16% MFN duty plus the 10% Section 301 duty since 24 July 2026, after a peak of 36% in August 2025; the tariff-rate quotas announced in July are not established.
+The UK is duty-free under the DCTS.
+On the import side the pressure is energy, not inputs: payments up 12% in July and August with petroleum doubled, letters of credit of USD 8.1 billion opened in September.
+The resulting deficit is what remittances cover, which ties this section to the reserves of section 1.
+[/ed_text]
+[ed_updates]
+  [ed_update dir="up"]Exports USD 3.99 billion in October, +4.4% on a year earlier and +1.4% on September; USD 17.04 billion in July to October, +6%.[/ed_update]
+  [ed_update dir="up"]Garment exports USD 3.17 billion in October, +4.9%; USD 13.75 billion in July to October, +5.8%; knitwear +6.8%, woven +4.6%.[/ed_update]
+  [ed_update dir="up"]Import payments +12% in July and August; petroleum payments doubled to USD 2.49 billion; letters of credit opened USD 8.1 billion in September.[/ed_update]
+  [ed_update dir="flat"]US duty 26% (16% MFN plus 10% Section 301) since 24 July 2026; tariff-rate quotas announced in July, not established.[/ed_update]
+  [ed_update dir="flat"]EU duty 0% under EBA; LDC graduation deferred by the UN General Assembly on 29 October to 24 November 2029, so EBA runs to late 2032 at least.[/ed_update]
+  [ed_update dir="down"]Apparel exports USD 38.7 billion over the twelve months to June 2026, 2% below the previous twelve months.[/ed_update]
+[/ed_updates]
+[ed_figs]
+  [ed_fig label="Apparel exports" value="USD 38.7 bn" trend="down|−2% on the previous twelve months|up|flat"]12 months to Jun 2026[/ed_fig]
+  [ed_fig label="Garment exports" value="USD 3.17 bn" trend="up|+4.9% on a year earlier|up|flat"]October 2026 (EPB)[/ed_fig]
+  [ed_fig label="US tariff on apparel" value="26%" trend="flat|unchanged since 24 Jul 2026|flat|up"]16% MFN + 10% Section 301; 36% in Aug 2025[/ed_fig]
+  [ed_fig label="EU tariff" value="0%" trend="flat|deferral granted 29 Oct 2026|flat|flat"]EBA; graduation deferred to 24 Nov 2029[/ed_fig]
+  [ed_fig label="Share of the EU" value="48%"]of apparel exports, US 17%[/ed_fig]
+  [ed_fig label="Imports" value="USD 7.5 bn" trend="up|+12% on a year earlier (Jul-Aug)|up|up"]September 2026, goods imports[/ed_fig]
+[/ed_figs]
+[ed_charts]
+  [ed_chart code="TRD_APP_EXP" title="Apparel exports" unit="Knitwear and woven garments, USD million a month, all markets (EPB, from July 2024)" decimals="0" zero="1" series="TRD_APP_EXP:Apparel"]
+  [ed_chart code="TRD" title="Goods trade" unit="Exports and imports, USD billion a month (from July 2023)" decimals="2" tick="1" zero="1" series="TRD_EXP:Exports:0.001;TRD_IMP:Imports:0.001"]
+[/ed_charts]
+[ed_risks]
+  [ed_risk level="medium" title="US tariff policy" horizon="2027"]26% in place; the tariff-rate quotas announced in July are not established; Section 301 remains under review.[ed_watch]USTR notices, the quota rules, US import data by origin (OTEXA).[/ed_watch][/ed_risk]
+  [ed_risk level="medium" title="Import bill" horizon="dry season"]Fuel payments doubled; letter of credit settlements expected above USD 7 billion a month.[ed_watch]monthly import payments by product, letters of credit opened, the trade deficit.[/ed_watch][/ed_risk]
+  [ed_risk level="low" title="EU preferences after 2032" horizon="2029 to 2032"]EBA secured by the deferral; the follow-on (GSP+ or an agreement) is to negotiate; the new EU GSP regulation applies from January 2027.[ed_watch]the GSP+ application, the EU-Bangladesh talks, the annual reports to the Committee for Development Policy.[/ed_watch][/ed_risk]
+[/ed_risks]
+[ed_gap]the UK rate line (DCTS, to verify), destination shares from ITC trade data, the tariff-rate quota once established, monthly import payments by product.[/ed_gap]
+[/ed_section]
+
+[ed_section key="POL"]
+[ed_lead]The political order is nine months old and contested from outside the institutions; the labour question is the one that reaches the factory first. The minimum wage, about USD 100 a month, is under revision with Tk 30,000 to 32,000 on the workers' side, strikes since 31 October and a scale wanted in force in December.[/ed_lead]
+[ed_text]
+The election of 12 February 2026 gave the BNP a majority and Tarique Rahman the premiership without the Awami League, banned in May 2025 after the uprising of 2024; the next vote is due in 2031.
+The attacks of 8 to 10 November, more than a hundred crude bombs with one death, are attributed by the police to a banned organisation and by the government to supporters of Sheikh Hasina, sentenced to death in absentia and announcing her return in December.
+US targeted sanctions on the Rapid Action Battalion date from 2021 and the corruption index (23 of 100) is the second lowest of the five.
+The GDELT count of protest events, 200 to 350 a month since March against 600 to 1,000 before the election, measures the calm that November interrupts.
+The social question reaches the factory first.
+The minimum wage of Tk 12,500 (December 2023, plus 9% on basic pay each January) is about USD 100, a quarter below Kenya and a third below Pakistan, and inflation of 8.3% has taken about a fifth of its purchasing power.
+Strikes from 31 October closed about 500 factories, the wage board was formed on 1 November, the workers' side tabled Tk 32,000 and the government wants the scale in force in December.
+At Tk 20,000 the wage would be about USD 160, close to Kenya and Pakistan; at Tk 30,000, USD 240, the cost advantage would be gone.
+A weaker taka offsets part of any award in dollars; energy costs take the rest.
+[/ed_text]
+[ed_updates]
+  [ed_update dir="up"]More than a hundred crude bomb attacks between 8 and 10 November in Dhaka, Manikganj and other districts; one death; 33 arrests in Dhaka on 9 November.[/ed_update]
+  [ed_update dir="up"]Strikes from 31 October: about 500 factories closed for three days in Mirpur, Savar, Ashulia and Gazipur; 1,500 workers blocked the Dhaka-Tangail highway on 12 November.[/ed_update]
+  [ed_update dir="up"]Minimum Wage Board formed on 1 November; workers' proposal Tk 32,000 (Tk 30,000 for new recruits); employers to answer within four working days; scale wanted in force in December.[/ed_update]
+  [ed_update dir="flat"]Current scale Tk 12,500 (December 2023) plus 9% on basic pay each January; about USD 100 at 124.3 per dollar.[/ed_update]
+  [ed_update dir="flat"]Sanctions unchanged: US targeted sanctions on the Rapid Action Battalion since December 2021. Corruption index 23 of 100 (2024).[/ed_update]
+  [ed_update dir="down"]Protest events 251 in October (GDELT), 0.4 times the yearly average; the November attacks will appear in the next count.[/ed_update]
+[/ed_updates]
+[ed_figs]
+  [ed_fig label="Garment minimum wage" value="BDT 12,500" trend="flat|unchanged since Dec 2023; +9% on basic pay each January|flat|up"]about USD 100 a month, scale of Dec 2023[/ed_fig]
+  [ed_fig label="Wage board" value="Tk 32,000" unit="asked" trend="up|claim 2.5 times the current scale|up|up"]formed 1 Nov 2026; scale wanted for Dec[/ed_fig]
+  [ed_fig label="Protest events" value="251" unit="Oct 2026" code="POL_UNREST"]0.4 times the yearly average (GDELT)[/ed_fig]
+  [ed_fig label="Next election" value="2031"]five-year term, date approximate[/ed_fig]
+  [ed_fig label="Sanctions" value="Targeted" trend="flat|no change in 2026|flat|flat"]US, RAB and officers, since Dec 2021[/ed_fig]
+  [ed_fig label="Corruption index" value="23" unit="of 100" trend="down|−1 pt on 2023|down|down"]Transparency International, 2024[/ed_fig]
+[/ed_figs]
+[ed_charts]
+  [ed_chart code="POL_UNREST" title="Protest events" unit="Protest events located in the country, per month (GDELT 2.0 event database, CAMEO root code 14, machine-coded from world news)" decimals="0" zero="1" series="POL_UNREST:Protest events"]
+[/ed_charts]
+[ed_risks]
+  [ed_risk level="high" title="Wage award and strike weeks" horizon="Dec 2026 to Jan 2027"]The award will fall between the employers' counter-proposal and Tk 30,000; strikes continue until the scale is gazetted; the manufacturers propose a "no work, no pay" rule.[ed_watch]the employers' counter-proposal, the gazette, factory closures and road blockades in Ashulia, Savar and Gazipur.[/ed_watch][/ed_risk]
+  [ed_risk level="high" title="Political violence around the former prime minister's return" horizon="December"]More than a hundred attacks between 8 and 10 November; an extradition request; a banned party without a legal outlet.[ed_watch]attacks and blockades, the extradition decision in India, the monthly protest count.[/ed_watch][/ed_risk]
+  [ed_risk level="low" title="Sanctions" horizon="continuing"]Targeted US measures on the Rapid Action Battalion since 2021; no change expected.[ed_watch]OFAC designations, the EU and UK lists.[/ed_watch][/ed_risk]
+[/ed_risks]
+[ed_gap]an own count of garment strikes (ACLED as the verified upgrade), WGI political stability percentile, food inflation, garment employment, the wage board's award when gazetted.[/ed_gap]
+[/ed_section]
+
+[ed_section key="LOG"]
+[ed_lead]Almost all apparel leaves through Chattogram, whose customs score is the second lowest of the five countries covered; the ocean market is read from the Drewry index, USD 4,429 per 40ft on 29 October and easing, and origin-specific rates from Chattogram still need a paid feed.[/ed_lead]
+[ed_text]
+Container traffic was 3.35 million TEU in 2024, up 4%, almost all through Chattogram with Mongla as the secondary port.
+The Logistics Performance Index gave Bangladesh 2.6 out of 5 and 2.3 on customs in 2023, unchanged from 2018; liner connectivity was 14.7 in 2021, in Kenya's range.
+The monsoon from June to September and the two Eid closures bunch shipments, and the road blockades of the wage dispute add an interruption risk on the Dhaka-Chattogram and Dhaka-Tangail corridors.
+No public index quotes rates from Chattogram, whose cargo feeds through Colombo or Singapore; the Drewry World Container Index gives the direction: USD 4,429 per 40ft on 29 October, down 3% on the week after two weeks of rises, Shanghai to Rotterdam at 3,686 and Shanghai to New York at 9,631, and Drewry expects rates to ease as US volumes fall.
+Transit times, routing and surcharges will be kept as standing facts once verified; origin rates need a Xeneta or Freightos feed.
+[/ed_text]
+[ed_updates]
+  [ed_update dir="up"]Shanghai to Rotterdam USD 3,686 (+1%); Shanghai to Genoa 4,151 (stable).[/ed_update]
+  [ed_update dir="up"]Container traffic 3.35 million TEU in 2024, +4% on 2023 (World Bank).[/ed_update]
+  [ed_update dir="flat"]Logistics Performance Index 2.6 of 5 in 2023, customs 2.3, unchanged from 2018.[/ed_update]
+  [ed_update dir="down"]Drewry World Container Index USD 4,429 per 40ft on 29 October, −3% on the week after two weeks of rises.[/ed_update]
+  [ed_update dir="down"]Shanghai to Los Angeles USD 7,514 (−6%); Shanghai to New York 9,631 (−5%).[/ed_update]
+[/ed_updates]
+[ed_figs]
+  [ed_fig label="World Container Index" value="USD 4,429" unit="/40ft" trend="down|−3% on the week|up|down"]29 Oct 2026 (Drewry)[/ed_fig]
+  [ed_fig label="Shanghai to Rotterdam" value="USD 3,686" unit="/40ft" trend="up|+1% on the week|up|down"]29 Oct 2026 (Drewry)[/ed_fig]
+  [ed_fig label="Shanghai to New York" value="USD 9,631" unit="/40ft" trend="down|−5% on the week|up|down"]29 Oct 2026 (Drewry)[/ed_fig]
+  [ed_fig label="Container traffic" value="3.4 m" unit="TEU" trend="up|+4% on 2023|up|up"]2024 (World Bank)[/ed_fig]
+  [ed_fig label="Logistics score" value="2.6" unit="of 5" trend="flat|unchanged from 2018|flat|flat"]LPI 2023; customs 2.3[/ed_fig]
+  [ed_fig label="Liner connectivity" value="14.7"]LSCI 2021 (UNCTAD)[/ed_fig]
+  [ed_fig label="Chattogram to Rotterdam"]transit days, to verify[/ed_fig]
+  [ed_fig label="Routing"]Suez or Cape, to record[/ed_fig]
+[/ed_figs]
+[ed_risks]
+  [ed_risk level="medium" title="Road and port interruptions" horizon="Dec 2026 to Jan 2027"]Strike blockades on the Dhaka-Tangail and Dhaka-Chattogram corridors; the Eid closures of March and May bunch shipments.[ed_watch]industrial police bulletins, Chattogram dwell times, carrier advisories.[/ed_watch][/ed_risk]
+  [ed_risk level="medium" title="Freight rates" horizon="first quarter 2027"]The World Container Index is easing as US volumes fall; the Suez or Cape routing decides the Europe transit time.[ed_watch]the weekly WCI, the Shanghai to Rotterdam and Shanghai to New York lanes, surcharge notices.[/ed_watch][/ed_risk]
+[/ed_risks]
+[ed_gap]customs clearance time, Chattogram port performance (CPPI), port congestion and inland depot events; the WCI history as it builds up week by week, transit times and surcharges per origin, air freight fallback for the season.[/ed_gap]
+[/ed_section]
+
+[ed_section key="ENE"]
+[ed_lead]Grid power is the cheapest of the five countries covered at about 10.3 US cents per kWh, but the supply is the problem: LNG deliveries fell 83% between July and August, the shortfall exceeds 3,000 MW, and factories run on diesel that costs 70% more than before the war.[/ed_lead]
+[ed_text]
+The industrial electricity tariff rose 16.7% in June 2026 to Tk 12.52 to 16.36 per kWh, about 10.3 US cents, still the lowest of the five; gas for new industrial connections was raised 33% in April 2025 to Tk 40 to 42 per cubic metre, about USD 7 per MMBtu.
+The war changed the supply rather than the tariff: spot LNG has nearly tripled, deliveries fell 83% between July and August after the Hormuz disruption and a fire at one of the two regasification terminals, the shortfall exceeds 3,000 MW, and diesel for factory generators costs 70% more; one large group's daily energy bill went from USD 200,000 to 300,000, and more than 400 small factories closed in three years.
+The answers are cheaper solar imports, about 200 MW added in the first half, and the Rooppur nuclear plant expected in December.
+A tariff that does not follow LNG is paid by the budget, which is what the IMF conditions of section 1 address.
+[/ed_text]
+[ed_updates]
+  [ed_update dir="up"]Industrial electricity tariff Tk 12.52 to 16.36 per kWh (about 10.3 US cents) since June 2026, +16.7%.[/ed_update]
+  [ed_update dir="up"]Spot LNG nearly three times its pre-war price; LNG deliveries −83% between July and August (Hormuz and the FSRU fire).[/ed_update]
+  [ed_update dir="up"]Power shortfall above 3,000 MW; rural outages up to 16 hours a day.[/ed_update]
+  [ed_update dir="up"]Diesel about 70% dearer than before the war; a large group's daily energy bill USD 300,000 against 200,000.[/ed_update]
+  [ed_update dir="flat"]Industrial gas Tk 30 per cubic metre for existing users, Tk 40 to 42 for new connections, unchanged since April 2025.[/ed_update]
+[/ed_updates]
+[ed_figs]
+  [ed_fig label="Electricity, industry" value="10.3" unit="US c/kWh" trend="up|+16.7% in Jun 2026|flat|up"]June 2026 tariff[/ed_fig]
+  [ed_fig label="Industrial gas" value="7" unit="USD/MMBtu" trend="flat|unchanged since Apr 2025|flat|up"]Tk 30 existing, Tk 40 to 42 new connections[/ed_fig]
+  [ed_fig label="Power shortfall" value="3,000" unit="MW" trend="up|worsening since July|up|up"]October 2026, national[/ed_fig]
+  [ed_fig label="Diesel" value="+70%" trend="up|since March 2026|up|up"]on the pre-war price[/ed_fig]
+  [ed_fig label="Grid losses" value="8%" unit="of output" trend="flat|lowest of the five|flat|down"]2024 (World Bank)[/ed_fig]
+  [ed_fig label="Outages"]not loaded[/ed_fig]
+[/ed_figs]
+[ed_risks]
+  [ed_risk level="high" title="Power and gas supply in the dry season" horizon="Nov 2026 to Mar 2027"]LNG deliveries down 83% in August, one regasification terminal out, a shortfall above 3,000 MW, diesel 70% dearer.[ed_watch]the terminal repair, LNG cargo arrivals, load-shedding hours, the start of the Rooppur plant.[/ed_watch][/ed_risk]
+  [ed_risk level="medium" title="Tariff increases" horizon="2027"]A tariff that does not follow the LNG price is paid by the budget; the IMF asks for lower subsidies.[ed_watch]BERC tariff orders for electricity and gas.[/ed_watch][/ed_risk]
+[/ed_risks]
+[ed_gap]outage or load-shedding frequency, gas rationing episodes, LNG import prices.[/ed_gap]
+[/ed_section]
+
+[ed_facts]
+  [ed_fact label="Trade preferences"]EU EBA (duty-free, quota-free) as an LDC; graduation deferred by the UN General Assembly (29 October 2026) to 24 November 2029; EBA continues three years after graduation, GSP+ and an EU FTA planned afterwards. UK DCTS. No US preference.[/ed_fact]
+  [ed_fact label="Tariff, US"]26% on apparel: MFN (about 16%) plus the 10% Section 301 forced-labour duty since 24 July 2026. Textile and apparel tariff-rate quotas announced in July 2026, not established.[/ed_fact]
+  [ed_fact label="Tariff, EU"]0% under EBA; the standard rate on apparel would be 12%.[/ed_fact]
+  [ed_fact label="Destination shares"]EU 48%, US 17% of apparel exports. Approximation, to be replaced by ITC trade data.[/ed_fact]
+  [ed_fact label="Sovereign rating"]S&P B+ negative (outlook revised July 2026). Fitch B+ negative (May 2026). Moody's B2 stable (outlook revised 15 September 2026).[/ed_fact]
+  [ed_fact label="IMF"]ECF/EFF/RSF of 2023 stalled in November 2025 with USD 3.8 billion disbursed; a new three-year programme of USD 4.5 billion is under negotiation, agreement targeted for December 2026.[/ed_fact]
+  [ed_fact label="Import restrictions"]Partial since September 2024 (letter of credit margins on non-essential imports); broad from July 2022 to September 2024.[/ed_fact]
+  [ed_fact label="Parallel market"]Crawling peg since May 2024; the kerb premium is not tracked.[/ed_fact]
+  [ed_fact label="Sanctions"]Targeted: US sanctions on the Rapid Action Battalion and named officers since 10 December 2021.[/ed_fact]
+  [ed_fact label="Minimum wage"]Garment sector BDT 12,500 a month since 1 December 2023 (wage board award), with a 9% annual increment on basic pay since January 2025. New wage board being formed, October 2026.[/ed_fact]
+  [ed_fact label="Electricity"]About 10.3 US cents per kWh for medium-voltage industry (Tk 12.52 to 16.36 per kWh after the June 2026 rise of 16.68%).[/ed_fact]
+  [ed_fact label="Industrial gas"]Tk 30 per cubic metre within sanctioned load (about USD 7 per MMBtu); Tk 40 to 42 for new connections and captive power since April 2025.[/ed_fact]
+[/ed_facts]
+
+[ed_benchmark]
+
+[ed_scores]
+
+[ed_method]
+[ed_sources]
+GDELT Project, event database on Google BigQuery: protest events (CAMEO root code 14) located in the country, counted by month; a machine-coded measure of protest news, not a verified event count.
+Bangladesh Bank: reserves, remittances, repo rate, private credit, classified loan ratio, exchange rate (IMF for the period average); BBS: consumer prices; EPB: apparel exports.
+IMF World Economic Outlook: public debt, fiscal balance. World Bank International Debt Statistics and WDI: external debt, debt service, interest payments, logistics performance, liner connectivity, container traffic, power losses.
+USTR and CBP: tariffs. European Commission: EBA and GSP. UN CDP and ECOSOC: LDC graduation.
+Minimum Wage Board, Ministry of Labour: wage scale. BERC: electricity and gas tariffs. Election Commission: election dates.
+Fitch, S&P, Moody's: ratings. IMF: programme status. Transparency International: Corruption Perceptions Index. OFAC: sanctions.
+[/ed_sources]
+[/ed_method]
