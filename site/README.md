@@ -31,9 +31,16 @@ Each page is one self-contained HTML file published as a claude.ai artifact, wit
 
 ## Workflow of an edition
 
-1. `python3 build_pages.py --fetch`: the build prints the tiles whose series moved since the text was written.
+1. `python3 build_pages.py --fetch`: the build prints the tiles whose series moved since the previous build
+   (`data/last_build.json` remembers what each build saw).
 2. Update the hand-written values and sentences next to them in the specs.
 3. Build again, look at the page, publish it to its artifact URL, make the PDF.
+
+## Daily refresh
+
+A scheduled task runs every morning after the nightly sheet push: `build_pages.py --fetch`, republish of the five
+artifacts (computed parts only: trends, currency block, charts, scores, benchmark), commit of `data/`, and a report of
+the tiles whose series moved. The text of a page changes only when an edition is rewritten.
 
 ## Artifacts
 

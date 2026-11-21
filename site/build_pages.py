@@ -583,11 +583,41 @@ def load_spec(iso):
     return mod.SPEC
 
 
+def tile_check(spec, S, seen):
+    """Print the tiles whose series has moved to a new month since the last build, so the hand-written value and
+    note next to the computed trend can be updated; data/last_build.json remembers what each build saw."""
+    iso = spec['iso']
+    prev = seen.get(iso, {})
+    now = {}
+    moved = []
+    for key, sec in sections_of(spec):
+        for f in sec.get('figs', []):
+            code = f.get('code') if isinstance(f, dict) else None
+            if not code or code not in S or 'values' not in S[code]:
+                continue
+            vals = S[code]['values']
+            idx = [k for k, v in enumerate(vals) if v is not None]
+            if not idx:
+                continue
+            last = add_months(S[code]['start'], idx[-1])
+            now[code] = dict(last=last, value=vals[idx[-1]])
+            if prev.get(code, {}).get('last') != last or prev.get(code, {}).get('value') != vals[idx[-1]]:
+                moved.append(f"  {key} {f['label']}: series {code} now {month_label(last)} = {vals[idx[-1]]:g}; tile says {f.get('value')} ({f.get('note', '')})")
+    seen[iso] = now
+    if moved:
+        print(f"{iso}: {len(moved)} tile(s) whose series moved since the last build")
+        print('\n'.join(moved))
+    else:
+        print(f"{iso}: no tile series moved since the last build")
+
+
 def main(isos):
     os.makedirs(os.path.join(HERE, 'dist'), exist_ok=True)
+    seen = load_json('last_build.json') or {}
     for iso in isos:
         spec = load_spec(iso)
         page = render(spec)
+        tile_check(spec, load_series(iso), seen)
         out = os.path.join(HERE, f'{iso.lower()}-profile.html')
         open(out, 'w', encoding='utf-8').write(page)
         standalone = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
@@ -598,6 +628,7 @@ def main(isos):
             n = len(re.findall(r'pilot', page, re.I))
             print(f'  warning: the word "pilot" appears {n} times')
         print(iso, len(page), 'bytes ->', out)
+    json.dump(seen, open(os.path.join(HERE, 'data', 'last_build.json'), 'w', encoding='utf-8'), indent=1)
 
 
 if __name__ == '__main__':

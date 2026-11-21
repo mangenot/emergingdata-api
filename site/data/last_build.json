@@ -1,0 +1,128 @@
+{
+ "KEN": {
+  "EXT_RES": {
+   "last": "2026-09",
+   "value": 14696.06
+  },
+  "INF_CPI": {
+   "last": "2026-10",
+   "value": 7.32
+  },
+  "FIN_POLICY": {
+   "last": "2026-11",
+   "value": 8.75
+  },
+  "TRD_APP_EXP": {
+   "last": "2026-08",
+   "value": 68.39
+  },
+  "TRD_EXP": {
+   "last": "2026-08",
+   "value": 1274.53
+  },
+  "TRD_IMP": {
+   "last": "2026-08",
+   "value": 2555.73
+  },
+  "POL_UNREST": {
+   "last": "2026-10",
+   "value": 183.0
+  }
+ },
+ "BGD": {
+  "EXT_RES": {
+   "last": "2026-07",
+   "value": 31596.81
+  },
+  "INF_CPI": {
+   "last": "2026-09",
+   "value": 8.34
+  },
+  "FIN_POLICY": {
+   "last": "2026-08",
+   "value": 9.5
+  },
+  "EXT_REMIT": {
+   "last": "2026-09",
+   "value": 2766.24
+  },
+  "POL_UNREST": {
+   "last": "2026-10",
+   "value": 251.0
+  }
+ },
+ "PAK": {
+  "EXT_RES": {
+   "last": "2026-10",
+   "value": 31080.16
+  },
+  "FIN_POLICY": {
+   "last": "2026-11",
+   "value": 12.0
+  },
+  "FIN_CREDIT": {
+   "last": "2026-10",
+   "value": 15.92
+  },
+  "TRD_APP_EXP": {
+   "last": "2026-09",
+   "value": 874.79
+  },
+  "POL_UNREST": {
+   "last": "2026-10",
+   "value": 533.0
+  }
+ },
+ "KHM": {
+  "EXT_RES": {
+   "last": "2026-09",
+   "value": 23898.33
+  },
+  "TRD_APP_EXP": {
+   "last": "2026-10",
+   "value": 999.43
+  },
+  "TRD_EXP": {
+   "last": "2026-10",
+   "value": 2931.27
+  },
+  "TRD_IMP": {
+   "last": "2026-10",
+   "value": 3553.77
+  },
+  "POL_UNREST": {
+   "last": "2026-10",
+   "value": 26.0
+  }
+ },
+ "HND": {
+  "EXT_RES": {
+   "last": "2026-09",
+   "value": 11522.7
+  },
+  "INF_CPI": {
+   "last": "2026-10",
+   "value": 6.98
+  },
+  "FIN_POLICY": {
+   "last": "2026-11",
+   "value": 6.0
+  },
+  "TRD_APP_EXP": {
+   "last": "2026-08",
+   "value": 176.57
+  },
+  "TRD_EXP": {
+   "last": "2026-07",
+   "value": 597.51
+  },
+  "TRD_IMP": {
+   "last": "2026-07",
+   "value": 1743.05
+  },
+  "POL_UNREST": {
+   "last": "2026-10",
+   "value": 6.0
+  }
+ }
+}
