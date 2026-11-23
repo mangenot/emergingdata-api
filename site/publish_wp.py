@@ -30,6 +30,26 @@ def call(method, path, body=None, **params):
         raise SystemExit(f"{method} {path}: HTTP {e.code} {e.read().decode('utf-8', 'replace')[:300]}")
 
 
+def whoami():
+    """Check the login before anything else and explain a refusal: WordPress names the cause in its error code
+    (rest_not_logged_in: the Authorization header never reached PHP; invalid_username / incorrect_password: the
+    secrets; application_passwords_disabled: the feature is off on the site)."""
+    url = f"{URL}/wp-json/wp/v2/users/me?context=edit"
+    token = base64.b64encode(f"{USER}:{PASS}".encode('utf-8')).decode('ascii')
+    req = urllib.request.Request(url, headers={'Authorization': f'Basic {token}', 'Accept': 'application/json'})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            me = json.loads(r.read().decode('utf-8'))
+            print(f"logged in as {me.get('slug')} (roles {', '.join(me.get('roles', []))})")
+    except urllib.error.HTTPError as e:
+        body = e.read().decode('utf-8', 'replace')
+        try:
+            code = json.loads(body).get('code')
+        except Exception:
+            code = body[:120]
+        raise SystemExit(f"login refused: HTTP {e.code}, code {code}; user name length {len(USER)}, password length {len(PASS.replace(' ', ''))}")
+
+
 def push(iso, publish):
     f = json.load(open(os.path.join(WP, f'{iso.lower()}.json'), encoding='utf-8'))
     content = open(os.path.join(WP, f'{iso.lower()}.txt'), encoding='utf-8').read()
@@ -53,5 +73,6 @@ if __name__ == '__main__':
     publish = '--publish' in sys.argv
     if not (URL and USER and PASS):
         raise SystemExit('WP_URL, WP_USER and WP_APP_PASSWORD must be set in the environment')
+    whoami()
     for iso in (args or ['BGD', 'HND', 'KEN', 'KHM', 'PAK']):
         push(iso.upper(), publish)
