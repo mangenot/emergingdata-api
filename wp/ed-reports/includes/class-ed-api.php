@@ -25,6 +25,7 @@ class ED_Api {
             'footer'        => 'EmergingData country report, {name}, apparel. Built from the EmergingData API; series to {fetched}. Scores of {score_month}.',
             'paywall'       => '',
             'show_print'    => 1,
+            'fold'          => 1,
         ];
         $saved = get_option(self::OPTION, []);
         return array_merge($defaults, is_array($saved) ? $saved : []);

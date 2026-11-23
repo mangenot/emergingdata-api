@@ -41,9 +41,42 @@
 .ed-report .title{margin-top:28px}
 .ed-report .title .sub{font-family:var(--font-head);font-size:1.25rem;color:var(--muted);margin-top:4px}
 .ed-report .title .meta{margin-top:10px;font-size:.86rem;color:var(--muted)}
-.ed-report .contents{margin-top:16px;font-size:.9rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px}
-.ed-report .contents a{color:var(--accent-ink);text-decoration:none}
-.ed-report .contents a:hover{text-decoration:underline}
+/* the contents bar stays on screen down the whole report; the current section is underlined */
+.ed-report .contents{position:sticky;top:0;z-index:20;margin-top:18px;padding:8px 0;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:.88rem;color:var(--muted);display:flex;align-items:center;gap:14px}
+.ed-report .contents .links{display:flex;gap:2px 14px;flex:1 1 auto;min-width:0;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.ed-report .contents .links::-webkit-scrollbar{display:none}
+.ed-report .contents a{color:var(--accent-ink);text-decoration:none;padding:2px 0;border-bottom:2px solid transparent}
+.ed-report .contents a:hover{border-bottom-color:var(--line)}
+.ed-report .contents a.active{color:var(--fg);border-bottom-color:var(--accent)}
+.ed-report .contents .tools{flex:0 0 auto;display:flex;gap:8px}
+.ed-report .contents button{font:inherit;font-size:.8rem;color:var(--accent-ink);background:none;border:1px solid var(--line);border-radius:4px;padding:1px 8px;cursor:pointer;white-space:nowrap}
+.ed-report .contents button:hover{border-color:var(--accent-ink)}
+body.admin-bar .ed-report .contents{top:32px}
+@media (max-width:782px){body.admin-bar .ed-report .contents{top:46px}}
+.ed-report section[id]{scroll-margin-top:56px}
+body.admin-bar .ed-report section[id]{scroll-margin-top:88px}
+
+/* the month's updates and figures, folded behind one line on screen */
+.ed-report details.fold{margin-top:16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ed-report details.fold>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0;font-size:.86rem;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+.ed-report details.fold>summary::-webkit-details-marker{display:none}
+.ed-report details.fold>summary:hover .what{color:var(--accent-ink)}
+.ed-report details.fold>summary .toggle::before{content:'Show';font-size:.8rem;letter-spacing:.02em;text-transform:none;color:var(--accent-ink);border:1px solid var(--line);border-radius:4px;padding:1px 8px}
+.ed-report details.fold[open]>summary .toggle::before{content:'Hide'}
+.ed-report details.fold[open]>summary{border-bottom:1px solid var(--line)}
+.ed-report details.fold .fold-body{padding-bottom:16px}
+.ed-report details.fold .fold-body>.updates{margin-top:10px}
+.ed-report details.fold .fold-body>.figs{margin-top:14px}
+
+/* the overview in two columns and the tiles in rows of four on wide screens, as in print */
+@media (min-width:900px){
+  .ed-report .report.overview{max-width:none}
+  .ed-report .report.overview .standfirst{max-width:none}
+  .ed-report .report.overview .ovbody{column-count:2;column-gap:40px}
+  .ed-report .report.overview .ovbody p{max-width:none}
+  .ed-report .report.overview .ovbody h3{break-after:avoid}
+  .ed-report .chapter .figs{grid-template-columns:repeat(4,1fr)}
+}
 
 /* report text */
 .ed-report .report{max-width:74ch}
@@ -207,6 +240,11 @@
   .ed-report .scroll{overflow:visible}
   .ed-report table{min-width:0;font-size:12px}
   .ed-report .tip,.ed-report .hover,.ed-report .contents{display:none!important}
+  .ed-report details.fold{border:0;margin-top:0}
+  .ed-report details.fold>summary{display:none}
+  .ed-report details.fold .fold-body{padding-bottom:0}
+  .ed-report .scores{break-inside:auto}
+  .ed-report #scores{break-inside:auto}
   .ed-report .chip,.ed-report .pill,.ed-report .tag,.ed-report .draft,.ed-report .todo,.ed-report tr.me td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .ed-report a{text-decoration:none;color:inherit}
   .ed-report footer{break-before:avoid}

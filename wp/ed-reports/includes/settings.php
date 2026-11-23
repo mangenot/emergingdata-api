@@ -26,6 +26,7 @@ function ed_reports_sanitize($in): array {
     foreach (['edition', 'global_title', 'global_intro'] as $k) $out[$k] = sanitize_text_field((string) ($in[$k] ?? ''));
     foreach (['global_items', 'bench_foot', 'scores_lede', 'method_items', 'footer', 'paywall'] as $k) $out[$k] = wp_kses_post((string) ($in[$k] ?? ''));
     $out['show_print'] = empty($in['show_print']) ? 0 : 1;
+    $out['fold'] = empty($in['fold']) ? 0 : 1;
     ED_Api::clear_cache();
     return $out;
 }
@@ -80,6 +81,8 @@ function ed_reports_settings_page(): void {
           <tr><th scope="row"><label for="ed_footer">Footer line</label></th>
               <td><input type="text" id="ed_footer" name="<?php echo $o; ?>[footer]" value="<?php echo esc_attr($s['footer']); ?>" class="large-text">
                   <p class="description">{name}, {fetched}, {score_month} are filled in.</p></td></tr>
+          <tr><th scope="row">Screen reading</th>
+              <td><label><input type="checkbox" name="<?php echo $o; ?>[fold]" value="1" <?php checked($s['fold']); ?>> fold the month's updates and the figures of each section behind one line (the reader opens them; "Expand all" in the contents bar; print shows everything)</label></td></tr>
           <tr><th scope="row">Print button</th>
               <td><label><input type="checkbox" name="<?php echo $o; ?>[show_print]" value="1" <?php checked($s['show_print']); ?>> show a Print button in the masthead</label></td></tr>
         </table>

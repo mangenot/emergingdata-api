@@ -14,11 +14,35 @@
 
   /* ---------- contents line: one link per section present ---------- */
   var nav = root.querySelector('#ed-contents');
+  var folds = root.querySelectorAll('details.fold');
   if (nav) {
-    var links = [];
-    root.querySelectorAll('section[id][data-short]').forEach(function (sec) { links.push('<a href="#' + esc(sec.id) + '">' + esc(sec.getAttribute('data-short')) + '</a>'); });
-    nav.innerHTML = links.join('');
-    if (!links.length) nav.style.display = 'none';
+    var links = [], secs = root.querySelectorAll('section[id][data-short]');
+    secs.forEach(function (sec) { links.push('<a href="#' + esc(sec.id) + '">' + esc(sec.getAttribute('data-short')) + '</a>'); });
+    nav.innerHTML = '<div class="links">' + links.join('') + '</div>' + (folds.length ? '<div class="tools"><button type="button" class="fold-all"></button></div>' : '');
+    if (!links.length && !folds.length) nav.style.display = 'none';
+    /* the section in view is underlined */
+    if (window.IntersectionObserver && secs.length) {
+      var current = null;
+      var setActive = function (id) { nav.querySelectorAll('a').forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); }); };
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) current = e.target.id; });
+        if (current) setActive(current);
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      secs.forEach(function (sec) { io.observe(sec); });
+    }
+  }
+  /* the folds: all open or all closed from the bar, the choice kept in this browser */
+  if (folds.length) {
+    var btn = nav ? nav.querySelector('.fold-all') : null;
+    var allOpen = function () { var n = 0; folds.forEach(function (d) { if (d.open) n++; }); return n === folds.length; };
+    var label = function () { if (btn) btn.textContent = allOpen() ? 'Collapse all' : 'Expand all'; };
+    var setAll = function (open) { folds.forEach(function (d) { d.open = open; }); label(); try { localStorage.setItem('ed-fold', open ? 'open' : 'closed'); } catch (e) {} };
+    try { if (localStorage.getItem('ed-fold') === 'open') folds.forEach(function (d) { d.open = true; }); } catch (e) {}
+    label();
+    if (btn) btn.addEventListener('click', function () { setAll(!allOpen()); });
+    folds.forEach(function (d) { d.addEventListener('toggle', label); });
+    /* a link to a section opens its fold */
+    if (nav) nav.addEventListener('click', function (e) { var a = e.target.closest('a'); if (!a) return; var sec = root.querySelector(a.getAttribute('href')); if (sec) sec.querySelectorAll('details.fold').forEach(function (d) { d.open = true; }); label(); });
   }
 
   var block = document.getElementById('ed-report-data');
@@ -170,7 +194,10 @@
   }
 
   /* printing from a browser: open every details element first, close again afterwards */
-  var wasOpen = [];
-  window.addEventListener('beforeprint', function () { wasOpen = []; root.querySelectorAll('details').forEach(function (d) { wasOpen.push(d.open); d.open = true; }); });
-  window.addEventListener('afterprint', function () { root.querySelectorAll('details').forEach(function (d, i) { d.open = !!wasOpen[i]; }); });
+  var wasOpen = null;
+  var openForPrint = function () { if (wasOpen) return; wasOpen = []; root.querySelectorAll('details').forEach(function (d) { wasOpen.push(d.open); d.open = true; }); };
+  var closeAfterPrint = function () { if (!wasOpen) return; root.querySelectorAll('details').forEach(function (d, i) { d.open = !!wasOpen[i]; }); wasOpen = null; };
+  window.addEventListener('beforeprint', openForPrint);
+  window.addEventListener('afterprint', closeAfterPrint);
+  if (window.matchMedia) { var mq = window.matchMedia('print'); if (mq.addEventListener) mq.addEventListener('change', function (e) { if (e.matches) openForPrint(); else closeAfterPrint(); }); }
 })();

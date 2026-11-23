@@ -3,7 +3,7 @@ Contributors: emergingtextiles
 Requires at least: 6.5
 Tested up to: 7.2
 Requires PHP: 8.0
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: Proprietary
 
 Country reports for EmergingData: the text is written in the editor with shortcodes; the figures, tiles, charts, benchmark table and scores are filled from the EmergingData API when the page is displayed.
@@ -29,7 +29,7 @@ The computed parts use the same rules as the prototype pages: a tile with a code
 
 [ed_global]                                 the shared block, from the settings (Label|text lines)
 
-[ed_section key="FIN"]                      keys: FIN, EXT, POL, LOG, ENE (title="..." short="..." for another section)
+[ed_section key="FIN"]                      keys: FIN, EXT, POL, LOG, ENE (title="..." short="..." for another section; fold="0" keeps its updates and figures open)
   [ed_lead]The conclusion in bold.[/ed_lead]
   [ed_currency then="Public finances and the banks" rate="26.91" rate_note="HNL per USD, 20 Nov 2026 (BCH reference)"]
   One sentence per line.
@@ -76,6 +76,9 @@ The computed parts use the same rules as the prototype pages: a tile with a code
 Placeholders filled from the API in the series line, the footer and the ledes: {series} (date and number of series), {fetched}, {name}, {score_date}, {score_month}.
 
 == Changelog ==
+
+= 1.1.0 =
+Screen reading: the contents bar stays on screen with the current section underlined; the month's updates and the figures of each section are folded behind one line (Expand all in the bar; the choice is kept in the browser; print shows everything); the overview runs in two columns and the tiles in rows of four on wide screens. Setting "Screen reading" to switch the folding off; fold="0" on a section keeps it open.
 
 = 1.0.1 =
 The publishing script can log in through the X-ED-Authorization header on servers that drop the standard Authorization header (Apache with PHP-FPM).

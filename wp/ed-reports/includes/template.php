@@ -66,7 +66,9 @@ function ed_reports_title_block(WP_Post $post): string {
     $out .= '<section class="title"><h1>' . esc_html(get_the_title($post)) . '</h1>';
     if ($sub) $out .= '<p class="sub">' . esc_html($sub) . '</p>';
     if ($meta) $out .= '<p class="meta num">' . $meta . '</p>';
-    $out .= '<nav class="contents" aria-label="Contents" id="ed-contents"></nav></section>';
+    $out .= '</section>';
+    // the contents bar is a sibling of the title, not its child, so that it stays on screen down the whole report
+    $out .= '<nav class="contents" aria-label="Contents" id="ed-contents" data-fold="' . (ED_Api::setting('fold') ? '1' : '0') . '"></nav>';
     return $out;
 }
 

@@ -21,6 +21,9 @@
  */
 if (!defined('ABSPATH')) exit;
 
+// markers left outside a section are removed from the final content
+add_filter('the_content', function ($c) { return is_singular('country_report') ? ED_Render::fold($c, false) : $c; }, 12);
+
 /** The raw inner text of every [tag]...[/tag] in a content string, in order (used for lists of items). */
 function ed_sc_items(string $content, string $tag): array {
     $out = [];
@@ -85,7 +88,7 @@ add_shortcode('ed_global', function ($atts, $content = '') {
 // ---------------------------------------------------------------- sections
 add_shortcode('ed_section', function ($atts, $content = '') {
     ed_sc_begin();
-    $a = shortcode_atts(['key' => '', 'title' => '', 'short' => ''], $atts);
+    $a = shortcode_atts(['key' => '', 'title' => '', 'short' => '', 'fold' => ''], $atts);
     $key = strtoupper($a['key']);
     $def = ED_Render::SECTIONS[$key] ?? [$a['title'] ?: 'Section', $a['short'] ?: ($a['title'] ?: 'Section')];
     $title = $a['title'] ?: $def[0];
@@ -94,6 +97,8 @@ add_shortcode('ed_section', function ($atts, $content = '') {
     $GLOBALS['ed_current_section'] = $key;
     $body = do_shortcode(trim((string) $content));
     $GLOBALS['ed_current_section'] = '';
+    $fold = $a['fold'] !== '' ? $a['fold'] === '1' : (bool) ED_Api::setting('fold');
+    $body = ED_Render::fold($body, $fold);
     return '<section class="chapter" id="c' . $n . '" data-key="' . esc_attr($key) . '" data-short="' . esc_attr($n . ' ' . $short) . '"><h2><span class="n">' . $n . '</span>' . esc_html($title) . '</h2>' . $body . '</section>';
 });
 
@@ -144,7 +149,8 @@ add_shortcode('ed_updates', function ($atts, $content = '') {
         if (!isset(ED_Calc::ARROW[$dir])) $dir = 'flat';
         $ups[] = [$dir, trim($text)];
     }
-    return ED_Render::updates_html($ups);
+    $html = ED_Render::updates_html($ups);
+    return $html === '' ? '' : '<!--ed:updates:' . count($ups) . '-->' . $html . '<!--/ed:updates-->';
 });
 add_shortcode('ed_update', fn() => '');
 
@@ -158,7 +164,8 @@ add_shortcode('ed_figs', function ($atts, $content = '') {
         if ($F) { [$figs] = ED_Calc::trade_tiles($F); $out .= implode('', array_map([ED_Render::class, 'fig_html'], $figs)); }
     }
     $out .= do_shortcode(trim((string) $content));
-    return '<div class="figs">' . $out . '</div>';
+    $n = substr_count($out, '<div class="fig">');
+    return '<!--ed:figs:' . $n . '--><div class="figs">' . $out . '</div><!--/ed:figs-->';
 });
 
 add_shortcode('ed_fig', function ($atts, $content = '') {

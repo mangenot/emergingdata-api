@@ -125,6 +125,22 @@ class ED_Render {
         return $text;
     }
 
+    /** Fold the month's updates and the figures of a section behind one line (or just drop the markers). */
+    public static function fold(string $body, bool $fold): string {
+        $one = function ($html, $ups, $figs) use ($fold) {
+            if (!$fold) return $html;
+            $parts = [];
+            if ($ups) $parts[] = 'updates (' . $ups . ')';
+            if ($figs) $parts[] = 'figures (' . $figs . ')';
+            $what = "The month's " . ($parts ? implode(' and ', $parts) : 'details');
+            return '<details class="fold"><summary><span class="what">' . esc_html($what) . '</span><span class="toggle" aria-hidden="true"></span></summary><div class="fold-body">' . $html . '</div></details>';
+        };
+        $body = preg_replace_callback('/<!--ed:updates:(\d+)-->(.*?)<!--\/ed:updates-->\s*<!--ed:figs:(\d+)-->(.*?)<!--\/ed:figs-->/s', fn($m) => $one($m[2] . $m[4], (int) $m[1], (int) $m[3]), $body);
+        $body = preg_replace_callback('/<!--ed:updates:(\d+)-->(.*?)<!--\/ed:updates-->/s', fn($m) => $one($m[2], (int) $m[1], 0), $body);
+        $body = preg_replace_callback('/<!--ed:figs:(\d+)-->(.*?)<!--\/ed:figs-->/s', fn($m) => $one($m[2], 0, (int) $m[1]), $body);
+        return $body;
+    }
+
     /** The latest value of a series formatted for a tile, with its month as the note. */
     public static function auto_value(string $code, int $decimals, ?float $scale = null): array {
         [$v, $m] = ED_Calc::series_last(self::series(), $code);
