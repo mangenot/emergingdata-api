@@ -3,7 +3,7 @@ Contributors: emergingtextiles
 Requires at least: 6.5
 Tested up to: 7.2
 Requires PHP: 8.0
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: Proprietary
 
 Country reports for EmergingData: the text is written in the editor with shortcodes; the figures, tiles, charts, benchmark table and scores are filled from the EmergingData API when the page is displayed.
@@ -12,7 +12,7 @@ Country reports for EmergingData: the text is written in the editor with shortco
 
 1. Settings > ED Reports: the API base (https://emergingdata-api.vercel.app), the client key if the API requires one, the cache (minutes), and the texts shared by every report (the global block, the benchmark note, the scores line, the method points, the footer).
 2. Country reports > Add report: the title is the country name; in the Report box, the country code (HND), the subtitle, the edition and the series line. The text goes in the editor (Text tab), with the shortcodes below. The classic editor is used for this post type, and nothing in the content is rewritten (no automatic paragraphs, no typographic quotes).
-3. The page: the plugin's template wraps the report in the theme's header and footer, without sidebar. The report's stylesheet and script are the ones of the prototype pages, scoped to the report. A Print button prints the report on A4 (light palette, nothing split across pages).
+3. The page: two views at one address. The data view (default) shows the selected data, the overview excerpt, each section with its lead, a few paragraphs, the updates, the figures as a table, the charts and the risks, then what changed, the explorer, the benchmark and the scores; the report view (/report/ after the address) is the full text as printed. The plugin's template wraps the report in the theme's header and footer, without sidebar. The report's stylesheet and script are the ones of the prototype pages, scoped to the report. A Print button prints the report on A4 (light palette, nothing split across pages).
 4. Access: when Paid Memberships Pro is active, its rule for the post decides who sees the body of the report; the figures sent to the browser (series, scores, benchmark) follow the same rule. Editors always see everything.
 5. Data: one API call per country (/api/page-data), cached for the number of minutes set; the last good answer is kept and used if the API does not answer. "Clear the API cache" on the settings page forces a new call.
 
@@ -76,6 +76,9 @@ The computed parts use the same rules as the prototype pages: a tile with a code
 Placeholders filled from the API in the series line, the footer and the ledes: {series} (date and number of series), {fetched}, {name}, {score_date}, {score_month}.
 
 == Changelog ==
+
+= 1.2.0 =
+The data view, the default on screen: the selected data (the currency and its moves, the wage in dollars, the latest releases or the series listed in the report's "Selected data" field), the overview excerpt with the full text behind a button, every section with its lead, the first paragraphs of the analysis (number set in the settings), the month's updates in two columns, the figures as a table with the change on the month and the three-month trend, the charts in two columns and the risks; then what changed in the last two months, an explorer with a range and the other countries, the benchmark (sortable), the scores, the standing facts and the sources. The printed report stays at /reports/<country>/report/ (or ?view=report); a switch in the masthead goes between the two; the setting "Default view" chooses which one the plain address shows.
 
 = 1.1.0 =
 Screen reading: the contents bar stays on screen with the current section underlined; the month's updates and the figures of each section are folded behind one line (Expand all in the bar; the choice is kept in the browser; print shows everything); the overview runs in two columns and the tiles in rows of four on wide screens. Setting "Screen reading" to switch the folding off; fold="0" on a section keeps it open.

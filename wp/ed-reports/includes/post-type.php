@@ -18,7 +18,7 @@ function ed_reports_register_post_type(): void {
         'show_in_rest' => true, 'rest_base' => 'country-reports',    // for the publishing script; the editor stays classic (below)
         'taxonomies' => ['country_tag'],
     ]);
-    foreach (['_ed_iso' => 'Country code', '_ed_subtitle' => 'Subtitle', '_ed_edition' => 'Edition', '_ed_meta' => 'Series line'] as $key => $desc) {
+    foreach (['_ed_iso' => 'Country code', '_ed_subtitle' => 'Subtitle', '_ed_edition' => 'Edition', '_ed_meta' => 'Series line', '_ed_selected' => 'Selected data'] as $key => $desc) {
         register_post_meta('country_report', $key, [
             'type' => 'string', 'single' => true, 'description' => $desc,
             'show_in_rest' => true, 'auth_callback' => fn() => current_user_can('edit_posts'),
@@ -57,6 +57,7 @@ function ed_reports_meta_box(WP_Post $post): void {
     $sub = get_post_meta($post->ID, '_ed_subtitle', true);
     $meta = get_post_meta($post->ID, '_ed_meta', true);
     $edition = get_post_meta($post->ID, '_ed_edition', true);
+    $selected = get_post_meta($post->ID, '_ed_selected', true);
     ?>
     <p><label for="ed_iso"><strong>Country code</strong> (ISO3, as in the API)</label><br>
        <input type="text" id="ed_iso" name="ed_iso" value="<?php echo esc_attr($iso); ?>" maxlength="3" style="width:6em;text-transform:uppercase" placeholder="HND"></p>
@@ -64,6 +65,8 @@ function ed_reports_meta_box(WP_Post $post): void {
        <input type="text" id="ed_subtitle" name="ed_subtitle" value="<?php echo esc_attr($sub); ?>" style="width:100%" placeholder="Apparel sourcing profile"></p>
     <p><label for="ed_edition"><strong>Edition</strong> (masthead)</label><br>
        <input type="text" id="ed_edition" name="ed_edition" value="<?php echo esc_attr($edition); ?>" style="width:100%" placeholder="November 2026 edition"></p>
+    <p><label for="ed_selected"><strong>Selected data</strong> (data view: series codes, comma separated; empty for the six latest releases)</label><br>
+       <input type="text" id="ed_selected" name="ed_selected" value="<?php echo esc_attr($selected); ?>" style="width:100%;text-transform:uppercase" placeholder="INF_CPI, FIN_POLICY, EXT_RES, TRD_APP_EXP"></p>
     <p><label for="ed_meta"><strong>Series line</strong> (under the subtitle; {series} is filled from the API)</label><br>
        <textarea id="ed_meta" name="ed_meta" rows="3" style="width:100%" placeholder="Series to {series}. Scores of 1 November 2026."><?php echo esc_textarea($meta); ?></textarea></p>
     <?php
@@ -81,6 +84,7 @@ add_action('save_post_country_report', function (int $post_id) {
     update_post_meta($post_id, '_ed_subtitle', sanitize_text_field(wp_unslash($_POST['ed_subtitle'] ?? '')));
     update_post_meta($post_id, '_ed_edition', sanitize_text_field(wp_unslash($_POST['ed_edition'] ?? '')));
     update_post_meta($post_id, '_ed_meta', wp_kses_post(wp_unslash($_POST['ed_meta'] ?? '')));
+    update_post_meta($post_id, '_ed_selected', strtoupper(preg_replace('/[^A-Za-z0-9_, ]/', '', (string) ($_POST['ed_selected'] ?? ''))));
 });
 
 // The country code and the API state in the list of reports.

@@ -27,6 +27,8 @@ function ed_reports_sanitize($in): array {
     foreach (['global_items', 'bench_foot', 'scores_lede', 'method_items', 'footer', 'paywall'] as $k) $out[$k] = wp_kses_post((string) ($in[$k] ?? ''));
     $out['show_print'] = empty($in['show_print']) ? 0 : 1;
     $out['fold'] = empty($in['fold']) ? 0 : 1;
+    $out['default_view'] = ($in['default_view'] ?? 'data') === 'report' ? 'report' : 'data';
+    $out['data_paragraphs'] = max(0, min(10, (int) ($in['data_paragraphs'] ?? 2)));
     ED_Api::clear_cache();
     return $out;
 }
@@ -81,6 +83,12 @@ function ed_reports_settings_page(): void {
           <tr><th scope="row"><label for="ed_footer">Footer line</label></th>
               <td><input type="text" id="ed_footer" name="<?php echo $o; ?>[footer]" value="<?php echo esc_attr($s['footer']); ?>" class="large-text">
                   <p class="description">{name}, {fetched}, {score_month} are filled in.</p></td></tr>
+          <tr><th scope="row">Default view</th>
+              <td><label><input type="radio" name="<?php echo $o; ?>[default_view]" value="data" <?php checked($s['default_view'], 'data'); ?>> data view</label> &nbsp;
+                  <label><input type="radio" name="<?php echo $o; ?>[default_view]" value="report" <?php checked($s['default_view'], 'report'); ?>> report view</label>
+                  <p class="description">What /reports/&lt;country&gt;/ shows; the other view is at /report/ or /data/ after the address, and the switch in the masthead.</p></td></tr>
+          <tr><th scope="row"><label for="ed_data_paragraphs">Data view, paragraphs per section</label></th>
+              <td><input type="number" id="ed_data_paragraphs" name="<?php echo $o; ?>[data_paragraphs]" value="<?php echo (int) $s['data_paragraphs']; ?>" min="0" max="10" style="width:5em"> <span class="description">of the section's analysis shown after the lead (0 for the lead alone)</span></td></tr>
           <tr><th scope="row">Screen reading</th>
               <td><label><input type="checkbox" name="<?php echo $o; ?>[fold]" value="1" <?php checked($s['fold']); ?>> fold the month's updates and the figures of each section behind one line (the reader opens them; "Expand all" in the contents bar; print shows everything)</label></td></tr>
           <tr><th scope="row">Print button</th>

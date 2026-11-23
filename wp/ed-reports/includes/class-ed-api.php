@@ -26,6 +26,8 @@ class ED_Api {
             'paywall'       => '',
             'show_print'    => 1,
             'fold'          => 1,
+            'default_view'  => 'data',
+            'data_paragraphs' => 2,
         ];
         $saved = get_option(self::OPTION, []);
         return array_merge($defaults, is_array($saved) ? $saved : []);

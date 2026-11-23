@@ -67,12 +67,16 @@
     return out.length ? out : null;
   }
 
-  function chart(container, spec) {
+  function chart(container, spec, opt) {
+    opt = opt || {};
     var series = [];
-    (spec.series || []).forEach(function (s) { var p = points(s.code, s.scale || 1); if (p) series.push({ name: s.name, pts: p }); });
+    (spec.series || []).forEach(function (s, k) { var p = s.pts || points(s.code, s.scale || 1); if (p && p.length) series.push({ name: s.name, pts: p, color: s.color || null, k: k }); });
     if (!series.length) return;
+    var endI = 0; series.forEach(function (s) { endI = Math.max(endI, s.pts[s.pts.length - 1].i); });
+    var months = opt.months || 0;
+    if (months) series = series.map(function (s) { return { name: s.name, color: s.color, k: s.k, pts: s.pts.filter(function (p) { return p.i > endI - months; }) }; }).filter(function (s) { return s.pts.length; });
     var all = [], first = NX; series.forEach(function (s) { s.pts.forEach(function (p) { all.push(p.v); if (p.i < first) first = p.i; }); });
-    var X0 = Math.max(0, Math.floor(first / 12) * 12), span = NX - X0;
+    var X0 = months ? endI - months + 1 : Math.max(0, Math.floor(first / 12) * 12), NXc = months ? endI + 1 : NX, span = NXc - X0;
     var min = Math.min.apply(null, all), max = Math.max.apply(null, all);
     if (spec.zero) min = Math.min(0, min);
     var step = niceStep((max - min) || Math.abs(max) || 1, 4), y0 = Math.floor(min / step) * step, y1 = Math.ceil(max / step) * step;
@@ -81,7 +85,7 @@
     var d = spec.decimals || 0, td = spec.tickDecimals == null ? d : spec.tickDecimals;
     var labels = []; for (var v = y0; v <= y1 + 1e-9; v += step) labels.push(fmt(v, td));
     var PL = 8 + 6.2 * Math.max.apply(null, labels.map(function (l) { return l.length; }));
-    function xOf(i) { return PL + (i - X0) * (W - PL - PR) / (span - 1); }
+    function xOf(i) { return PL + (i - X0) * (W - PL - PR) / Math.max(1, span - 1); }
     function yOf(v) { return PT + (y1 - v) / (y1 - y0) * (H - PT - PB); }
     var g = '', yb = yOf(y0).toFixed(1);
     labels.forEach(function (l, k) {
@@ -90,8 +94,8 @@
       g += '<text class="tick" x="' + (PL - 6) + '" y="' + (+yy + 3.5).toFixed(1) + '">' + l + '</text>';
     });
     g += '<line class="axis" x1="' + PL + '" x2="' + (W - PR) + '" y1="' + yb + '" y2="' + yb + '"/>';
-    var years = span / 12, every = years > 6 ? 2 : 1, firstYear = BASE + X0 / 12;
-    for (var yr = firstYear; yr <= END_YEAR; yr++) {
+    var years = span / 12, every = years > 6 ? 2 : 1, firstYear = BASE + Math.ceil(X0 / 12), lastYear = BASE + Math.floor((NXc - 1) / 12);
+    for (var yr = firstYear; yr <= lastYear; yr++) {
       var xi = xOf((yr - BASE) * 12).toFixed(1);
       g += '<line class="axis" x1="' + xi + '" x2="' + xi + '" y1="' + yb + '" y2="' + (+yb + 4) + '"/>';
       if ((yr - firstYear) % every === 0) g += '<text class="xl" x="' + xi + '" y="' + (H - 7) + '"' + (yr === firstYear ? ' style="text-anchor:start"' : '') + '>' + yr + '</text>';
@@ -105,34 +109,35 @@
         else if (spec.step) p += 'H' + x + 'V' + y;
         else p += 'L' + x + ' ' + y;
       });
+      var st = s.color ? ' style="stroke:' + s.color + '"' : '', sf = s.color ? ' style="fill:' + s.color + '"' : '';
       if (series.length === 1 && !spec.step) area = '<path class="a1" d="' + p + 'V' + yb + 'H' + xOf(s.pts[0].i).toFixed(1) + 'Z"/>';
-      paths += '<path class="l' + (si + 1) + '" d="' + p + '"/>';
+      paths += '<path class="l' + (si + 1) + '"' + st + ' d="' + p + '"/>';
       var last = s.pts[s.pts.length - 1];
-      ends += '<circle class="end' + (si ? '2' : '') + '" cx="' + xOf(last.i).toFixed(1) + '" cy="' + yOf(last.v).toFixed(1) + '" r="4"/>';
-      ends += '<text class="endl" x="' + (xOf(last.i) + 8).toFixed(1) + '" y="' + (yOf(last.v) + 4).toFixed(1) + '">' + fmt(last.v, d) + '</text>';
+      ends += '<circle class="end' + (si ? '2' : '') + '"' + sf + ' cx="' + xOf(last.i).toFixed(1) + '" cy="' + yOf(last.v).toFixed(1) + '" r="4"/>';
+      if (series.length === 1) ends += '<text class="endl" x="' + (xOf(last.i) + 8).toFixed(1) + '" y="' + (yOf(last.v) + 4).toFixed(1) + '">' + fmt(last.v, d) + '</text>';
     });
     var ref = series[0], lastP = ref.pts[ref.pts.length - 1];
     var ago = null; ref.pts.forEach(function (q) { if (q.i === lastP.i - 12) ago = q; });
     var change = '';
-    if (ago) {
+    if (ago && series.length === 1) {
       var pts = /%/.test(spec.unit || ''), dv = pts ? lastP.v - ago.v : (ago.v ? (lastP.v - ago.v) / Math.abs(ago.v) * 100 : null);
       if (dv === null) change = '';
       else if (Math.abs(dv) < 0.05) change = 'unchanged on a year earlier';
       else change = (dv > 0 ? '+' : '−') + Math.abs(dv).toFixed(1) + (pts ? ' pts' : '%') + ' on a year earlier';
     }
     var el = document.createElement('div'); el.className = 'chart';
-    el.innerHTML = '<div class="chart-head"><h3>' + esc(spec.title) + '</h3><span class="last">' + fmt(lastP.v, d) + ' · ' + monthLabel(lastP.i) + '</span></div>' +
+    el.innerHTML = '<div class="chart-head"><h3>' + esc(spec.title) + '</h3><span class="last">' + (series.length === 1 ? fmt(lastP.v, d) + ' · ' : '') + monthLabel(lastP.i) + '</span></div>' +
       '<div class="chart-unit">' + esc(spec.unit) + (change ? ' <span class="chg">' + change + '</span>' : '') + '</div>' +
-      (series.length > 1 ? '<div class="legend">' + series.map(function (s, i) { return '<span><i class="' + (i ? 'c2' : '') + '"></i>' + esc(s.name) + '</span>'; }).join('') + '</div>' : '') +
+      (series.length > 1 ? '<div class="legend">' + series.map(function (s, i) { return '<span><i class="' + (i ? 'c2' : '') + '"' + (s.color ? ' style="background:' + s.color + '"' : '') + '></i>' + esc(s.name) + '</span>'; }).join('') + '</div>' : '') +
       '<div class="chart-body"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + esc(spec.title) + '">' + area + g + paths + ends +
-      '<g class="hover" style="display:none"><line class="cross" y1="' + PT + '" y2="' + yb + '"/>' + series.map(function (s, i) { return '<circle class="dot ' + (i ? 'end2' : 'end') + '" r="4"/>'; }).join('') + '</g></svg><div class="tip"></div></div>';
+      '<g class="hover" style="display:none"><line class="cross" y1="' + PT + '" y2="' + yb + '"/>' + series.map(function (s, i) { return '<circle class="dot ' + (i ? 'end2' : 'end') + '"' + (s.color ? ' style="fill:' + s.color + '"' : '') + ' r="4"/>'; }).join('') + '</g></svg><div class="tip"></div></div>';
     container.appendChild(el);
 
     var svg = el.querySelector('svg'), hov = el.querySelector('.hover'), tip = el.querySelector('.tip'), cross = hov.querySelector('line'), dots = hov.querySelectorAll('circle');
-    function nearest(s, i) { var best = null; s.pts.forEach(function (p) { if (best === null || Math.abs(p.i - i) < Math.abs(best.i - i)) best = p; }); return best && Math.abs(best.i - i) <= 1.5 * ((S[spec.series[0].code] || {}).every || 1) ? best : null; }
+    function nearest(s, i) { var best = null; s.pts.forEach(function (p) { if (best === null || Math.abs(p.i - i) < Math.abs(best.i - i)) best = p; }); return best && Math.abs(best.i - i) <= 1.5 ? best : null; }
     function show(e) {
       var rect = svg.getBoundingClientRect(), px = (e.clientX - rect.left) * W / rect.width;
-      var i = Math.round(X0 + (px - PL) / (W - PL - PR) * (span - 1)); i = Math.max(X0, Math.min(NX - 1, i));
+      var i = Math.round(X0 + (px - PL) / (W - PL - PR) * (span - 1)); i = Math.max(X0, Math.min(NXc - 1, i));
       var any = false, html = '', ti = i;
       series.forEach(function (s, si) {
         var p = nearest(s, i);
@@ -155,10 +160,14 @@
   /* ---------- appendix: benchmark ---------- */
   function pill(v, t) { return v == null ? '<span class="chip none">–</span>' : '<span class="pill ' + lvl(v) + '">' + Number(v).toFixed(1) + '</span> <span class="arrow">' + arrow(t) + '</span>'; }
   var bench = root.querySelector('#bench');
-  if (bench && BENCH.length) {
-    var rows = BENCH.slice().sort(function (a, b) { return (a.cost == null ? 9 : a.cost) - (b.cost == null ? 9 : b.cost); });
+  var benchSort = { key: 'cost', asc: true };
+  var BENCH_COLS = [['name', 'Country'], ['cost', 'Cost pressure'], ['risk', 'Disruption risk'], ['wage', 'Wage, USD a month'], ['cpi', 'Inflation, %'], ['moi', 'Reserves, months of imports'], ['dep', 'Depreciation, 12 months, %'], ['real', 'Real move, 12 months, %'], ['gdebt', 'Public debt, % of GDP'], ['tariff', 'Tariff, main market, %'], ['npl', 'NPL ratio, %'], ['app', 'Apparel exports, 12 months, USD m']];
+  BENCH.forEach(function (r) { r.real = (r.dep != null && r.cpi != null) ? (1 - (1 + r.dep / 100) * 1.03 / (1 + r.cpi / 100)) * 100 : null; });
+  function drawBench() {
+    var k = benchSort.key, asc = benchSort.asc;
+    var rows = BENCH.slice().sort(function (a, b) { var x = a[k], y = b[k]; if (x == null) return 1; if (y == null) return -1; return (typeof x === 'string' ? x.localeCompare(y) : x - y) * (asc ? 1 : -1); });
     bench.innerHTML =
-      '<thead><tr><th>Country</th><th>Cost pressure</th><th>Disruption risk</th><th>Wage, USD a month</th><th>Inflation, %</th><th>Reserves, months of imports</th><th>Depreciation, 12 months, %</th><th>Real move, 12 months, %</th><th>Public debt, % of GDP</th><th>Tariff, main market, %</th><th>NPL ratio, %</th><th>Apparel exports, 12 months, USD m</th></tr></thead><tbody>' +
+      '<thead><tr>' + BENCH_COLS.map(function (c) { return '<th data-k="' + c[0] + '"' + (c[0] === k ? ' class="on"' : '') + '>' + c[1] + (c[0] === k ? (asc ? ' \u2191' : ' \u2193') : '') + '</th>'; }).join('') + '</tr></thead><tbody>' +
       rows.map(function (r) {
         var dollarised = r.wageLocal === 'set in USD';
         var realCell = '<td>–</td>';
@@ -176,6 +185,10 @@
           '<td>' + fmt(r.app, 0) + '<span class="sub">' + (r.appChg == null ? '' : (r.appChg >= 0 ? '+' : '−') + Math.abs(r.appChg).toFixed(0) + '% · ') + esc(r.appDate) + '</span></td></tr>';
       }).join('') + '</tbody>';
   }
+  if (bench && BENCH.length) {
+    drawBench();
+    bench.addEventListener('click', function (ev) { var th = ev.target.closest('th'); if (!th || !th.getAttribute('data-k')) return; var k = th.getAttribute('data-k'); if (k === benchSort.key) benchSort.asc = !benchSort.asc; else { benchSort.key = k; benchSort.asc = true; } drawBench(); });
+  }
 
   /* ---------- appendix: scores ---------- */
   function word(t, kind) { if (t === 'stable') return 'stable'; if (kind === 'cost') return t === 'down' ? 'easing' : 'rising'; return t === 'down' ? 'falling' : 'rising'; }
@@ -192,6 +205,8 @@
         return '<tr><td>' + esc(s[1]) + '<span class="sub">' + esc(s[0]) + '</span></td><td>' + chip(s[2], s[3]) + '</td><td>' + chip(s[4], s[5]) + '</td><td style="text-align:left;color:var(--muted)">' + esc(s[6]) + '</td></tr>';
       }).join('') + '</tbody>';
   }
+
+  window.EDReport = { chart: chart, points: points, mIndex: mIndex, monthLabel: monthLabel, fmt: fmt, esc: esc, DATA: DATA, S: S };
 
   /* printing from a browser: open every details element first, close again afterwards */
   var wasOpen = null;

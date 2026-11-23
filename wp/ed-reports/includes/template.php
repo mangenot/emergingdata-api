@@ -6,10 +6,20 @@
  */
 if (!defined('ABSPATH')) exit;
 
+// The two views of a report share its address: /reports/<slug>/ is the data view (or the report, by the setting),
+// /reports/<slug>/report/ the printed report; ?view=report and ?view=data work as well.
+add_action('init', function () {
+    add_rewrite_rule('^reports/([^/]+)/report/?$', 'index.php?country_report=$matches[1]&ed_view=report', 'top');
+    add_rewrite_rule('^reports/([^/]+)/data/?$', 'index.php?country_report=$matches[1]&ed_view=data', 'top');
+    if (get_option('ed_reports_rules') !== ED_REPORTS_VERSION) { flush_rewrite_rules(); update_option('ed_reports_rules', ED_REPORTS_VERSION); }
+}, 20);
+add_filter('query_vars', function ($vars) { $vars[] = 'ed_view'; return $vars; });
+
 add_filter('single_template', function ($template) {
     if (is_singular('country_report')) {
-        $own = locate_template('single-country_report.php');      // a copy in the theme wins
-        return $own ?: ED_REPORTS_DIR . 'templates/single-country_report.php';
+        $name = ed_reports_view() === 'data' ? 'single-country_report-data.php' : 'single-country_report.php';
+        $own = locate_template($name);      // a copy in the theme wins
+        return $own ?: ED_REPORTS_DIR . 'templates/' . $name;
     }
     return $template;
 });
@@ -34,6 +44,10 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('ed-reports', ED_REPORTS_URL . 'assets/report.css', ['ed-reports-fonts'], ED_REPORTS_VERSION);
     if (is_singular('country_report')) {
         wp_enqueue_script('ed-reports', ED_REPORTS_URL . 'assets/report.js', [], ED_REPORTS_VERSION, true);
+        if (ed_reports_view() === 'data') {
+            wp_enqueue_style('ed-reports-data', ED_REPORTS_URL . 'assets/dataview.css', ['ed-reports'], ED_REPORTS_VERSION);
+            wp_enqueue_script('ed-reports-data', ED_REPORTS_URL . 'assets/dataview.js', ['ed-reports'], ED_REPORTS_VERSION, true);
+        }
     }
 });
 
@@ -41,7 +55,14 @@ add_action('wp_enqueue_scripts', function () {
 add_action('wp_footer', function () {
     if (!is_singular('country_report') || !ED_Render::is_used()) return;
     if (!ed_reports_can_view(get_the_ID())) return;
-    $json = wp_json_encode(ED_Render::data_block(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $block = ED_Render::data_block();
+    if (ed_reports_view() === 'data' && ED_Render::data()) {
+        $d = ED_Render::data();
+        $block['NAME'] = $d['name'] ?? '';
+        $block['CURRENCY'] = $d['currency'] ?? '';
+        $block['COMPARE'] = ed_reports_compare_block($d);
+    }
+    $json = wp_json_encode($block, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     echo '<script type="application/json" id="ed-report-data">' . str_replace('</', '<\/', $json) . '</script>' . "\n";
 }, 5);
 
@@ -58,11 +79,14 @@ function ed_reports_can_view(int $post_id): bool {
 function ed_reports_title_block(WP_Post $post): string {
     ED_Render::begin($post->ID);
     $s = ED_Api::settings();
+    $view = ed_reports_view();
     $edition = get_post_meta($post->ID, '_ed_edition', true) ?: $s['edition'];
     $sub = get_post_meta($post->ID, '_ed_subtitle', true);
     $meta = ED_Render::fill((string) get_post_meta($post->ID, '_ed_meta', true));
+    $switch = '<span class="switch">' . ($view === 'data' ? '<span class="on">Data view</span>' : '<a href="' . esc_url(ed_reports_view_url($post, 'data')) . '">Data view</a>')
+            . ($view === 'report' ? '<span class="on">Report view</span>' : '<a href="' . esc_url(ed_reports_view_url($post, 'report')) . '">Report view</a>') . '</span>';
     $out = '<header class="mast"><div class="brand"><span class="wordmark">EmergingData</span><span>Country report</span></div>';
-    $out .= '<div class="edition">' . esc_html($edition) . ($s['show_print'] ? ' <button type="button" class="print" onclick="window.print()">Print</button>' : '') . '</div></header>';
+    $out .= '<div class="edition">' . $switch . esc_html($edition) . ($s['show_print'] && $view === 'report' ? ' <button type="button" class="print" onclick="window.print()">Print</button>' : '') . '</div></header>';
     $out .= '<section class="title"><h1>' . esc_html(get_the_title($post)) . '</h1>';
     if ($sub) $out .= '<p class="sub">' . esc_html($sub) . '</p>';
     if ($meta) $out .= '<p class="meta num">' . $meta . '</p>';
