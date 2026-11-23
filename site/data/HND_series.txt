@@ -1,4 +1,4 @@
-# Honduras (HND): 30 series fetched on 2026-11-22 from https://emergingdata-api.vercel.app; overrides in data/overrides/HND_series.txt
+# Honduras (HND): 30 series fetched on 2026-11-23 from https://emergingdata-api.vercel.app; overrides in data/overrides/HND_series.txt
 ENV_ELOSS|irregular|2019-01=29.97,2020-01=35.32,2021-01=29.74,2022-01=32.02,2023-01=33.97,2024-01=31.52
 ENV_LPI|irregular|2022-01=2.9
 ENV_LPI_CUST|irregular|2022-01=2.8
