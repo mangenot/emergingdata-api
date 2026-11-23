@@ -5,7 +5,7 @@
 .ed-report.ed-data .switch{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;font-size:.86rem;margin-right:12px;vertical-align:middle}
 .ed-report .switch a,.ed-report .switch span{padding:3px 12px;text-decoration:none;color:var(--accent-ink)}
 .ed-report .switch .on{background:var(--accent);color:var(--on-dark)}
-.ed-report.ed-data .label{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block}
+.ed-report.ed-data .label{font-size:.86rem;letter-spacing:.07em;text-transform:uppercase;color:var(--fg);font-weight:700;display:block}
 
 /* selected data */
 .ed-report.ed-data .strip{margin-top:40px}
@@ -20,7 +20,7 @@
 .ed-report.ed-data .dir.up{color:var(--s1)} .ed-report.ed-data .dir.down{color:var(--s5)} .ed-report.ed-data .dir.flat{color:var(--faint)}
 
 /* overview */
-.ed-report.ed-data .stand{margin-top:26px;max-width:none;border:0;padding:0}
+.ed-report.ed-data .stand{margin-top:66px;max-width:none;border:0;padding:0}
 .ed-report.ed-data .stand h2{font-size:1.55rem;margin-bottom:10px}
 .ed-report.ed-data .stand h2 .date{font-family:var(--font-body);font-size:.9rem;font-weight:400;color:var(--muted);margin-left:.5em}
 .ed-report.ed-data .stand .excerpt{font-family:var(--font-head);font-size:1.08rem;font-weight:600;line-height:1.5;max-width:90ch}
@@ -42,13 +42,15 @@
 .ed-report.ed-data .sec .lead{font-family:var(--font-head);font-size:1.18rem;font-weight:600;line-height:1.45;max-width:80ch}
 .ed-report.ed-data .sec .text{max-width:80ch;display:flex;flex-direction:column;gap:10px}
 .ed-report.ed-data .sec .text p{font-size:1.02rem;margin:0}
+.ed-report.ed-data .sec .blk{margin-top:30px}
+.ed-report.ed-data .sec .blk>.label{margin-bottom:4px}
 .ed-report.ed-data .updates{list-style:none;margin:8px 0 0;padding:0;columns:2;column-gap:36px;border:0;max-width:none}
 .ed-report.ed-data .updates li{break-inside:avoid;border-top:1px solid var(--grid);padding:9px 0 9px 22px;position:relative;font-size:.97rem;line-height:1.45;display:block}
 .ed-report.ed-data .updates li .d{position:absolute;left:0;top:11px;font-size:.75rem;margin:0}
-.ed-report.ed-data .figs-t{width:100%;border-collapse:collapse;margin-top:10px;font-size:.95rem}
-.ed-report.ed-data .figs-t th{font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:left;padding:6px 28px 6px 0;border-bottom:1px solid var(--fg);white-space:nowrap;cursor:default}
+.ed-report.ed-data .figs-t{width:100%;border:0;border-collapse:collapse;margin:10px 0 0;font-size:.95rem}
+.ed-report.ed-data .figs-t th{font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:left;padding:6px 28px 6px 0;border:0;border-bottom:1px solid var(--fg);white-space:nowrap;cursor:default}
 .ed-report.ed-data .figs-t th.r{text-align:right;padding-right:58px}
-.ed-report.ed-data .figs-t td{padding:9px 28px 9px 0;border-bottom:1px solid var(--grid);vertical-align:middle;white-space:nowrap;text-align:left;background:none}
+.ed-report.ed-data .figs-t td{padding:9px 28px 9px 0;border:0;border-bottom:1px solid var(--grid);vertical-align:middle;white-space:nowrap;text-align:left;background:none}
 .ed-report.ed-data .figs-t th:last-child,.ed-report.ed-data .figs-t td:last-child{padding-right:0}
 .ed-report.ed-data .figs-t td.name{font-weight:600;white-space:normal;min-width:9em}
 .ed-report.ed-data .figs-t td.name small{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
@@ -59,7 +61,7 @@
 .ed-report.ed-data .figs-t td.w{color:var(--muted);font-size:.9rem}
 .ed-report.ed-data .figs-t td.w.up{color:var(--s1)} .ed-report.ed-data .figs-t td.w.down{color:var(--s5)}
 .ed-report.ed-data .figs-t td.nt{white-space:normal;color:var(--muted);font-size:.85rem;line-height:1.35;min-width:14em;padding-left:24px}
-.ed-report.ed-data .charts{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;margin-top:10px;margin-bottom:30px}
+.ed-report.ed-data .charts{display:grid;grid-template-columns:1fr 1fr;gap:28px 40px;margin-top:10px}
 .ed-report.ed-data .risks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:8px}
 .ed-report.ed-data .risk{border-left:3px solid var(--line);padding:6px 14px;font-size:.95rem;line-height:1.45;background:none;border-radius:0}
 .ed-report.ed-data .risk.high{border-color:var(--s4)} .ed-report.ed-data .risk.medium{border-color:var(--accent)} .ed-report.ed-data .risk.low{border-color:var(--faint)}

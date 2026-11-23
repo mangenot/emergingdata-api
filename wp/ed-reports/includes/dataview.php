@@ -135,12 +135,12 @@ function ed_reports_data_view(WP_Post $post): string {
         if ($sec['lead'] !== '') $out .= '<p class="lead">' . $sec['lead'] . '</p>';
         $paras = array_slice($sec['text'], 0, $n_paras);
         if ($paras) $out .= '<div class="text">' . implode('', array_map(fn($p) => '<p>' . $p . '</p>', $paras)) . '</div>';
-        if ($ups) { $out .= '<div><span class="label">The month\'s updates</span><ul class="updates">'; foreach ($ups as [$d, $t]) $out .= '<li><span class="d dir ' . $d . '">' . ED_Calc::ARROW[$d] . '</span>' . $t . '</li>'; $out .= '</ul></div>'; }
-        if ($figs) $out .= '<div><span class="label">The figures</span>' . ed_reports_fig_table($figs, $S) . '</div>';
+        if ($ups) { $out .= '<div class="blk"><span class="label">The month\'s updates</span><ul class="updates">'; foreach ($ups as [$d, $t]) $out .= '<li><span class="d dir ' . $d . '">' . ED_Calc::ARROW[$d] . '</span>' . $t . '</li>'; $out .= '</ul></div>'; }
+        if ($figs) $out .= '<div class="blk"><span class="label">The figures</span>' . ed_reports_fig_table($figs, $S) . '</div>';
         $codes = array_values(array_filter($sec['charts'], fn($c) => isset(ED_Render::charts()[$c])));
-        if ($codes) $out .= '<div><span class="label">Charts</span><div class="charts" data-charts="' . esc_attr(implode(',', $codes)) . '"></div></div>';
+        if ($codes) $out .= '<div class="blk"><span class="label">Charts</span><div class="charts" data-charts="' . esc_attr(implode(',', $codes)) . '"></div></div>';
         if ($sec['risks']) {
-            $out .= '<div><span class="label">Risks ahead</span><div class="risks">';
+            $out .= '<div class="blk"><span class="label">Risks ahead</span><div class="risks">';
             foreach ($sec['risks'] as $r) $out .= '<div class="risk ' . $r['level'] . '"><strong>' . $r['title'] . '<span class="when">' . $r['horizon'] . '</span></strong>' . $r['text'] . ($r['watch'] !== '' ? '<div class="watch"><b>Watch</b> ' . $r['watch'] . '</div>' : '') . '</div>';
             $out .= '</div></div>';
         }

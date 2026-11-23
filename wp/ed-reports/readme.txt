@@ -3,7 +3,7 @@ Contributors: emergingtextiles
 Requires at least: 6.5
 Tested up to: 7.2
 Requires PHP: 8.0
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: Proprietary
 
 Country reports for EmergingData: the text is written in the editor with shortcodes; the figures, tiles, charts, benchmark table and scores are filled from the EmergingData API when the page is displayed.
@@ -76,6 +76,9 @@ The computed parts use the same rules as the prototype pages: a tile with a code
 Placeholders filled from the API in the series line, the footer and the ledes: {series} (date and number of series), {fetched}, {name}, {score_date}, {score_month}.
 
 == Changelog ==
+
+= 1.2.2 =
+Data view: no cell borders in the tables whatever the theme's table style; 40px more above the overview; 30px more above each block of a section (updates, figures, charts, risks); the block labels darker and larger.
 
 = 1.2.1 =
 Data view: the overview comes before the selected data.

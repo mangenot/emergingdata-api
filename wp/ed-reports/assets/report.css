@@ -177,8 +177,8 @@ body.admin-bar .ed-report section[id]{scroll-margin-top:88px}
 .ed-report .facts dt{color:var(--muted)}
 .ed-report .facts dd{margin:0;min-width:0}
 .ed-report .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.ed-report table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:760px}
-.ed-report th,.ed-report td{padding:8px 10px;text-align:right;vertical-align:bottom;border-bottom:1px solid var(--line);white-space:nowrap}
+.ed-report table{border:0;border-collapse:collapse;border-spacing:0;margin:0;width:100%;font-size:.92rem;min-width:760px}   /* border:0 and margin:0 undo the theme's table grid */
+.ed-report th,.ed-report td{padding:8px 10px;text-align:right;vertical-align:bottom;border:0;border-bottom:1px solid var(--line);white-space:nowrap}
 .ed-report th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;border-bottom:1px solid var(--fg);white-space:normal;max-width:9em;line-height:1.25}
 .ed-report th:first-child,.ed-report td:first-child{text-align:left}
 .ed-report td{font-variant-numeric:tabular-nums}
