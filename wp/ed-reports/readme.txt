@@ -3,7 +3,7 @@ Contributors: emergingtextiles
 Requires at least: 6.5
 Tested up to: 7.2
 Requires PHP: 8.0
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: Proprietary
 
 Country reports for EmergingData: the text is written in the editor with shortcodes; the figures, tiles, charts, benchmark table and scores are filled from the EmergingData API when the page is displayed.
@@ -76,6 +76,9 @@ The computed parts use the same rules as the prototype pages: a tile with a code
 Placeholders filled from the API in the series line, the footer and the ledes: {series} (date and number of series), {fetched}, {name}, {score_date}, {score_month}.
 
 == Changelog ==
+
+= 1.2.1 =
+Data view: the overview comes before the selected data.
 
 = 1.2.0 =
 The data view, the default on screen: the selected data (the currency and its moves, the wage in dollars, the latest releases or the series listed in the report's "Selected data" field), the overview excerpt with the full text behind a button, every section with its lead, the first paragraphs of the analysis (number set in the settings), the month's updates in two columns, the figures as a table with the change on the month and the three-month trend, the charts in two columns and the risks; then what changed in the last two months, an explorer with a range and the other countries, the benchmark (sortable), the scores, the standing facts and the sources. The printed report stays at /reports/<country>/report/ (or ?view=report); a switch in the masthead goes between the two; the setting "Default view" chooses which one the plain address shows.

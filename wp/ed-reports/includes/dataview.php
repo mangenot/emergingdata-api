@@ -106,7 +106,7 @@ function ed_reports_data_view(WP_Post $post): string {
         $rate = in_array($code, ED_Calc::RATE_CODES, true);
         $rows[] = ed_reports_sel_row(esc_html($meta[$code]['name'] ?? $code), esc_html(ED_Calc::month_label($m) . ' · ' . ($meta[$code]['unit'] ?? '')), ED_Calc::fmt($v, $rate ? 2 : (abs($v) >= 100 ? 0 : 2)), $tr ? ed_reports_dir_span($tr['dir'], $tr['change']) : '');
     }
-    if ($rows) $out .= '<section class="strip" aria-label="Selected data"><div class="card"><span class="label">Selected data</span><div class="latest two-col">' . implode('', $rows) . '</div></div></section>';
+    $strip = $rows ? '<section class="strip" aria-label="Selected data"><div class="card"><span class="label">Selected data</span><div class="latest two-col">' . implode('', $rows) . '</div></div></section>' : '';
 
     // ---- overview
     if ($R['overview']) {
@@ -119,6 +119,7 @@ function ed_reports_data_view(WP_Post $post): string {
               . '<div class="more"><button type="button" class="btn ov-btn" aria-expanded="false">Read the full overview</button></div>'
               . '<div class="ov" hidden>' . $body . '</div></section>';
     }
+    $out .= $strip;      // the selected data come after the overview
 
     // ---- sections
     $n_paras = max(0, (int) $s['data_paragraphs']);
