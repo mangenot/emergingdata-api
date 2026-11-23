@@ -1,6 +1,7 @@
 # Pushes the converted country reports (site/wp/*.txt) to the WordPress site as drafts, or publishes them.
 # Run by hand from the Actions tab. Secrets to set in the repository (Settings > Secrets and variables > Actions):
 #   WP_URL (https://emergingdata.net), WP_USER (the WordPress user), WP_APP_PASSWORD (an application password of that user).
+#   They live in the repository environment named "WP_URL" (Settings > Environments), which the job declares below.
 name: Publish reports to WordPress
 on:
   workflow_dispatch:
@@ -16,6 +17,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment: WP_URL
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
