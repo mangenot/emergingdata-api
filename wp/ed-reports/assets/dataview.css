@@ -8,7 +8,7 @@
 .ed-report.ed-data .label{font-size:.86rem;letter-spacing:.07em;text-transform:uppercase;color:var(--fg);font-weight:700;display:block}
 
 /* selected data */
-.ed-report.ed-data .strip{margin-top:40px}
+.ed-report.ed-data .strip{margin-top:50px}
 .ed-report.ed-data .card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px 22px;min-width:0}
 .ed-report.ed-data .card .label{margin-bottom:12px}
 .ed-report.ed-data .latest{font-size:.95rem;columns:2;column-gap:48px}
@@ -20,10 +20,10 @@
 .ed-report.ed-data .dir.up{color:var(--s1)} .ed-report.ed-data .dir.down{color:var(--s5)} .ed-report.ed-data .dir.flat{color:var(--faint)}
 
 /* overview */
-.ed-report.ed-data .stand{margin-top:66px;max-width:none;border:0;padding:0}
+.ed-report.ed-data .stand{margin-top:46px;max-width:none;border:0;padding:0}
 .ed-report.ed-data .stand h2{font-size:1.55rem;margin-bottom:10px}
 .ed-report.ed-data .stand h2 .date{font-family:var(--font-body);font-size:.9rem;font-weight:400;color:var(--muted);margin-left:.5em}
-.ed-report.ed-data .stand .excerpt{font-family:var(--font-head);font-size:1.08rem;font-weight:600;line-height:1.5;max-width:90ch}
+.ed-report.ed-data .stand .excerpt{font-family:var(--font-head);font-size:1.08rem;font-weight:400;line-height:1.5;max-width:90ch}
 .ed-report.ed-data .stand .more{margin-top:10px}
 .ed-report.ed-data .btn{font:inherit;border:1px solid var(--line);border-radius:4px;padding:3px 10px;color:var(--accent-ink);font-size:.84rem;background:none;cursor:pointer}
 .ed-report.ed-data .btn:hover{border-color:var(--accent-ink)}
@@ -39,7 +39,7 @@
 .ed-report.ed-data .sec .head a{font-size:.9rem;white-space:nowrap}
 .ed-report.ed-data .sec h2{font-size:1.55rem;display:flex;gap:12px;align-items:baseline;margin:0}
 .ed-report.ed-data .sec h2 .n{font-family:var(--font-body);font-weight:700;font-size:.8rem;color:var(--muted);letter-spacing:.04em}
-.ed-report.ed-data .sec .lead{font-family:var(--font-head);font-size:1.18rem;font-weight:600;line-height:1.45;max-width:80ch}
+.ed-report.ed-data .sec .lead{font-family:var(--font-head);font-size:1.18rem;font-weight:400;line-height:1.45;max-width:80ch}
 .ed-report.ed-data .sec .text{max-width:80ch;display:flex;flex-direction:column;gap:10px}
 .ed-report.ed-data .sec .text p{font-size:1.02rem;margin:0}
 .ed-report.ed-data .sec .blk{margin-top:30px}
