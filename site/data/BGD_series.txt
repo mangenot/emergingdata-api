@@ -1,4 +1,4 @@
-# Bangladesh (BGD): 39 series fetched on 2026-11-23 from https://emergingdata-api.vercel.app; overrides in data/overrides/BGD_series.txt
+# Bangladesh (BGD): 39 series fetched on 2026-11-24 from https://emergingdata-api.vercel.app; overrides in data/overrides/BGD_series.txt
 ENV_ELEC|irregular|2026-06=10.3
 ENV_ELOSS|irregular|2019-01=8.14,2020-01=8.1,2021-01=7.78,2022-01=7.32,2023-01=7.9,2024-01=8.19
 ENV_GAS|irregular|2025-04=7
