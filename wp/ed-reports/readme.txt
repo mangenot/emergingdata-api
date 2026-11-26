@@ -3,7 +3,7 @@ Contributors: emergingtextiles
 Requires at least: 6.5
 Tested up to: 7.2
 Requires PHP: 8.0
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 License: Proprietary
 
 Country reports for EmergingData: the text is written in the editor with shortcodes; the figures, tiles, charts, benchmark table and scores are filled from the EmergingData API when the page is displayed.
@@ -20,7 +20,10 @@ The computed parts use the same rules as the prototype pages: a tile with a code
 
 == Shortcodes ==
 
-[ed_reports_index]                          the latest report of each country, as cards (home page, reports index)
+[ed_reports_index title="The reports" aside="..."]   the latest report of each country, as cards (home page, reports index)
+[ed_home_hero]...[/ed_home_hero]            home page: the opening band with the text written in the page and the currencies chart
+[ed_home_strip]                             home page: the figures of the morning (title, lede, foot to replace the texts)
+[ed_home_changed]                           home page: the latest releases across the countries (items="14")
 
 [ed_overview date="21 November 2026"]
   [ed_standfirst]The summary in bold.[/ed_standfirst]
@@ -78,6 +81,9 @@ The computed parts use the same rules as the prototype pages: a tile with a code
 Placeholders filled from the API in the series line, the footer and the ledes: {series} (date and number of series), {fetched}, {name}, {score_date}, {score_month}.
 
 == Changelog ==
+
+= 1.4.0 =
+The home page: [ed_home_hero]...[/ed_home_hero] (the opening band, full width, with the text written in the page and the chart of the five currencies in real terms over three years, hover for the values), [ed_home_strip] (the figures of the morning: the currency and its twelve-month moves, inflation, the garment wage in dollars, apparel exports over twelve months, the two scores as pills), [ed_home_changed] (the latest releases across the countries, newest first), and the report cards with a colour band per country, the monthly apparel exports with a sparkline and the two scores. The countries of the blocks come from the setting "Home page countries". The header and the footer are now teal bands.
 
 = 1.3.0 =
 The site frame: on the first load the GeneratePress layout is set (full width, no sidebar, menu to the right of the site title, tagline shown, no footer widgets) and the main menu created (Reports, Methodology, Subscribe, Log in, which reads Log out for a logged-in reader); both can be changed afterwards in the Customizer and under Appearance > Menus. A site stylesheet on every page (header, menu, content column, footer, the blocks of the home page). The footer line comes from the setting "Site footer". [ed_reports_index] lists the latest report of each country (drafts included for editors); the reports index at /reports/ uses the same list. The site's pages (home, methodology, subscribe, legal notice, privacy) are written in the repository (site/wp/pages) and pushed by the action "Set up the site".

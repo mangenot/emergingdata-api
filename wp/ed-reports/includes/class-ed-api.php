@@ -24,6 +24,7 @@ class ED_Api {
             'method_items'  => "Each section opens with its introduction and a short analysis, then the month's updates and the figures behind them with their direction; the \"to add\" line names the indicators of the template not loaded yet.\nDated events (elections, wage reviews, preference dates) feed the scores but are not listed on the page.\nThe scores in the appendix follow published rules on one or two inputs each; ranks (inflation, wage) are among the countries covered.\nScores are frozen on the first day of the month from the data available that day; the sections show the latest data, so a figure can be newer than the score.\nValues marked \"verify\" are awaiting a check and are not used in the scores.",
             'footer'        => 'EmergingData country report, {name}, apparel. Built from the EmergingData API; series to {fetched}. Scores of {score_month}.',
             'paywall'       => '',
+            'home_countries' => 'BGD, KHM, HND, KEN, PAK',
             'site_footer'   => 'EmergingData, by <a href="https://emergingtextiles.com">EmergingTextiles.com</a> &middot; <a href="{home}methodology/">Methodology</a> &middot; <a href="{home}legal-notice/">Legal notice</a> &middot; <a href="{home}privacy/">Privacy</a> &middot; &copy; {year} EmergingTextiles.com SARL',
             'show_print'    => 1,
             'fold'          => 1,

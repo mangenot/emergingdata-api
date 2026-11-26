@@ -126,31 +126,36 @@ function ed_site_excerpt(WP_Post $post): string {
     $r = ED_Parse::report($post->post_content);
     $text = trim(wp_strip_all_tags((string) ($r['overview']['standfirst'] ?? '')));
     if ($text === '' && $post->post_excerpt) $text = trim(wp_strip_all_tags($post->post_excerpt));
-    if (mb_strlen($text) <= 240) return $text;
-    $cut = mb_substr($text, 0, 240);
+    if (mb_strlen($text) <= 230) return $text;
+    $cut = mb_substr($text, 0, 230);
     $end = mb_strrpos($cut, '. ');
     if ($end !== false && $end > 80) return mb_substr($cut, 0, $end + 1);
     $sp = mb_strrpos($cut, ' ');
     return rtrim(mb_substr($cut, 0, $sp ?: 240), ' ,;:') . '…';
 }
 
-function ed_site_reports_index(): string {
+function ed_site_reports_index(array $a = []): string {
     $posts = ed_site_latest_reports();
-    if (!$posts) return '<p class="ed-none">No report published yet.</p>';
+    $head = !empty($a['title']) ? ed_home_block_head($a['title'], esc_html($a['aside'] ?? '')) : '';
+    if (!$posts) return $head . '<p class="ed-none">No report published yet.</p>';
     $out = '<div class="ed-cards">';
     foreach ($posts as $p) {
+        $iso = strtoupper((string) get_post_meta($p->ID, '_ed_iso', true));
         $sub = get_post_meta($p->ID, '_ed_subtitle', true);
         $edition = get_post_meta($p->ID, '_ed_edition', true) ?: get_the_date('F Y', $p) . ' edition';
+        $r = ED_Parse::report($p->post_content);
+        $date = trim((string) ($r['overview']['date'] ?? ''));
         $draft = $p->post_status !== 'publish' ? ' <span class="ed-draft">' . esc_html($p->post_status) . '</span>' : '';
         $url = get_permalink($p);
-        $out .= '<article class="ed-card">'
+        $out .= '<article class="ed-card" style="--cc:' . ($iso ? ed_home_color($iso) : 'var(--accent)') . '">'
               . '<h3><a href="' . esc_url($url) . '">' . esc_html(get_the_title($p)) . '</a></h3>'
               . ($sub ? '<p class="sub">' . esc_html($sub) . '</p>' : '')
-              . '<p class="ed">' . esc_html($edition) . $draft . '</p>'
+              . '<p class="ed">' . esc_html($edition) . ($date !== '' ? ' &middot; ' . esc_html($date) : '') . $draft . '</p>'
+              . ($iso ? ed_home_card_extras($iso) : '')
               . '<p class="text">' . esc_html(ed_site_excerpt($p)) . '</p>'
               . '<p class="links"><a href="' . esc_url(function_exists('ed_reports_view_url') ? ed_reports_view_url($p, 'data') : $url) . '">Data view</a> <a href="' . esc_url(function_exists('ed_reports_view_url') ? ed_reports_view_url($p, 'report') : $url) . '">Report</a></p>'
               . '</article>';
     }
-    return $out . '</div>';
+    return $head . $out . '</div>';
 }
-add_shortcode('ed_reports_index', fn() => ed_site_reports_index());
+add_shortcode('ed_reports_index', fn($atts) => '<section class="ed-block ed-reports-block">' . ed_site_reports_index(shortcode_atts(['title' => '', 'aside' => ''], $atts, 'ed_reports_index')) . '</section>');

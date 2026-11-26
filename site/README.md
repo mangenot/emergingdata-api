@@ -62,7 +62,8 @@ The reports move to the site through the ED Reports plugin (`wp/ed-reports`, zip
   (first line `title: ...`, then HTML, one block per paragraph of the file; created or updated in place by slug), the
   home page as the front page, the stock sample content to the trash. The GitHub Action "Set up the site"
   (`.github/workflows/setup-site.yml`) runs it with the same secrets. The frame itself (theme layout, menu, footer
-  line, stylesheet, the reports cards) is in the plugin (`includes/site.php`, `assets/site.css`).
+  line, stylesheet, the reports cards) is in the plugin (`includes/site.php`, `assets/site.css`); the home page blocks
+  (opening band and chart, the figures of the morning, what changed) in `includes/home.php` and `assets/home.js`.
 - `/api/page-data?country=HND`: everything a page needs in one call (series since 2019, facts, scores with inputs,
   benchmark rows, currency figures, real exchange rate), cached 30 minutes at the edge and for the minutes set in
   the plugin on the site.

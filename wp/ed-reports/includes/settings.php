@@ -25,6 +25,7 @@ function ed_reports_sanitize($in): array {
     $out['sector'] = strtoupper(preg_replace('/[^A-Za-z]/', '', (string) ($in['sector'] ?? 'APP'))) ?: 'APP';
     foreach (['edition', 'global_title', 'global_intro'] as $k) $out[$k] = sanitize_text_field((string) ($in[$k] ?? ''));
     foreach (['global_items', 'bench_foot', 'scores_lede', 'method_items', 'footer', 'paywall', 'site_footer'] as $k) $out[$k] = wp_kses_post((string) ($in[$k] ?? ''));
+    $out['home_countries'] = strtoupper(preg_replace('/[^A-Za-z, ]/', '', (string) ($in['home_countries'] ?? '')));
     $out['show_print'] = empty($in['show_print']) ? 0 : 1;
     $out['fold'] = empty($in['fold']) ? 0 : 1;
     $out['default_view'] = ($in['default_view'] ?? 'data') === 'report' ? 'report' : 'data';
@@ -83,6 +84,9 @@ function ed_reports_settings_page(): void {
           <tr><th scope="row"><label for="ed_footer">Footer line</label></th>
               <td><input type="text" id="ed_footer" name="<?php echo $o; ?>[footer]" value="<?php echo esc_attr($s['footer']); ?>" class="large-text">
                   <p class="description">{name}, {fetched}, {score_month} are filled in.</p></td></tr>
+          <tr><th scope="row"><label for="ed_home_countries">Home page countries</label></th>
+              <td><input type="text" id="ed_home_countries" name="<?php echo $o; ?>[home_countries]" value="<?php echo esc_attr($s['home_countries']); ?>" class="regular-text" style="text-transform:uppercase">
+                  <p class="description">Country codes, comma separated, in the order of the home page blocks (the opening chart, the figures of the morning, what changed).</p></td></tr>
           <tr><th scope="row"><label for="ed_site_footer">Site footer</label></th>
               <td><textarea id="ed_site_footer" name="<?php echo $o; ?>[site_footer]" rows="3" class="large-text code"><?php echo esc_textarea($s['site_footer']); ?></textarea>
                   <p class="description">The line at the foot of every page of the site (HTML allowed); {year} and {home} are filled in. Empty keeps the theme's own line.</p></td></tr>
