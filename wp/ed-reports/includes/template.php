@@ -40,8 +40,7 @@ add_filter('generate_show_title', function ($show) { return is_singular('country
 
 add_action('wp_enqueue_scripts', function () {
     if (!is_singular('country_report') && !is_post_type_archive('country_report') && !is_tax('country_tag')) return;
-    wp_enqueue_style('ed-reports-fonts', 'https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap', [], null);
-    wp_enqueue_style('ed-reports', ED_REPORTS_URL . 'assets/report.css', ['ed-reports-fonts'], ED_REPORTS_VERSION);
+    wp_enqueue_style('ed-reports', ED_REPORTS_URL . 'assets/report.css', ['ed-reports-fonts'], ED_REPORTS_VERSION);   // the fonts come with site.css (site.php)
     if (is_singular('country_report')) {
         wp_enqueue_script('ed-reports', ED_REPORTS_URL . 'assets/report.js', [], ED_REPORTS_VERSION, true);
         if (ed_reports_view() === 'data') {

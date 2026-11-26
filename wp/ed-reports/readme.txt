@@ -3,7 +3,7 @@ Contributors: emergingtextiles
 Requires at least: 6.5
 Tested up to: 7.2
 Requires PHP: 8.0
-Stable tag: 1.2.3
+Stable tag: 1.3.0
 License: Proprietary
 
 Country reports for EmergingData: the text is written in the editor with shortcodes; the figures, tiles, charts, benchmark table and scores are filled from the EmergingData API when the page is displayed.
@@ -19,6 +19,8 @@ Country reports for EmergingData: the text is written in the editor with shortco
 The computed parts use the same rules as the prototype pages: a tile with a code shows the change on the month and the direction over three and twelve months (rates in points with a 0.15 point threshold, levels in per cent with 1%); the currency block shows the rate, the nominal and real twelve-month moves and the wage in dollars; the trade section opens with the import cost in local currency and the export cost in dollars, and its first update line says the same in words; the benchmark table lists every scored country ordered by cost pressure; the scores table shows the engine's section scores with a line of its inputs.
 
 == Shortcodes ==
+
+[ed_reports_index]                          the latest report of each country, as cards (home page, reports index)
 
 [ed_overview date="21 November 2026"]
   [ed_standfirst]The summary in bold.[/ed_standfirst]
@@ -76,6 +78,9 @@ The computed parts use the same rules as the prototype pages: a tile with a code
 Placeholders filled from the API in the series line, the footer and the ledes: {series} (date and number of series), {fetched}, {name}, {score_date}, {score_month}.
 
 == Changelog ==
+
+= 1.3.0 =
+The site frame: on the first load the GeneratePress layout is set (full width, no sidebar, menu to the right of the site title, tagline shown, no footer widgets) and the main menu created (Reports, Methodology, Subscribe, Log in, which reads Log out for a logged-in reader); both can be changed afterwards in the Customizer and under Appearance > Menus. A site stylesheet on every page (header, menu, content column, footer, the blocks of the home page). The footer line comes from the setting "Site footer". [ed_reports_index] lists the latest report of each country (drafts included for editors); the reports index at /reports/ uses the same list. The site's pages (home, methodology, subscribe, legal notice, privacy) are written in the repository (site/wp/pages) and pushed by the action "Set up the site".
 
 = 1.2.3 =
 Data view: the overview excerpt and the section leads in regular weight; 20px less above the overview, 10px more above the selected data.

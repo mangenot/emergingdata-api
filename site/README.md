@@ -58,6 +58,11 @@ The reports move to the site through the ED Reports plugin (`wp/ed-reports`, zip
   environment; drafts unless `--publish`; an existing report with the same slug is updated in place). The GitHub
   Action "Publish reports to WordPress" (`.github/workflows/publish-reports.yml`, run by hand) does the same with
   the repository secrets.
+- `setup_wp.py` sets up the site around the reports: the tagline and a few settings, the pages of `wp/pages/<slug>.html`
+  (first line `title: ...`, then HTML, one block per paragraph of the file; created or updated in place by slug), the
+  home page as the front page, the stock sample content to the trash. The GitHub Action "Set up the site"
+  (`.github/workflows/setup-site.yml`) runs it with the same secrets. The frame itself (theme layout, menu, footer
+  line, stylesheet, the reports cards) is in the plugin (`includes/site.php`, `assets/site.css`).
 - `/api/page-data?country=HND`: everything a page needs in one call (series since 2019, facts, scores with inputs,
   benchmark rows, currency figures, real exchange rate), cached 30 minutes at the edge and for the minutes set in
   the plugin on the site.

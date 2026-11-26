@@ -1,0 +1,30 @@
+# Sets up the site around the reports: the tagline and a few settings, the pages of site/wp/pages (created or updated
+# in place), the home page as the front page, the sample content moved to the trash. Run by hand from the Actions tab;
+# safe to run again. The secrets live in the repository environment "WP_URL", as for the publishing action.
+name: Set up the site
+on:
+  workflow_dispatch:
+    inputs:
+      pages:
+        description: 'Page slugs, space separated (empty: all pages)'
+        required: false
+        default: ''
+      pages_only:
+        description: 'Pages only, without the settings and the trash step (true/false)'
+        required: true
+        default: 'false'
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    environment: WP_URL
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up the site
+        env:
+          WP_URL: ${{ secrets.WP_URL }}
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
+        run: cd site && python3 setup_wp.py ${{ github.event.inputs.pages_only == 'true' && '--pages-only' || '' }} ${{ github.event.inputs.pages }}

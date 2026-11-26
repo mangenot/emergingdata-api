@@ -1,0 +1,37 @@
+title: Methodology
+
+<p>EmergingData reads a small number of emerging economies for the professionals who source from them. This page says what is covered, how a report is built, where the data come from, how the figures and the scores are computed, and how the texts are written.</p>
+
+<h2>Coverage</h2>
+
+<p>The first wave covers five countries of apparel sourcing: Bangladesh, Cambodia, Honduras, Kenya and Pakistan. Other countries and other sectors follow wave by wave. The reading is sectoral: the indicators of a country are chosen and weighted for the sector in question, so the apparel reports follow garment exports, garment wages and the tariffs on the main apparel markets rather than the economy at large.</p>
+
+<h2>The report</h2>
+
+<p>Each country has one report, renewed every month. It opens with an overview written by the editor, which starts from the latest events and data releases and goes down to the structural fundamentals of the country. Five sections follow, in an order that can change from one month to the next when domestic matters lead: public finances and the currency; exports, imports and tariffs; domestic politics, social unrest and labour costs; logistics and shipping costs; energy costs.</p>
+
+<p>Each section opens with its analysis, then lists the month's updates with their direction (up, flat, down), the figures behind them with the change on the month and the three-month trend, the charts and the risks ahead. A "to add" line names the indicators of the template not loaded yet, so that the reader knows what is missing.</p>
+
+<p>Every report exists in two views at the same address: the data view, made for the screen, with the selected data, the overview in short and each section with its lead, a few paragraphs, the updates, the figures as a table and the charts; and the report view, the full text, which also prints on A4.</p>
+
+<h2>The data</h2>
+
+<p>The series come from the public sources of each country and from the international institutions: the IMF (World Economic Outlook, Article IV reports), the World Bank (development, debt and logistics indicators), the central banks and statistics offices, the customs administrations, OTEXA and Eurostat for apparel imports, the USTR, the Federal Register and the European Commission for tariffs and preferences, the rating agencies, Drewry for container freight. Wages and apparel trade draw on the series kept by EmergingTextiles.com since 1998. Social unrest is read through the GDELT project's count of protest events by country and month, a machine-coded measure of protest news rather than a verified count. Each report ends with its list of sources.</p>
+
+<p>The series are collected in one sheet per country, pushed every night to a database that keeps every vintage of a figure, and served to the pages by an API. The pages read the database when they are displayed, so the figures, trends, currency block, charts, benchmark and scores are as fresh as the last push; the text changes only with the monthly edition. The current month of the protest count is left out as incomplete. Values marked "verify" are awaiting a check and are not used in the scores.</p>
+
+<h2>Figures and trends</h2>
+
+<p>Under every figure, the direction over three and twelve months is computed from the series: for rates (inflation, policy rates, ratios) a move of less than 0.15 point counts as flat; for levels (reserves, trade, credit) a move of less than 1% counts as flat. The currency block of the finance section gives the exchange rate, its nominal move over twelve months, its real move corrected for the inflation differential with the United States (US inflation taken at 3% a year) and the minimum wage in dollars at the latest rate. The trade section opens with what the currency did to the cost of imports in local currency and to the cost of exports in dollars. The benchmark table lists every country covered, ordered by cost pressure.</p>
+
+<h2>The scores</h2>
+
+<p>A scoring engine reads each country once a month, on the first day, from the data available that day. Each section gets a score from published rules on one or two inputs; two composites sum them up, cost pressure and disruption risk, each from 1 (lowest) to 5 (highest). Ranks such as inflation or wage are among the countries covered. Dated events (elections, wage reviews, preference dates) feed the scores but are not listed on the pages. The sections show the latest data, so a figure on a page can be newer than the score in the appendix. The scores are a frozen reading, meant to be compared from month to month and from country to country; the text is the judgement.</p>
+
+<h2>How the texts are written</h2>
+
+<p>The texts are written by the editor, a long-time observer of these markets, with AI assistance for drafting from the database. Every figure quoted in a text is checked against the series behind it, and every computed part of a page (trends, currency figures, charts, benchmark, scores) is produced by code from the sources, not written by hand. The reports are signed by EmergingData and carry the date of their edition.</p>
+
+<h2>Corrections</h2>
+
+<p>Errors reported by readers are corrected on the page and noted in the next edition. Write to <a href="mailto:contact@emergingdata.net">contact@emergingdata.net</a>.</p>
