@@ -3,7 +3,7 @@
 API, as drafts unless --publish is given. An existing report with the same slug is updated in place (its text and
 fields), so the daily refresh can rewrite the drafts and an editor publishes them from the site.
 
-    python3 publish_wp.py [--publish] [ISO ...]
+    python3 publish_wp.py [--publish] [--excerpts-only] [ISO ...]   (--excerpts-only updates the excerpt alone, leaving the text as edited on the site)
     WP_URL            the site, e.g. https://emergingdata.net
     WP_USER           the WordPress user name
     WP_APP_PASSWORD   an application password of that user (Users > Profile > Application Passwords); never printed
@@ -61,12 +61,16 @@ def whoami():
                          "WP_USER must be the login name of the user whose profile holds the application password; on a server that drops the Authorization header, the plugin must be 1.0.1 or later.")
 
 
-def push(iso, publish):
+def push(iso, publish, excerpts_only=False):
     f = json.load(open(os.path.join(WP, f'{iso.lower()}.json'), encoding='utf-8'))
     content = open(os.path.join(WP, f'{iso.lower()}.txt'), encoding='utf-8').read()
-    body = dict(title=f['title'], slug=f['slug'], content=content,
+    body = dict(title=f['title'], slug=f['slug'], content=content, excerpt=f.get('excerpt', ''),
                 meta={'_ed_iso': f['iso'], '_ed_subtitle': f['subtitle'], '_ed_meta': f['meta'], '_ed_edition': f['edition']})
     existing = call('GET', 'country-reports', slug=f['slug'], status='publish,draft,pending,private', context='edit')
+    if existing and excerpts_only:      # the excerpt alone: the text edited on the site is left untouched
+        r = call('POST', f"country-reports/{existing[0]['id']}", dict(excerpt=body['excerpt']))
+        print(f"{iso}: excerpt of post {r['id']} updated")
+        return
     if existing:
         post = existing[0]
         if publish:
@@ -82,8 +86,9 @@ def push(iso, publish):
 if __name__ == '__main__':
     args = [a for a in sys.argv[1:] if not a.startswith('--')]
     publish = '--publish' in sys.argv
+    excerpts_only = '--excerpts-only' in sys.argv
     if not (URL and USER and PASS):
         raise SystemExit('WP_URL, WP_USER and WP_APP_PASSWORD must be set in the environment')
     whoami()
     for iso in (args or ['BGD', 'HND', 'KEN', 'KHM', 'PAK']):
-        push(iso.upper(), publish)
+        push(iso.upper(), publish, excerpts_only)

@@ -6,7 +6,7 @@ converted: the plugin fills them from the API at display time.
 
     python3 to_wp.py [ISO ...]        all five countries when none is given
 """
-import json, os, sys, re
+import html, json, os, sys, re
 from build_pages import load_spec, sections_of, EDITION
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -109,7 +109,11 @@ def convert(iso):
     out.append('[ed_scores]')
     out.append('[ed_method]\n[ed_sources]\n' + '\n'.join(spec.get('sources') or []) + '\n[/ed_sources]\n[/ed_method]')
     content = '\n\n'.join(out) + '\n'
-    fields = dict(iso=iso, title=spec['name'], subtitle=spec['sub'], meta=spec['meta'], edition=EDITION, slug=f"{spec['name'].lower().replace(' ', '-')}-apparel")
+    # the excerpt: the first two sentences of the standfirst, shown by the site above the lock message and in lists
+    stand = html.unescape(re.sub(r'<[^>]+>', '', ov['standfirst'])).strip()
+    sentences = re.split(r'(?<=[.!?])\s+', stand)
+    excerpt = ' '.join(sentences[:2]).strip()
+    fields = dict(iso=iso, title=spec['name'], subtitle=spec['sub'], meta=spec['meta'], edition=EDITION, slug=f"{spec['name'].lower().replace(' ', '-')}-apparel", excerpt=excerpt)
     os.makedirs(OUT, exist_ok=True)
     open(os.path.join(OUT, f'{iso.lower()}.txt'), 'w', encoding='utf-8').write(content)
     json.dump(fields, open(os.path.join(OUT, f'{iso.lower()}.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False)

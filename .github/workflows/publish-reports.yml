@@ -14,6 +14,10 @@ on:
         description: 'Publish (true) or leave as drafts (false)'
         required: true
         default: 'false'
+      excerpts_only:
+        description: 'Update the excerpts alone, leaving the texts as edited on the site (true/false)'
+        required: false
+        default: 'false'
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -30,4 +34,4 @@ jobs:
           WP_URL: ${{ secrets.WP_URL }}
           WP_USER: ${{ secrets.WP_USER }}
           WP_APP_PASSWORD: ${{ secrets.WP_APP_PASSWORD }}
-        run: cd site && python3 publish_wp.py ${{ github.event.inputs.publish == 'true' && '--publish' || '' }} ${{ github.event.inputs.countries }}
+        run: cd site && python3 publish_wp.py ${{ github.event.inputs.publish == 'true' && '--publish' || '' }} ${{ github.event.inputs.excerpts_only == 'true' && '--excerpts-only' || '' }} ${{ github.event.inputs.countries }}
