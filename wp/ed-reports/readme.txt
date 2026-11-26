@@ -3,7 +3,7 @@ Contributors: emergingtextiles
 Requires at least: 6.5
 Tested up to: 7.2
 Requires PHP: 8.0
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: Proprietary
 
 Country reports for EmergingData: the text is written in the editor with shortcodes; the figures, tiles, charts, benchmark table and scores are filled from the EmergingData API when the page is displayed.
@@ -81,6 +81,9 @@ The computed parts use the same rules as the prototype pages: a tile with a code
 Placeholders filled from the API in the series line, the footer and the ledes: {series} (date and number of series), {fetched}, {name}, {score_date}, {score_month}.
 
 == Changelog ==
+
+= 1.4.1 =
+Paid Memberships Pro: every report requires an active membership, without a box to tick on each report; the "Log in" menu item goes to PMPro's login page and reads "My account" once logged in; the texts shown in place of a locked report come from the settings (visitor, and logged-in reader without a subscription).
 
 = 1.4.0 =
 The home page: [ed_home_hero]...[/ed_home_hero] (the opening band, full width, with the text written in the page and the chart of the five currencies in real terms over three years, hover for the values), [ed_home_strip] (the figures of the morning: the currency and its twelve-month moves, inflation, the garment wage in dollars, apparel exports over twelve months, the two scores as pills), [ed_home_changed] (the latest releases across the countries, newest first), and the report cards with a colour band per country, the monthly apparel exports with a sparkline and the two scores. The countries of the blocks come from the setting "Home page countries". The header and the footer are now teal bands.

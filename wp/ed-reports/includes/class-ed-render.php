@@ -79,9 +79,10 @@ class ED_Render {
         $n = count(array_filter(array_keys($d['series'] ?? []), fn($k) => $k !== 'FX_REAL'));
         $sd = $d['scores']['score_date'] ?? '';
         $post = self::$post_id ? get_post(self::$post_id) : null;
+        $login = function_exists('pmpro_url') && pmpro_url('login') ? pmpro_url('login') : wp_login_url();
         return str_replace(
-            ['{series}', '{fetched}', '{name}', '{score_date}', '{score_month}'],
-            [ED_Calc::date_label($gen) . " ($n series)", ED_Calc::date_label($gen), $post ? $post->post_title : '', ED_Calc::date_label($sd), $sd ? ED_Calc::MONTH_NAMES[(int) substr($sd, 5, 2) - 1] . ' ' . substr($sd, 0, 4) : ''],
+            ['{series}', '{fetched}', '{name}', '{score_date}', '{score_month}', '{home}', '{login}'],
+            [ED_Calc::date_label($gen) . " ($n series)", ED_Calc::date_label($gen), $post ? $post->post_title : '', ED_Calc::date_label($sd), $sd ? ED_Calc::MONTH_NAMES[(int) substr($sd, 5, 2) - 1] . ' ' . substr($sd, 0, 4) : '', home_url('/'), $login],
             $text
         );
     }
